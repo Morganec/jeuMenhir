@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_9rvdoH6HEeWz6qOSJYeVtQ" name="NewModel">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_bd6F4H6IEeWz6qOSJYeVtQ" name="Joueur_réel"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_UVC64H6KEeWz6qOSJYeVtQ" memberEnd="_UVC64X6KEeWz6qOSJYeVtQ _UVDh8H6KEeWz6qOSJYeVtQ">
+    <ownedEnd xmi:id="_UVC64X6KEeWz6qOSJYeVtQ" type="_bd6F4H6IEeWz6qOSJYeVtQ" association="_UVC64H6KEeWz6qOSJYeVtQ"/>
+    <ownedEnd xmi:id="_UVDh8H6KEeWz6qOSJYeVtQ" association="_UVC64H6KEeWz6qOSJYeVtQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_q7ZQIH6fEeWz6qOSJYeVtQ" name=""/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_DHC70H6gEeWz6qOSJYeVtQ" name="Scenario_0">
+    <ownedAttribute xmi:id="_GbiLYH6gEeWz6qOSJYeVtQ" name="Joueur_réel" type="_bd6F4H6IEeWz6qOSJYeVtQ"/>
+    <ownedAttribute xmi:id="_A_kxoH6jEeWz6qOSJYeVtQ" name="Jeu Menhir" type="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <ownedAttribute xmi:id="_Fp2vcH6jEeWz6qOSJYeVtQ" name="Class1" type="_FpSuwH6jEeWz6qOSJYeVtQ"/>
+    <lifeline xmi:id="_GbiycH6gEeWz6qOSJYeVtQ" name="Joueur_réel" represents="_GbiLYH6gEeWz6qOSJYeVtQ"/>
+    <lifeline xmi:id="_FpT84H6jEeWz6qOSJYeVtQ" name="Class1" represents="_Fp2vcH6jEeWz6qOSJYeVtQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_ZfhZsH6gEeWz6qOSJYeVtQ" name="NewModel Subject"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_2HEo8H6gEeWz6qOSJYeVtQ" name="Jeu Menhir" useCase="_6jgYAH6gEeWz6qOSJYeVtQ _9_qV0H6gEeWz6qOSJYeVtQ _ALnQAH6hEeWz6qOSJYeVtQ _BoOX8H6hEeWz6qOSJYeVtQ _DpDnQH6hEeWz6qOSJYeVtQ _RKGxcH6hEeWz6qOSJYeVtQ _TGnhcH6hEeWz6qOSJYeVtQ _W0W-gH6hEeWz6qOSJYeVtQ _adlH8H6hEeWz6qOSJYeVtQ _fmrIsH6hEeWz6qOSJYeVtQ _hw8A0H6hEeWz6qOSJYeVtQ _m39lAH6hEeWz6qOSJYeVtQ _pjhMUH6hEeWz6qOSJYeVtQ _sPUrQH6hEeWz6qOSJYeVtQ _W6UnIH6iEeWz6qOSJYeVtQ _aEp1IH6iEeWz6qOSJYeVtQ _cb8coH6iEeWz6qOSJYeVtQ _jbH1QH6iEeWz6qOSJYeVtQ _lf4iUH6iEeWz6qOSJYeVtQ _zMir0H_wEeWkffKuQelDQg __trRIH_wEeWkffKuQelDQg">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_6jgYAH6gEeWz6qOSJYeVtQ" name="Faire Nouvelle Partie" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <include xmi:id="_UGFxMH_wEeWkffKuQelDQg" addition="_9_qV0H6gEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9_qV0H6gEeWz6qOSJYeVtQ" name="Paramètrer" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <include xmi:id="_K5M-oH6iEeWz6qOSJYeVtQ" addition="_RKGxcH6hEeWz6qOSJYeVtQ"/>
+      <include xmi:id="_LoVVgH6iEeWz6qOSJYeVtQ" addition="_TGnhcH6hEeWz6qOSJYeVtQ"/>
+      <include xmi:id="_2iQDYH_wEeWkffKuQelDQg" addition="_zMir0H_wEeWkffKuQelDQg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ALnQAH6hEeWz6qOSJYeVtQ" name="Jouer Partie" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_BoOX8H6hEeWz6qOSJYeVtQ" name="Recommencer Partie" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_DpDnQH6hEeWz6qOSJYeVtQ" name="Quitter Partie" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_RKGxcH6hEeWz6qOSJYeVtQ" name="Choisir Type Partie" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_TGnhcH6hEeWz6qOSJYeVtQ" name="Choisir Nombre/Type Joueur" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_W0W-gH6hEeWz6qOSJYeVtQ" name="Entrer Nom Joueur(s) réel(s)" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_adlH8H6hEeWz6qOSJYeVtQ" name="Entrer $Age Joueurs(s) réel(s)" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_fmrIsH6hEeWz6qOSJYeVtQ" name="Partie Rapide" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <generalization xmi:id="_-JFiIH6hEeWz6qOSJYeVtQ" general="_ALnQAH6hEeWz6qOSJYeVtQ"/>
+      <include xmi:id="_RY4-4H6iEeWz6qOSJYeVtQ" addition="_m39lAH6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_hw8A0H6hEeWz6qOSJYeVtQ" name="Partie Avancée" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <generalization xmi:id="__BkpUH6hEeWz6qOSJYeVtQ" general="_ALnQAH6hEeWz6qOSJYeVtQ"/>
+      <include xmi:id="_SXofEH6iEeWz6qOSJYeVtQ" addition="_m39lAH6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_m39lAH6hEeWz6qOSJYeVtQ" name="Jouer Carte Ingrédient" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_pjhMUH6hEeWz6qOSJYeVtQ" name="Jouer Carte Allié" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <extend xmi:id="_PbQNgH6iEeWz6qOSJYeVtQ" extendedCase="_hw8A0H6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_sPUrQH6hEeWz6qOSJYeVtQ" name="Choisir 2 graines" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <extend xmi:id="_QMpOMH6iEeWz6qOSJYeVtQ" extendedCase="_hw8A0H6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_W6UnIH6iEeWz6qOSJYeVtQ" name="Jouer Engrais" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <generalization xmi:id="_g0aRsH6iEeWz6qOSJYeVtQ" general="_m39lAH6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_aEp1IH6iEeWz6qOSJYeVtQ" name="Jouer Géant" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <generalization xmi:id="_hnbDAH6iEeWz6qOSJYeVtQ" general="_m39lAH6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_cb8coH6iEeWz6qOSJYeVtQ" name="Jouer Farfadet" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <generalization xmi:id="_iX-9QH6iEeWz6qOSJYeVtQ" general="_m39lAH6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_jbH1QH6iEeWz6qOSJYeVtQ" name="Jouer Taupe" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <generalization xmi:id="_omgVAH6iEeWz6qOSJYeVtQ" general="_pjhMUH6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_lf4iUH6iEeWz6qOSJYeVtQ" name="Jouer Chien de Garde" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <generalization xmi:id="_pXqFIH6iEeWz6qOSJYeVtQ" general="_pjhMUH6hEeWz6qOSJYeVtQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_zMir0H_wEeWkffKuQelDQg" name="Entrer critères joueurs" subject="_2HEo8H6gEeWz6qOSJYeVtQ">
+      <include xmi:id="_71nacH_wEeWkffKuQelDQg" addition="_W0W-gH6hEeWz6qOSJYeVtQ"/>
+      <include xmi:id="_8oVQ0H_wEeWkffKuQelDQg" addition="_adlH8H6hEeWz6qOSJYeVtQ"/>
+      <include xmi:id="_DGlGoH_xEeWkffKuQelDQg" addition="__trRIH_wEeWkffKuQelDQg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="__trRIH_wEeWkffKuQelDQg" name="Entrer Sexe" subject="_2HEo8H6gEeWz6qOSJYeVtQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_3bGnMH6hEeWz6qOSJYeVtQ" memberEnd="_3bHOQH6hEeWz6qOSJYeVtQ _3bHOQX6hEeWz6qOSJYeVtQ">
+    <ownedEnd xmi:id="_3bHOQH6hEeWz6qOSJYeVtQ" type="_bd6F4H6IEeWz6qOSJYeVtQ" association="_3bGnMH6hEeWz6qOSJYeVtQ"/>
+    <ownedEnd xmi:id="_3bHOQX6hEeWz6qOSJYeVtQ" type="_6jgYAH6gEeWz6qOSJYeVtQ" association="_3bGnMH6hEeWz6qOSJYeVtQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5TkksH6hEeWz6qOSJYeVtQ" memberEnd="_5TkksX6hEeWz6qOSJYeVtQ _5TmZ4H6hEeWz6qOSJYeVtQ">
+    <ownedEnd xmi:id="_5TkksX6hEeWz6qOSJYeVtQ" type="_bd6F4H6IEeWz6qOSJYeVtQ" association="_5TkksH6hEeWz6qOSJYeVtQ"/>
+    <ownedEnd xmi:id="_5TmZ4H6hEeWz6qOSJYeVtQ" type="_9_qV0H6gEeWz6qOSJYeVtQ" association="_5TkksH6hEeWz6qOSJYeVtQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_7JK0YH6hEeWz6qOSJYeVtQ" memberEnd="_7JLbcH6hEeWz6qOSJYeVtQ _7JLbcX6hEeWz6qOSJYeVtQ">
+    <ownedEnd xmi:id="_7JLbcH6hEeWz6qOSJYeVtQ" type="_ALnQAH6hEeWz6qOSJYeVtQ" association="_7JK0YH6hEeWz6qOSJYeVtQ"/>
+    <ownedEnd xmi:id="_7JLbcX6hEeWz6qOSJYeVtQ" type="_bd6F4H6IEeWz6qOSJYeVtQ" association="_7JK0YH6hEeWz6qOSJYeVtQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_7-7XsH6hEeWz6qOSJYeVtQ" memberEnd="_7-7XsX6hEeWz6qOSJYeVtQ _7-9M4H6hEeWz6qOSJYeVtQ">
+    <ownedEnd xmi:id="_7-7XsX6hEeWz6qOSJYeVtQ" type="_BoOX8H6hEeWz6qOSJYeVtQ" association="_7-7XsH6hEeWz6qOSJYeVtQ"/>
+    <ownedEnd xmi:id="_7-9M4H6hEeWz6qOSJYeVtQ" type="_bd6F4H6IEeWz6qOSJYeVtQ" association="_7-7XsH6hEeWz6qOSJYeVtQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_9CKWUH6hEeWz6qOSJYeVtQ" memberEnd="_9CK9YH6hEeWz6qOSJYeVtQ _9CMykH6hEeWz6qOSJYeVtQ">
+    <ownedEnd xmi:id="_9CK9YH6hEeWz6qOSJYeVtQ" type="_DpDnQH6hEeWz6qOSJYeVtQ" association="_9CKWUH6hEeWz6qOSJYeVtQ"/>
+    <ownedEnd xmi:id="_9CMykH6hEeWz6qOSJYeVtQ" type="_bd6F4H6IEeWz6qOSJYeVtQ" association="_9CKWUH6hEeWz6qOSJYeVtQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FpSuwH6jEeWz6qOSJYeVtQ" name="Class1"/>
+</uml:Model>
