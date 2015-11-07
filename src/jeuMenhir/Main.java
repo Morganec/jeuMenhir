@@ -31,9 +31,9 @@ public class Main{
             typePartie = sc.nextInt();
 
             if(typePartie == 1){
-               estPartieRapide = true
+               estPartieRapide = true;
             }else{
-               estPartieRapide = false
+               estPartieRapide = false;
             }
 
         }
