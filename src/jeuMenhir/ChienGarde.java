@@ -10,7 +10,7 @@ public class ChienGarde {
 		tableauForce[3] = a3;
 	}
 	
-	public void volerGraine(Joueur J)
+	public void contrerFarfadet()
 	{
 		
 	}
