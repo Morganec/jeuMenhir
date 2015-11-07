@@ -1,6 +1,7 @@
 package jeuMenhir;
 
 public class Farfadet {
+	
 	private int[] tableauForce;
 	public Farfadet (int a0, int a1, int a2, int a3)
 	{
