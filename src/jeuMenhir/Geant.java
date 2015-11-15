@@ -10,12 +10,14 @@ public class Geant {
 		tableauForce[3] = a3;
 	}
 	
-	public void donnerGraine()
+	public void donnerGraine()	//selon puissance ajout nb graine
 	{
 	
+		
 	}
-	public void getValeurForce()
+	public void getValeurForce()	//fonction utilsée ds donner graines?
 	{
 	
+		
 	}
 }

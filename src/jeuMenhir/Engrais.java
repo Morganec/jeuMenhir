@@ -10,7 +10,7 @@ private int[] tableauForce;
 		tableauForce[3] = a3;
 	}
 	
-	public void pousserGraine()
+	public void pousserGraine()	//selon puissance supp x nb graine et ajout x nb menhir
 	{
 	
 	}

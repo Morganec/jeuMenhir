@@ -11,7 +11,7 @@ public class Farfadet {
 		tableauForce[3] = a3;
 	}
 	
-	public void volerGraine(Joueur J)
+	public void volerGraine(Joueur J)	//selon puissance supp nb graine Joueur J
 	{
 		
 	}
