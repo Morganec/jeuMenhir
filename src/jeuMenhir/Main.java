@@ -8,9 +8,9 @@ import java.util.Scanner;
  */
 public class Main{		//variables pour menhir et graine dans le main ou dans cartes????
         public static void main (String[] args){
-            Integer nbrJoueur, nbrJoueurOrdi, typePartie ;
+            Integer nbrJoueur, nbrJoueurOrdi, typePartie, nbrJoueurReel ;
             boolean estPartieRapide ;
-            ArrayList<Joueur> joueurs= new ArrayList<Joueur>();
+            Partie partie;
             Scanner sc = new Scanner(System.in);
 
             System.out.println("Nombre de joueur participant ? :");
@@ -21,7 +21,8 @@ public class Main{		//variables pour menhir et graine dans le main ou dans carte
             System.out.println("Combien de joueur ordinateur? ");
             //Attention verifier ici que le nbr de joueur ordi est < nbr5Joueur - 1 !
             nbrJoueurOrdi = sc.nextInt();
-            System.out.println("Cette parti aura donc : " + nbrJoueurOrdi + "joueur ordinateur et " + (nbrJoueur-nbrJoueurOrdi) + " joueur reel ");
+            nbrJoueurReel = nbrJoueur-nbrJoueurOrdi;
+            System.out.println("Cette parti aura donc : " + nbrJoueurOrdi + "joueur ordinateur et " + nbrJoueurReel + " joueur reel ");
             //Ici on déclare avec les classe ordi et joueurReel quel joueur est quoi
             System.out.println("Vous aller maintenant entrer les informations des joueurs Reel");
 
@@ -35,6 +36,8 @@ public class Main{		//variables pour menhir et graine dans le main ou dans carte
             }else{
                estPartieRapide = false;
             }
+            partie = new Partie(nbrJoueurReel,nbrJoueurOrdi, estPartieRapide);
+
 
         }
 }

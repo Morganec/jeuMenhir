@@ -10,9 +10,11 @@ public class Partie {
     private boolean estPartieRapide;
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
        this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
+        this.estPartieRapide = partieRapide;
     }
 
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
+       joueurs = new ArrayList<Joueur>();
         for(int i = 0 ; i<nbrJoueurReel ; i++){
             joueurs.add(new JoueurReel());
         }
