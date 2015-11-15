@@ -5,7 +5,7 @@ package jeuMenhir;
  */
 public class Joueur {
 	
-	public int nbgrain;
+	public int nbgrain;		//dans le constructeur?
 	public int nbmenhir;
 	//liste saisons
 }
