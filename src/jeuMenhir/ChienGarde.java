@@ -10,7 +10,7 @@ public class ChienGarde {
 		tableauForce[3] = a3;
 	}
 	
-	public void contrerFarfadet()
+	public void contrerFarfadet()	//préserver nb graines (modification: grainespreservées-grainesvolées)
 	{
 		
 	}

@@ -10,7 +10,7 @@ public class TaupeGeante {
 		tableauForce[3] = a3;
 	}
 	
-	public void detruireMenhir()
+	public void detruireMenhir()	//modification nbmenhir
 	{
 		
 	}

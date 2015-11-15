@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Created by morgane on 07/11/15.
  */
-public class Main{
+public class Main{		//variables pour menhir et graine dans le main ou dans cartes????
         public static void main (String[] args){
             Integer nbrJoueur, nbrJoueurOrdi, typePartie ;
             boolean estPartieRapide ;
