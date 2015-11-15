@@ -1,6 +1,6 @@
 package jeuMenhir;
 
-public class CarteIngrédients {
+public class CarteIngredient {
 
 	private Geant geant;
 	private Farfadet farfadet;

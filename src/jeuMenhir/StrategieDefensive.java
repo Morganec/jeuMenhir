@@ -3,7 +3,7 @@ package jeuMenhir;
 /**
  * Created by morgane on 07/11/15.
  */
-public class StrategieDefenssive implements Strategie {
+public class StrategieDefensive implements Strategie {
     @Override
     public Carte getCarte() {
         return null;
