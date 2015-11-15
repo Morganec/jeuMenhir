@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class Partie {
     private ArrayList<Joueur> joueurs;
     private boolean estPartieRapide;
+    private int saison;
+    private PartieRapide partieRapEnCours;
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
        this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
         this.estPartieRapide = partieRapide;
@@ -21,10 +23,11 @@ public class Partie {
         for(int i = 0 ; i<nbrJoueurOrdi; i++){
             joueurs.add(new JoueurOrdinateur());
         }
+        this.lancerPartieRapide();
     }
 
     public void lancerPartieRapide(){
-
+            this.partieRapEnCours = new PartieRapide(this.joueurs);
     }
 
 }

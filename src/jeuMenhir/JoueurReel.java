@@ -6,7 +6,12 @@ import java.util.Scanner;
  * Created by morgane on 07/11/15.
  */
 public class JoueurReel extends Joueur{
+
+
     private int age;
+
+
+
     private boolean estFemme;
     private String nom;
     private Scanner sc = new Scanner(System.in);
@@ -36,5 +41,13 @@ public class JoueurReel extends Joueur{
         this.estFemme = estf;
         this.nom= nom;
 
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean isEstFemme() {
+        return estFemme;
     }
 }
