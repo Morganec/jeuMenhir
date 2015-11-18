@@ -10,13 +10,31 @@ public class ChienGarde {
 		tableauForce[3] = a3;
 	}
 	
-	public void contrerFarfadet()	//préserver nb graines (modification: grainespreservées-grainesvolées)
+	
+	public void contrerFarfadet(Joueur j, int saison)	//préserver nb graines (modification: grainespreservées-grainesvolées)
 	{
-		
+		int p = this.getValeurForce(saison);	//nombre de graines à protèger du farfadet
+		j.setNbProtege(p); 						//set le nombre de graines à protèger
 	}
 	
-	public void getValeurForce()
+	private int getValeurForce(int saison)	//int saison[0=hiver, 1=printemps, 2=ete, 3=automne]
 	{
-		
+		int valeurForce = 0;
+		switch (saison)
+		{
+		case 0:
+			valeurForce = tableauForce[0];
+			break;
+		case 1:
+			valeurForce = tableauForce[1];
+			break;
+		case 2:
+			valeurForce = tableauForce[2];
+			break;
+		case 3:
+			valeurForce = tableauForce[3];
+			break;
+		}
+		return valeurForce;
 	}
 }

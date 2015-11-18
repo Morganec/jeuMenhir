@@ -2,7 +2,7 @@ package jeuMenhir;
 
 public class CarteIngredient {
 
-	Geant geant;
-	Engrais engrais;
-	Farfadet farfadet;
+	private Geant geant;
+	private Engrais engrais;
+	private Farfadet farfadet;
 }
