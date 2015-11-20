@@ -2,9 +2,9 @@ package jeuMenhir;
 
 public class CarteIngredient extends Carte{
 
-	Geant geant;
-	Engrais engrais;
-	Farfadet farfadet;
+private Geant geant;
+	private Engrais engrais;
+	private Farfadet farfadet;
 
 
 	public CarteIngredient(Geant geant, Farfadet farfadet, Engrais engrais) {
@@ -12,4 +12,5 @@ public class CarteIngredient extends Carte{
 		this.farfadet = farfadet;
 		this.engrais = engrais;
 	}
+
 }

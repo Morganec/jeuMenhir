@@ -5,13 +5,16 @@ import java.util.Collections;
 
 public class PaquetCarte {
 
+
 	ArrayList <Carte> paquetCarte;	//Cr�ation Paquet de Cartes
 
 	public PaquetCarte() {
 		this.paquetCarte = new ArrayList<Carte>();
 	}
 	//Ajouter Carte dans PaquetCarte
+
 	
+	//Ajouter Carte dans PaquetCarte
 	//fonction ajouter carte
 	public boolean ajouterCarte (Carte c)
 	{
@@ -25,7 +28,7 @@ public class PaquetCarte {
 	//m�langer carte
 	public void melangerCarte ()
 	{
-		
+
 	}
 	//
 

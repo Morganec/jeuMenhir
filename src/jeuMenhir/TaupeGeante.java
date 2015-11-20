@@ -10,13 +10,32 @@ public class TaupeGeante {
 		tableauForce[3] = a3;
 	}
 	
-	public void detruireMenhir()	//modification nbmenhir
+	public void detruireMenhir(Joueur jdetruit, int saison)	//modification nbmenhir --> supprimer menhirs
 	{
-		
+		int p = this.getValeurForce(saison);	//p: nb de menhirs du joueur
+		int m = jdetruit.getNbMenhir();			//m: nombre de menhirs à détruire
+		int nb = m - p;							//nb: nouveau nombre de menhir
+		jdetruit.setNbMenhir(nb);				// set nouveau nombre de menhir
 	}
 	
-	public void getValeurForce()
+	private int getValeurForce(int saison)	//int saison[0=hiver, 1=printemps, 2=ete, 3=automne]
 	{
-		
+		int valeurForce = 0;
+		switch (saison)
+		{
+		case 0:
+			valeurForce = tableauForce[0];
+			break;
+		case 1:
+			valeurForce = tableauForce[1];
+			break;
+		case 2:
+			valeurForce = tableauForce[2];
+			break;
+		case 3:
+			valeurForce = tableauForce[3];
+			break;
+		}
+		return valeurForce;
 	}
 }

@@ -13,8 +13,9 @@ public class Geant {
 	
 	public void donnerGraine(Joueur j,int saison)	//selon puissance ajout nb graine
 	{
-		int p = this.getValeurForce(saison);
-		j.nbgrain = j.nbgrain + p;
+		int p = this.getValeurForce(saison);		//puissance de la carte, nombre de graines à ajouter
+		int nb = j.getNbGrain() + p;				//nouveau nombre de graines
+		j.setNbGrain(nb);							//set nouveau nombre de graines
 		
 	}
 	
