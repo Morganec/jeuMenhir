@@ -4,6 +4,7 @@ public class Geant {
 	private int[] tableauForce;
 	public Geant (int a0, int a1, int a2, int a3)
 	{
+		tableauForce = new int[4];
 		tableauForce[0] = a0;
 		tableauForce[1] = a1;
 		tableauForce[2] = a2;

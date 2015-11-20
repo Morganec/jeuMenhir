@@ -5,7 +5,11 @@ import java.util.Collections;
 
 public class PaquetCarte {
 
-	ArrayList <Carte> paquetCarte = new ArrayList<Carte>();		//Création Paquet de Cartes
+	ArrayList <Carte> paquetCarte;	//Crï¿½ation Paquet de Cartes
+
+	public PaquetCarte() {
+		this.paquetCarte = new ArrayList<Carte>();
+	}
 	//Ajouter Carte dans PaquetCarte
 	
 	//fonction ajouter carte
@@ -18,11 +22,19 @@ public class PaquetCarte {
 		else return false;
 	}
 	
-	//mélanger carte
+	//mï¿½langer carte
 	public void melangerCarte ()
 	{
 		
 	}
 	//
-	
+
+	public boolean estVide(){
+		return this.paquetCarte.isEmpty();
+	}
+
+	public Carte prendreCarteDessus(){
+
+		return this.paquetCarte.remove(0);
+	}
 }

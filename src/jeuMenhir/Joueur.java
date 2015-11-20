@@ -5,7 +5,12 @@ package jeuMenhir;
  */
 public class Joueur {
 	
-	public int nbgrain;		//dans le constructeur?
+	public int nbgrain;		//Penser à changer
 	public int nbmenhir;
+	public PaquetCarte main;
+
+	public Joueur() {
+		this.main = new PaquetCarte();
+	}
 	//liste saisons
 }
