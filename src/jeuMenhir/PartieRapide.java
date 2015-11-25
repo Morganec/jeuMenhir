@@ -23,7 +23,17 @@ public class PartieRapide {
     public void jouer(){
         saison = 0;
         joueurQuijoue = this.trouverJoueurCommencant();
-        joueurs.remove(joueurs.indexOf(joueurQuijoue));
+        System.out.println("La saison actuelle est : " + tablSaison[saison]);
+        while (saison<4){
+            Iterator<Joueur> iter = this.joueurs.iterator();
+            while (iter.hasNext()) {
+                Joueur joueurDeListe = iter.next();
+                joueurDeListe.jouer(saison);
+            }
+            saison++;
+        }
+
+        //joueurs.remove(joueurs.indexOf(joueurQuijoue));
         //joueur.paquetDeCarte.afficherMAin()
     }
 
@@ -51,7 +61,7 @@ public class PartieRapide {
             }
 
         }
-        System.out.println("Age du joueur actuel : " + agePersonne );
+        System.out.println("Le joueur qui commence est : " + jQuiCommence.getNom() );
         return jQuiCommence;
     }
 }

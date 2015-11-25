@@ -65,8 +65,15 @@ public class Joueur {
 	public int getAge() {
 		return age;
 	}
+	public String getNom() {
+		return nom;
+	}
 
 	public boolean isEstFemme() {
 		return estFemme;
+	}
+
+	public void jouer(int saison){
+		System.out.println("Le joueur " + this.nom + " joue dans la saison : " + saison);
 	}
 }
