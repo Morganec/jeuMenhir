@@ -1,0 +1,228 @@
+CARTE INGREDIENT
+package jeuMenhir;
+
+public class CarteIngredient {
+
+	private Geant geant;
+	private Engrais engrais;
+	private Farfadet farfadet;
+}
+
+CDG
+package jeuMenhir;
+
+public class ChienGarde {
+	private int[] tableauForce;
+	public ChienGarde (int a0, int a1, int a2, int a3)
+	{
+		tableauForce[0] = a0;
+		tableauForce[1] = a1;
+		tableauForce[2] = a2;
+		tableauForce[3] = a3;
+	}
+	
+	
+	public void contrerFarfadet(Joueur j, int saison)	//préserver nb graines (modification: grainespreservées-grainesvolées)
+	{
+		int p = this.getValeurForce(saison);	//nombre de graines à protèger du farfadet
+		j.setNbProtege(p); 						//set le nombre de graines à protèger
+	}
+	
+	private int getValeurForce(int saison)	//int saison[0=hiver, 1=printemps, 2=ete, 3=automne]
+	{
+		int valeurForce = 0;
+		switch (saison)
+		{
+		case 0:
+			valeurForce = tableauForce[0];
+			break;
+		case 1:
+			valeurForce = tableauForce[1];
+			break;
+		case 2:
+			valeurForce = tableauForce[2];
+			break;
+		case 3:
+			valeurForce = tableauForce[3];
+			break;
+		}
+		return valeurForce;
+	}
+}
+JOUEUR
+package jeuMenhir;
+
+/**
+ * Created by morgane on 07/11/15.
+ */
+public class Joueur {
+	
+	private int nbprotege;
+	private int nbgrain;		
+	private int nbmenhir;
+	//méthodes nombre de grains
+	public int getNbGrain()
+	{
+		return nbgrain;
+	}
+	public void setNbGrain(int nb)	//nb: nouveau nombre de graines
+	{
+		if(nb<0)
+		{
+			nbgrain = 0;
+		}
+		else
+		{
+			nbgrain =  nb;
+		}
+	}
+	//méthodes nombre de menhir
+	public int getNbMenhir()
+	{
+		return nbmenhir;
+	}
+	public void setNbMenhir(int nb)	//nb: nouveau nombre de menhirs
+	{
+		if(nb<0)
+		{
+			nbmenhir = 0;
+		}
+		else
+		{
+			nbmenhir =  nb;
+		}
+	}
+	//méthodes nombre de menhirs à protéger
+	public int getNbProtege()
+	{
+		return nbprotege;
+	}
+	public void setNbProtege(int p)
+	{
+		nbprotege = p;
+	}
+}
+FARFADET
+package jeuMenhir;
+
+public class Farfadet {
+	
+	private int[] tableauForce;
+	public Farfadet (int a0, int a1, int a2, int a3)
+	{
+		tableauForce[0] = a0;
+		tableauForce[1] = a1;
+		tableauForce[2] = a2;
+		tableauForce[3] = a3;
+	}
+	//méthode qui supprime un nombre f de graine au joueur volé, et ajoute f graines au joueur voleur
+	public void volerGraine(Joueur jvoleur, Joueur jvole, int saison)	
+	{
+		int f = this.getValeurForce(saison);	//nombre de graines à volées
+		int p = jvole.getNbProtege();			//nombre de graines à protégées
+		int d = f - p;							//nombre de graines à volées - nombre de graines à protégées
+		if (d > 0)
+		{
+			int nbvole = jvole.getNbGrain() - d;		//nombre de graine
+			int nbvoleur = jvoleur.getNbGrain() + d;
+			jvole.setNbGrain(nbvole);
+			jvoleur.setNbGrain(nbvoleur);
+		}
+		jvole.setNbGrain(0);
+	}
+	
+	public int getValeurForce(int saison)
+	{
+		int valeurForce = 0;
+		switch (saison)
+		{
+		case 0:
+			valeurForce = tableauForce[0];
+			break;
+		case 1:
+			valeurForce = tableauForce[1];
+			break;
+		case 2:
+			valeurForce = tableauForce[2];
+			break;
+		case 3:
+			valeurForce = tableauForce[3];
+			break;
+		}
+		return valeurForce;
+	}
+}
+TAUPE
+package jeuMenhir;
+
+public class TaupeGeante {
+	private int[] tableauForce;
+	public TaupeGeante (int a0, int a1, int a2, int a3)
+	{
+		tableauForce[0] = a0;
+		tableauForce[1] = a1;
+		tableauForce[2] = a2;
+		tableauForce[3] = a3;
+	}
+	
+	public void detruireMenhir(Joueur jdetruit, int saison)	//modification nbmenhir --> supprimer menhirs
+	{
+		int p = this.getValeurForce(saison);	//p: nb de menhirs du joueur
+		int m = jdetruit.getNbMenhir();			//m: nombre de menhirs à détruire
+		int nb = m - p;							//nb: nouveau nombre de menhir
+		jdetruit.setNbMenhir(nb);				// set nouveau nombre de menhir
+	}
+	
+	private int getValeurForce(int saison)	//int saison[0=hiver, 1=printemps, 2=ete, 3=automne]
+	{
+		int valeurForce = 0;
+		switch (saison)
+		{
+		case 0:
+			valeurForce = tableauForce[0];
+			break;
+		case 1:
+			valeurForce = tableauForce[1];
+			break;
+		case 2:
+			valeurForce = tableauForce[2];
+			break;
+		case 3:
+			valeurForce = tableauForce[3];
+			break;
+		}
+		return valeurForce;
+	}
+}
+PAQUETCARTE
+package jeuMenhir;
+ 
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class PaquetCarte {
+
+	ArrayList <Carte> paquetCarte = new ArrayList<Carte>();		//Création Paquet de Cartes, liste de cartes
+	
+	//Ajouter Carte dans PaquetCarte
+	//fonction ajouter carte
+	public boolean ajouterCarte (Carte c)
+	{
+		if (paquetCarte.add(c))
+		{
+			return true;
+		}
+		else return false;
+	}
+	
+	//mélanger carte
+	public void melangerCarte ()
+	{
+		for (int i = 0; i <= this.length; i++)
+		{
+			
+		}
+	}
+	//
+	
+}
