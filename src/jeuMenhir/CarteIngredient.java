@@ -12,5 +12,7 @@ private Geant geant;
 		this.farfadet = farfadet;
 		this.engrais = engrais;
 	}
-
+	public String toString(){
+		return " on a geant = " + geant.toString() + " farfadet = " + farfadet.toString() + "engrais = " + engrais.toString() + " . ";
+	}
 }

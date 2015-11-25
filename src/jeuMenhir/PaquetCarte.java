@@ -2,11 +2,12 @@ package jeuMenhir;
  
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 public class PaquetCarte {
 
 
-	ArrayList <Carte> paquetCarte;	//Cr�ation Paquet de Cartes
+	private ArrayList <Carte> paquetCarte;	//Cr�ation Paquet de Cartes
 
 	public PaquetCarte() {
 		this.paquetCarte = new ArrayList<Carte>();
@@ -39,5 +40,12 @@ public class PaquetCarte {
 	public Carte prendreCarteDessus(){
 
 		return this.paquetCarte.remove(0);
+	}
+
+	public void afficherCartes(){
+		Iterator<Carte> iter = this.paquetCarte.iterator();
+		while (iter.hasNext()) {
+		System.out.println(iter.next().toString());
+		}
 	}
 }

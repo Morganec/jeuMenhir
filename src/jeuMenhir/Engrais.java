@@ -41,4 +41,8 @@ private int[] tableauForce;
 		}
 		return valeurForce;
 	}
+
+	public String toString(){
+		return "ENGRAIS :" + tableauForce[0] + ";" + tableauForce[1] + "+;" + tableauForce[2] + ";" + tableauForce[3] + " . ";
+	}
 }

@@ -31,8 +31,8 @@ public class Partie {
     public void distribuerCarte(){
         int i = 0;
         while(!paquetJeu.estVide()){
-            joueurs.get(i).main.ajouterCarte(paquetJeu.prendreCarteDessus());
-            if(i< joueurs.size() - 2){
+            joueurs.get(i).getMain().ajouterCarte(paquetJeu.prendreCarteDessus());
+            if(i< joueurs.size() - 1){
                 i++;
             }else{
                 i = 0;

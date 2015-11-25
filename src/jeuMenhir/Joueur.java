@@ -8,7 +8,10 @@ public class Joueur {
 	protected int age;
 	protected boolean estFemme;
 	protected String nom;
-	public PaquetCarte main;
+
+
+
+	private PaquetCarte main;
 	private int nbprotege;
 	private int nbgrain;
 	private int nbmenhir;
@@ -75,5 +78,10 @@ public class Joueur {
 
 	public void jouer(int saison){
 		System.out.println("Le joueur " + this.nom + " joue dans la saison : " + saison);
+		this.main.afficherCartes();
+	}
+
+	public PaquetCarte getMain() {
+		return main;
 	}
 }
