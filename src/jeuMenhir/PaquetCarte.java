@@ -42,10 +42,25 @@ public class PaquetCarte {
 		return this.paquetCarte.remove(0);
 	}
 
+	public Carte prendreCarteChoisi(Carte c){
+
+		return this.paquetCarte.remove(this.paquetCarte.indexOf(c));
+	}
+
 	public void afficherCartes(){
 		Iterator<Carte> iter = this.paquetCarte.iterator();
+		int i = 1;
 		while (iter.hasNext()) {
-		System.out.println(iter.next().toString());
+		System.out.println(" Choix " +i + " : " + iter.next().toString());
+			i++;
+
 		}
+	}
+	public Carte getCarte(int index){
+		return paquetCarte.get(index);
+	}
+
+	public String afficherUneCarte(int index){
+		return paquetCarte.get(index).toString();
 	}
 }

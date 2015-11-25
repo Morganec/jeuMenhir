@@ -17,14 +17,18 @@ public class Farfadet {
 		int f = this.getValeurForce(saison);	//nombre de graines � vol�es
 		int p = jvole.getNbProtege();			//nombre de graines � prot�g�es
 		int d = f - p;							//nombre de graines � vol�es - nombre de graines � prot�g�es
+		System.out.println("Vous volez  " + d + " graines ! ");
 		if (d > 0)
 		{
 			int nbvole = jvole.getNbGrain() - d;		//nombre de graine
 			int nbvoleur = jvoleur.getNbGrain() + d;
 			jvole.setNbGrain(nbvole);
 			jvoleur.setNbGrain(nbvoleur);
+			System.out.println("Vous avez  maintenant " + nbvoleur + " graines ! ");
 		}
-		jvole.setNbGrain(0);
+		jvole.setNbProtege(0);
+		//jvole.setNbGrain(0);  //   c'est toujours remis à 0 ?
+
 	}
 	
 	public int getValeurForce(int saison)

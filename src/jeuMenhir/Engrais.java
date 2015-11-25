@@ -14,12 +14,14 @@ private int[] tableauForce;
 	public void pousserGraine(Joueur j, int saison)	//selon puissance supp x nb graine et ajout x nb menhir
 	{
 		int p = this.getValeurForce(saison);	//puissance de la carte engrais
+		System.out.println("Vous gagnez  " + p + " Menhirs ! ");
 		//diminuer le nombre de graines
 		int g = j.getNbGrain() - p;
 		j.setNbGrain(g);
 		//augmenter le nombre de menhirs
 		int m = j.getNbMenhir() + p;
 		j.setNbMenhir(m);
+		System.out.println("Vous avez maintenant  " + m + " Menhirs ! ");
 	}
 	public int getValeurForce(int saison)
 	{

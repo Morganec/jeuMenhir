@@ -1,5 +1,7 @@
 package jeuMenhir;
 
+import java.util.Scanner;
+
 /**
  * Created by morgane on 07/11/15.
  */
@@ -9,7 +11,7 @@ public class Joueur {
 	protected boolean estFemme;
 	protected String nom;
 
-
+	private Scanner sc = new Scanner(System.in);
 
 	private PaquetCarte main;
 	private int nbprotege;
@@ -76,10 +78,8 @@ public class Joueur {
 		return estFemme;
 	}
 
-	public void jouer(int saison){
-		System.out.println("Le joueur " + this.nom + " joue dans la saison : " + saison);
-		this.main.afficherCartes();
-	}
+
+
 
 	public PaquetCarte getMain() {
 		return main;
