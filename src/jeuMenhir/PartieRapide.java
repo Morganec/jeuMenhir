@@ -15,7 +15,9 @@ public class PartieRapide {
 
 
     public PartieRapide(ArrayList<Joueur> joueurs) {
+
         this.joueurs = joueurs;
+        this.jouer();
     }
 
     public void jouer(){
@@ -26,30 +28,30 @@ public class PartieRapide {
     }
 
     private Joueur trouverJoueurCommencant(){
+
         int agePersonne=0;
         Joueur jQuiCommence = new Joueur();
         Iterator<Joueur> iter = this.joueurs.iterator();
         while (iter.hasNext()) {
             Joueur joueurDeListe = iter.next();
-            if(joueurDeListe instanceof JoueurReel){
-                JoueurReel jReel= (JoueurReel)joueurDeListe;
-                if(agePersonne == 0){
-                    agePersonne = jReel.getAge();
-                    jQuiCommence = jReel;
-                }else {
-                    if(agePersonne > jReel.getAge()){
-                        agePersonne = jReel.getAge();
-                        jQuiCommence = jReel;
-                    }else if(agePersonne == jReel.getAge()){
-                        if(jReel.isEstFemme()){
-                            jQuiCommence = jReel;
-                        }
+
+            if(agePersonne == 0){
+                agePersonne = joueurDeListe.getAge();
+                jQuiCommence = joueurDeListe;
+            }else {
+                if(agePersonne > joueurDeListe.getAge()){
+                    agePersonne = joueurDeListe.getAge();
+                    jQuiCommence = joueurDeListe;
+                }else if(agePersonne == joueurDeListe.getAge()){
+                    if(joueurDeListe.isEstFemme()){
+                        jQuiCommence = joueurDeListe;
                     }
                 }
+
             }
 
         }
-        System.out.println("age personne : " + agePersonne);
+        System.out.println("Age du joueur actuel : " + agePersonne );
         return jQuiCommence;
     }
 }

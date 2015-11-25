@@ -5,6 +5,8 @@ package jeuMenhir;
  */
 public class JoueurOrdinateur extends Joueur{
     public JoueurOrdinateur(){
-        
+        this.age = 70;
+        this.nom = "robot";
+        this.estFemme = false;
     }
 }
