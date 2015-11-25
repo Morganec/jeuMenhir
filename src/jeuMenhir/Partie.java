@@ -22,7 +22,7 @@ public class Partie {
             joueurs.add(new JoueurReel());
         }
         for(int i = 0 ; i<nbrJoueurOrdi; i++){
-            joueurs.add(new JoueurOrdinateur());
+            joueurs.add(new JoueurOrdinateur(i));
         }
         this.creerPaquetJeu();
         this.distribuerCarte();

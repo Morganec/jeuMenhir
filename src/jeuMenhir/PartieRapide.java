@@ -23,8 +23,10 @@ public class PartieRapide {
     public void jouer(){
         saison = 0;
         joueurQuijoue = this.trouverJoueurCommencant();
-        System.out.println("La saison actuelle est : " + tablSaison[saison]);
+        this.joueurs.remove(joueurQuijoue);
+        this.joueurs.add(0,joueurQuijoue);
         while (saison<4){
+            System.out.println("La saison actuelle est : " + tablSaison[saison]);
             Iterator<Joueur> iter = this.joueurs.iterator();
             while (iter.hasNext()) {
                 Joueur joueurDeListe = iter.next();
