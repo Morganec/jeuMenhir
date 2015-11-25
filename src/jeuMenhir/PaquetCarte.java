@@ -25,7 +25,7 @@ public class PaquetCarte {
 		else return false;
 	}
 	
-	//m�langer carte
+	//melanger carte
 	public void melangerCarte ()
 	{
 
