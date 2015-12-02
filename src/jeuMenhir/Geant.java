@@ -15,7 +15,7 @@ public class Geant {
 	{
 
 		int p = this.getValeurForce(saison);//puissance de la carte, nombre de graines � ajouter
-		System.out.println("Vous gagner  " + p + " graines ! ");
+		System.out.println(j.getNom() + " gagne  " + p + " graines ! ");
 		int nb = j.getNbGrain() + p;				//nouveau nombre de graines
 		j.setNbGrain(nb);							//set nouveau nombre de graines
 		
