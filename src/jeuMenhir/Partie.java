@@ -11,6 +11,7 @@ public class Partie {
     private int saison;
     private PartieRapide partieRapEnCours;
     private PaquetCarte paquetJeu;
+    private PaquetCarte paquetAllie;
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
        this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
         this.estPartieRapide = partieRapide;
@@ -22,7 +23,7 @@ public class Partie {
             joueurs.add(new JoueurReel());
         }
         for(int i = 0 ; i<nbrJoueurOrdi; i++){
-            joueurs.add(new JoueurOrdinateur());
+            joueurs.add(new JoueurOrdinateur(i));
         }
         this.creerPaquetJeu();
         this.distribuerCarte();
@@ -31,8 +32,8 @@ public class Partie {
     public void distribuerCarte(){
         int i = 0;
         while(!paquetJeu.estVide()){
-            joueurs.get(i).main.ajouterCarte(paquetJeu.prendreCarteDessus());
-            if(i< joueurs.size() - 2){
+            joueurs.get(i).getMain().ajouterCarte(paquetJeu.prendreCarteDessus());
+            if(i< joueurs.size() - 1){
                 i++;
             }else{
                 i = 0;
@@ -50,6 +51,18 @@ public class Partie {
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+    }
+
+    public void creerPaqueAllie(){
+        paquetAllie = new PaquetCarte();
+
+        paquetAllie.ajouterCarte((Carte)(new ChienGarde(1,2,3,4)));
+        paquetAllie.ajouterCarte((Carte)(new ChienGarde(1,3,3,4)));
+        paquetAllie.ajouterCarte((Carte)(new ChienGarde(1,2,3,1)));
+
+        paquetAllie.ajouterCarte((Carte)(new TaupeGeante(1,2,3,4)));
+        paquetAllie.ajouterCarte((Carte)(new TaupeGeante(1,3,3,4)));
+        paquetAllie.ajouterCarte((Carte)(new TaupeGeante(1,1,3,4)));
     }
     public void lancerPartieRapide(){
             this.partieRapEnCours = new PartieRapide(this.joueurs);

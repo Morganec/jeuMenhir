@@ -13,7 +13,9 @@ public class Geant {
 	
 	public void donnerGraine(Joueur j,int saison)	//selon puissance ajout nb graine
 	{
-		int p = this.getValeurForce(saison);		//puissance de la carte, nombre de graines à ajouter
+
+		int p = this.getValeurForce(saison);//puissance de la carte, nombre de graines ï¿½ ajouter
+		System.out.println(j.getNom() + " gagne  " + p + " graines ! ");
 		int nb = j.getNbGrain() + p;				//nouveau nombre de graines
 		j.setNbGrain(nb);							//set nouveau nombre de graines
 		
@@ -38,5 +40,12 @@ public class Geant {
 			break;
 		}
 		return valeurForce;
+	}
+
+	public String toString(){
+		return "GEANT :" + tableauForce[0] + ";" + tableauForce[1] + "+;" + tableauForce[2] + ";" + tableauForce[3] + " . ";
+	}
+	public void faireAction(Joueur j,int saison){
+		this.donnerGraine(j,saison);
 	}
 }

@@ -11,20 +11,24 @@ public class Farfadet {
 		tableauForce[2] = a2;
 		tableauForce[3] = a3;
 	}
-	//méthode qui supprime un nombre f de graine au joueur volé, et ajoute f graines au joueur voleur
+	//mï¿½thode qui supprime un nombre f de graine au joueur volï¿½, et ajoute f graines au joueur voleur
 	public void volerGraine(Joueur jvoleur, Joueur jvole, int saison)	
 	{
-		int f = this.getValeurForce(saison);	//nombre de graines à volées
-		int p = jvole.getNbProtege();			//nombre de graines à protégées
-		int d = f - p;							//nombre de graines à volées - nombre de graines à protégées
+		int f = this.getValeurForce(saison);	//nombre de graines ï¿½ volï¿½es
+		int p = jvole.getNbProtege();			//nombre de graines ï¿½ protï¿½gï¿½es
+		int d = f - p;							//nombre de graines ï¿½ volï¿½es - nombre de graines ï¿½ protï¿½gï¿½es
+		System.out.println(jvoleur.getNom()+ " vole " + d + " graines ! ");
 		if (d > 0)
 		{
 			int nbvole = jvole.getNbGrain() - d;		//nombre de graine
 			int nbvoleur = jvoleur.getNbGrain() + d;
 			jvole.setNbGrain(nbvole);
 			jvoleur.setNbGrain(nbvoleur);
+			System.out.println(jvoleur.getNom()+ " a  maintenant " + nbvoleur + " graines ! ");
 		}
-		jvole.setNbGrain(0);
+		jvole.setNbProtege(0);
+		//jvole.setNbGrain(0);  //   c'est toujours remis Ã  0 ?
+
 	}
 	
 	public int getValeurForce(int saison)
@@ -46,5 +50,9 @@ public class Farfadet {
 			break;
 		}
 		return valeurForce;
+	}
+
+	public String toString(){
+		return "FARFADET :" + tableauForce[0] + ";" + tableauForce[1] + "+;" + tableauForce[2] + ";" + tableauForce[3] + " . ";
 	}
 }

@@ -1,8 +1,22 @@
 package jeuMenhir;
 
+import java.util.Objects;
+
 public class CarteIngredient extends Carte{
 
-private Geant geant;
+	public Geant getGeant() {
+		return geant;
+	}
+
+	public Engrais getEngrais() {
+		return engrais;
+	}
+
+	public Farfadet getFarfadet() {
+		return farfadet;
+	}
+
+	private Geant geant;
 	private Engrais engrais;
 	private Farfadet farfadet;
 
@@ -12,5 +26,10 @@ private Geant geant;
 		this.farfadet = farfadet;
 		this.engrais = engrais;
 	}
+	public String toString(){
+		return " on a geant = " + geant.toString() + " farfadet = " + farfadet.toString() + "engrais = " + engrais.toString() + " . ";
+	}
+
+
 
 }

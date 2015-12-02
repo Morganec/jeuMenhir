@@ -1,6 +1,6 @@
 package jeuMenhir;
 
-public class TaupeGeante {
+public class TaupeGeante extends CarteAllie {
 	private int[] tableauForce;
 	public TaupeGeante (int a0, int a1, int a2, int a3)
 	{
@@ -13,7 +13,7 @@ public class TaupeGeante {
 	public void detruireMenhir(Joueur jdetruit, int saison)	//modification nbmenhir --> supprimer menhirs
 	{
 		int p = this.getValeurForce(saison);	//p: nb de menhirs du joueur
-		int m = jdetruit.getNbMenhir();			//m: nombre de menhirs à détruire
+		int m = jdetruit.getNbMenhir();			//m: nombre de menhirs ï¿½ dï¿½truire
 		int nb = m - p;							//nb: nouveau nombre de menhir
 		jdetruit.setNbMenhir(nb);				// set nouveau nombre de menhir
 	}

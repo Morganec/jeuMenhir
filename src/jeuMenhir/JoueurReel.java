@@ -8,12 +8,11 @@ import java.util.Scanner;
 public class JoueurReel extends Joueur{
 
 
-    private int age;
 
 
 
-    private boolean estFemme;
-    private String nom;
+
+
     private Scanner sc = new Scanner(System.in);
     public JoueurReel(){
         creerNouveauJoueur();
@@ -43,11 +42,5 @@ public class JoueurReel extends Joueur{
 
     }
 
-    public int getAge() {
-        return age;
-    }
 
-    public boolean isEstFemme() {
-        return estFemme;
-    }
 }

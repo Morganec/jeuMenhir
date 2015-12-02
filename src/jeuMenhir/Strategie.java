@@ -5,5 +5,5 @@ package jeuMenhir;
  */
 public interface Strategie {
 
-    Carte getCarte();
+    int getClasse(); // On a 1 = geant , 2 = farfadet , 3 = Engrais
 }

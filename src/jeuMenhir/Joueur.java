@@ -1,22 +1,29 @@
 package jeuMenhir;
 
+import java.util.Scanner;
+
 /**
  * Created by morgane on 07/11/15.
  */
 public class Joueur {
-	
 
+	protected int age;
+	protected boolean estFemme;
+	protected String nom;
 
-	public PaquetCarte main;
+	private Scanner sc = new Scanner(System.in);
+
+	private PaquetCarte main;
+	private int nbprotege;
+	private int nbgrain;
+	private int nbmenhir;
 
 	public Joueur() {
 		this.main = new PaquetCarte();
 	}
 	//liste saisons
 
-	private int nbprotege;
-	private int nbgrain;		
-	private int nbmenhir;
+
 	//m�thodes nombre de grains
 	public int getNbGrain()
 	{
@@ -59,4 +66,22 @@ public class Joueur {
 		nbprotege = p;
 	}
 
+
+	public int getAge() {
+		return age;
+	}
+	public String getNom() {
+		return nom;
+	}
+
+	public boolean isEstFemme() {
+		return estFemme;
+	}
+
+
+
+
+	public PaquetCarte getMain() {
+		return main;
+	}
 }
