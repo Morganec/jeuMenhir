@@ -13,28 +13,32 @@ public class PartieRapide {
     private int saison;
     private String[] tablSaison = {"hiver", "printemps", "ete","automne"};
     private Joueur joueurQuijoue;
+    private int numPartie;
+    private boolean estPartieRapide;
+
 
     private Scanner sc = new Scanner(System.in);
-    public PartieRapide(ArrayList<Joueur> joueurs) {
-
+    public PartieRapide(ArrayList<Joueur> joueurs, int numPartie, boolean estPartieRapide) {
+        this.numPartie = numPartie;
+        this.estPartieRapide = estPartieRapide;
         this.joueurs = joueurs;
         this.jouer();
     }
 
     public void jouer(){
         saison = 0;
+if(estPartieRapide){
+    joueurQuijoue = this.trouverJoueurCommencant();
+}else{
+    joueurQuijoue = joueurs.get(this.numPartie);
+}
 
-        joueurQuijoue = this.trouverJoueurCommencant();
         this.joueurs.remove(joueurQuijoue);
         this.joueurs.add(0,joueurQuijoue);
         int numChoixCarte;
         int numChoixClasse;
         CarteIngredient carteSelectionne;
-        Iterator<Joueur> iter = this.joueurs.iterator();
-        while (iter.hasNext()) {
-            Joueur joueur= iter.next();
-            joueur.setNbGrain(2);
-        }
+
             while (saison<4){
             System.out.println("La saison actuelle est : " + tablSaison[saison]);
             Iterator<Joueur> iter2 = this.joueurs.iterator();
@@ -42,7 +46,10 @@ public class PartieRapide {
 
                 Joueur joueurDeListe = iter2.next();
                 System.out.println("Le joueur " + joueurDeListe.nom + " joue dans la saison : " + saison);
+
+
                 if(joueurDeListe instanceof JoueurReel){
+
                     joueurDeListe.getMain().afficherCartes();
                     System.out.println("Entrer le numero de votre choix : ");
                     //Attention verifier si c'est un entier
@@ -50,8 +57,12 @@ public class PartieRapide {
                     System.out.println("La carte selectionne est : " +  joueurDeListe.getMain().afficherUneCarte(numChoixCarte - 1));
                     carteSelectionne = (CarteIngredient) joueurDeListe.getMain().getCarte(numChoixCarte - 1);
 
+                    if(estPartieRapide && joueurDeListe.getPossedeCarteAllie()) {
+                        System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais 4-Allie");
+                    }else{
+                        System.out.println("Les classes proposés sont : 1- Geant 2-Farfadet 3-Engrais 4-Allie");
+                    }
 
-                    System.out.println("Les classes proposés sont : 1- Geant 2-Farfadet 3-Engrais ");
                     System.out.println("Entrer le numero de classe que vous avez choisi : ");
                     //Attention verifier si c'est un entier
                     numChoixClasse = sc.nextInt();

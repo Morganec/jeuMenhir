@@ -5,8 +5,9 @@ package jeuMenhir;
  */
 public class StrategieDefensive implements Strategie {
     private Joueur j;
-    public StrategieDefensive(Joueur j) {
+    public StrategieDefensive(JoueurOrdinateur j) {
         this.j = j;
+        j.setNumCarteAllie(2); // 1= Taupe 2 = chien
     }
 
     // On a 1 = geant , 2 = farfadet , 3 = Engrais

@@ -1,6 +1,8 @@
 package jeuMenhir;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * Created by morgane on 07/11/15.
@@ -12,9 +14,33 @@ public class Partie {
     private PartieRapide partieRapEnCours;
     private PaquetCarte paquetJeu;
     private PaquetCarte paquetAllie;
+    private int numeroDelaManche;
+    private Scanner sc = new Scanner(System.in);
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
-       this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
+        this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
         this.estPartieRapide = partieRapide;
+        if(this.estPartieRapide){
+            numeroDelaManche = 0;
+            Iterator<Joueur> iter = this.joueurs.iterator();
+            while (iter.hasNext()) {
+                Joueur joueur = iter.next();
+                joueur.setNbGrain(2);
+            }
+        }else{
+            numeroDelaManche = joueurs.size()-1;
+            this.creerPaqueAllie();
+            this.demanderGraineOuAllier();
+        }
+        System.out.print("!!!!!!!!!!!!!!!!!!!!!!!!!!!" + numeroDelaManche);
+
+        this.creerPaquetJeu();
+        this.distribuerCarte();
+        while(this.numeroDelaManche >= 0){
+            this.lancerPartieRapide();
+        }
+
+
+
     }
 
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
@@ -25,9 +51,7 @@ public class Partie {
         for(int i = 0 ; i<nbrJoueurOrdi; i++){
             joueurs.add(new JoueurOrdinateur(i));
         }
-        this.creerPaquetJeu();
-        this.distribuerCarte();
-        this.lancerPartieRapide();
+
     }
     public void distribuerCarte(){
         int i = 0;
@@ -63,9 +87,45 @@ public class Partie {
         paquetAllie.ajouterCarte((Carte)(new TaupeGeante(1,2,3,4)));
         paquetAllie.ajouterCarte((Carte)(new TaupeGeante(1,3,3,4)));
         paquetAllie.ajouterCarte((Carte)(new TaupeGeante(1,1,3,4)));
+        this.paquetAllie.melangerCarte();
     }
     public void lancerPartieRapide(){
-            this.partieRapEnCours = new PartieRapide(this.joueurs);
+        if(this.numeroDelaManche > 0){
+            this.numeroDelaManche--;
+        }
+            this.partieRapEnCours = new PartieRapide(this.joueurs,numeroDelaManche,estPartieRapide);
+
     }
 
+    public void demanderGraineOuAllier(){
+        Iterator<Joueur> iter = this.joueurs.iterator();
+        int choixDujoueur;
+        while (iter.hasNext()) {
+            Joueur joueur= iter.next();
+            if(joueur instanceof JoueurReel){
+                System.out.println("joueur : " + joueur.getNom() + " tape 1 : pour obtenir deux graines et tape 2 : pour piocher une carte allie");
+                //Attention verifier si c'est un entier
+                choixDujoueur = sc.nextInt();
+            }else{
+                choixDujoueur = (int) ((Math.random()*2) + 1);
+                System.out.println("choix du joueur robot : "+ choixDujoueur);
+            }
+            if(choixDujoueur == 1 ){
+                joueur.setNbGrain(2);
+                System.out.println("joueur : " + joueur.getNom() + " a obtenu 2 graines");
+            }else{
+                if(paquetAllie.estVide()){
+                    joueur.setNbGrain(2);
+                    System.out.println("joueur : " + joueur.getNom() + " a obtenu 2 graines car il n'y a plus de carte allie");
+                }else{
+                    joueur.getMain().ajouterCarte((Carte)paquetAllie.prendreCarteDessus());
+                    joueur.setPossedeCarteAllie(true);
+                    System.out.println("joueur : " + joueur.getNom() + " a obtenu une carte allie " );
+                }
+
+            }
+
+
+        }
+    }
 }

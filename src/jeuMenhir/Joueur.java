@@ -11,6 +11,15 @@ public class Joueur {
 	protected boolean estFemme;
 	protected String nom;
 
+	public boolean getPossedeCarteAllie() {
+		return possedeCarteAllie;
+	}
+
+	public void setPossedeCarteAllie(boolean possedeCarteAllie) {
+		this.possedeCarteAllie = possedeCarteAllie;
+	}
+
+	private boolean possedeCarteAllie =false;
 	private Scanner sc = new Scanner(System.in);
 
 	private PaquetCarte main;
