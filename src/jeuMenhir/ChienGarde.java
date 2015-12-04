@@ -39,4 +39,8 @@ public class ChienGarde extends CarteAllie{
 		}
 		return valeurForce;
 	}
+
+	public String toString(){
+		return "Carte Allie chien de Garde : " + tableauForce[0] + ";" + tableauForce[1] + "+;" + tableauForce[2] + ";" + tableauForce[3] + " . ";
+	}
 }

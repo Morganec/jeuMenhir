@@ -5,5 +5,5 @@ package jeuMenhir;
  */
 public interface Strategie {
 
-    int getClasse(); // On a 1 = geant , 2 = farfadet , 3 = Engrais
+    int getClasse(boolean possedeAllie); // On a 1 = geant , 2 = farfadet , 3 = Engrais 4-Allie
 }

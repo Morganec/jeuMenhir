@@ -5,15 +5,10 @@ package jeuMenhir;
  */
 public class JoueurOrdinateur extends Joueur{
 
-    public int getNumCarteAllie() {
-        return numCarteAllie;
-    }
 
-    public void setNumCarteAllie(int numCarteAllie) {
-        this.numCarteAllie = numCarteAllie;
-    }
 
-    private int numCarteAllie;  // 1= Taupe 2 = chien
+
+
     public Strategie getStrategie() {
         return strategie;
     }

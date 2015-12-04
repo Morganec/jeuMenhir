@@ -11,22 +11,18 @@ public class Joueur {
 	protected boolean estFemme;
 	protected String nom;
 
-	public boolean getPossedeCarteAllie() {
-		return possedeCarteAllie;
-	}
 
-	public void setPossedeCarteAllie(boolean possedeCarteAllie) {
-		this.possedeCarteAllie = possedeCarteAllie;
-	}
-
+	private CarteAllie carteAllie = null;
 	private boolean possedeCarteAllie =false;
 	private Scanner sc = new Scanner(System.in);
 
 	private PaquetCarte main;
-	private int nbprotege;
-	private int nbgrain;
-	private int nbmenhir;
+	private int nbprotege=0;
+	private int nbgrain=0;
+	private int nbmenhir=0;
 
+
+	private int nbrMenhirEnTout = 0;
 	public Joueur() {
 		this.main = new PaquetCarte();
 	}
@@ -89,8 +85,33 @@ public class Joueur {
 
 
 
+	public boolean possedeCarteAllie() {
+		return possedeCarteAllie;
+	}
+
+	public void setPossedeCarteAllie(boolean possedeCarteAllie) {
+		this.possedeCarteAllie = possedeCarteAllie;
+	}
 
 	public PaquetCarte getMain() {
 		return main;
 	}
+
+	public CarteAllie getCarteAllie() {
+		return carteAllie;
+	}
+
+	public void setCarteAllie(CarteAllie carteAllie) {
+		this.carteAllie = carteAllie;
+	}
+
+
+	public int getNbrMenhirEnTout() {
+		return nbrMenhirEnTout;
+	}
+
+	public void setNbrMenhirEnTout(int nbrMenhirEnTout) {
+		this.nbrMenhirEnTout = nbrMenhirEnTout;
+	}
+
 }

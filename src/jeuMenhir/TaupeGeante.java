@@ -39,4 +39,8 @@ public class TaupeGeante extends CarteAllie {
 		}
 		return valeurForce;
 	}
+
+	public String toString(){
+		return "Carte Allie taupe geante : " + tableauForce[0] + ";" + tableauForce[1] + "+;" + tableauForce[2] + ";" + tableauForce[3] + " . ";
+	}
 }

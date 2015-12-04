@@ -25,17 +25,20 @@ public class Partie {
             while (iter.hasNext()) {
                 Joueur joueur = iter.next();
                 joueur.setNbGrain(2);
+                joueur.setNbMenhir(0);
             }
         }else{
             numeroDelaManche = joueurs.size()-1;
             this.creerPaqueAllie();
             this.demanderGraineOuAllier();
         }
-        System.out.print("!!!!!!!!!!!!!!!!!!!!!!!!!!!" + numeroDelaManche);
 
-        this.creerPaquetJeu();
-        this.distribuerCarte();
+
+
+
         while(this.numeroDelaManche >= 0){
+            this.creerPaquetJeu();
+            this.distribuerCarte();
             this.lancerPartieRapide();
         }
 
@@ -108,7 +111,6 @@ public class Partie {
                 choixDujoueur = sc.nextInt();
             }else{
                 choixDujoueur = (int) ((Math.random()*2) + 1);
-                System.out.println("choix du joueur robot : "+ choixDujoueur);
             }
             if(choixDujoueur == 1 ){
                 joueur.setNbGrain(2);
@@ -118,8 +120,10 @@ public class Partie {
                     joueur.setNbGrain(2);
                     System.out.println("joueur : " + joueur.getNom() + " a obtenu 2 graines car il n'y a plus de carte allie");
                 }else{
-                    joueur.getMain().ajouterCarte((Carte)paquetAllie.prendreCarteDessus());
+                    joueur.setCarteAllie((CarteAllie)paquetAllie.prendreCarteDessus());
+                    joueur.getMain().ajouterCarte(joueur.getCarteAllie());
                     joueur.setPossedeCarteAllie(true);
+
                     System.out.println("joueur : " + joueur.getNom() + " a obtenu une carte allie " );
                 }
 

@@ -36,8 +36,8 @@ if(estPartieRapide){
         this.joueurs.remove(joueurQuijoue);
         this.joueurs.add(0,joueurQuijoue);
         int numChoixCarte;
-        int numChoixClasse;
-        CarteIngredient carteSelectionne;
+        int numChoix;
+        Carte carteSelectionne;
 
             while (saison<4){
             System.out.println("La saison actuelle est : " + tablSaison[saison]);
@@ -55,63 +55,127 @@ if(estPartieRapide){
                     //Attention verifier si c'est un entier
                     numChoixCarte = sc.nextInt();
                     System.out.println("La carte selectionne est : " +  joueurDeListe.getMain().afficherUneCarte(numChoixCarte - 1));
-                    carteSelectionne = (CarteIngredient) joueurDeListe.getMain().getCarte(numChoixCarte - 1);
+                    carteSelectionne =  joueurDeListe.getMain().getCarte(numChoixCarte - 1);
 
-                    if(estPartieRapide && joueurDeListe.getPossedeCarteAllie()) {
-                        System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais 4-Allie");
+                    if(carteSelectionne instanceof CarteIngredient) {
+                        System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais ");
+                        System.out.println("Entrer le numero que vous avez choisi : ");
+                        //Attention verifier si c'est un entier
+                        numChoix = sc.nextInt();
                     }else{
-                        System.out.println("Les classes proposés sont : 1- Geant 2-Farfadet 3-Engrais 4-Allie");
+                        System.out.println("Plus rien est a choisir car vous avez choisi une carte allie ");
+                        numChoix = 4;
                     }
 
-                    System.out.println("Entrer le numero de classe que vous avez choisi : ");
-                    //Attention verifier si c'est un entier
-                    numChoixClasse = sc.nextInt();
+
 
                 }else{
 
-                    carteSelectionne = (CarteIngredient) joueurDeListe.getMain().getCarte(0); // je joueur ordinateur prends toujours la premiere carte de sa main
+                    carteSelectionne = joueurDeListe.getMain().getCarte(0); // je joueur ordinateur prends toujours la premiere carte de sa main
                    JoueurOrdinateur joueurOrdi = (JoueurOrdinateur)joueurDeListe;
-                    numChoixClasse = joueurOrdi.getStrategie().getClasse();
+                    numChoix = joueurOrdi.getStrategie().getClasse(joueurDeListe.possedeCarteAllie());
 
                     //System.out.println("ici le joueur robot joue");
                 }
+                CarteIngredient carteSelec;
+                switch (numChoix){
+                    case 1 :
+                         carteSelec = (CarteIngredient)carteSelectionne;
+                        carteSelec.getGeant().donnerGraine(joueurDeListe,saison);
+                        break;
+                    case 2 :
+                        int numVole;
+                        if(joueurDeListe instanceof JoueurReel){
+                            for(int i = 0 ; i < joueurs.size() ; i++){
+                                System.out.println(i + " : " + joueurs.get(i).getNom() + " Nb Graine = " + joueurs.get(i).getNbGrain()  );
+                            }
+                            System.out.println("Entrer le numero de la personne que vous voulez voler : ");
+                            //Attention verifier si c'est un entier
+                            numVole = sc.nextInt();
 
-
-                if(numChoixClasse == 1){
-                    carteSelectionne.getGeant().donnerGraine(joueurDeListe,saison);
-                }
-                if(numChoixClasse == 2){
-                    int numVole;
-                    if(joueurDeListe instanceof JoueurReel){
-                        for(int i = 0 ; i < joueurs.size() ; i++){
-                            System.out.println(i + " : " + joueurs.get(i).getNom() + " Nb Graine = " + joueurs.get(i).getNbGrain()  );
-                        }
-                        System.out.println("Entrer le numero de la personne que vous voulez voler : ");
-                        //Attention verifier si c'est un entier
-                        numVole = sc.nextInt();
-
-                    }else{
-                        numVole = this.joueurs.indexOf(joueurDeListe);
-                        while(numVole == this.joueurs.indexOf(joueurDeListe)){
+                        }else{
+                            numVole = this.joueurs.indexOf(joueurDeListe);
+                            while(numVole == this.joueurs.indexOf(joueurDeListe)){
                                 numVole =(int) (Math.random() * joueurs.size());
-                            System.out.println(numVole);
-                        }
 
-                    }
-                    carteSelectionne.getFarfadet().volerGraine(joueurDeListe,joueurs.get(numVole),saison);
+                            }
+
+                        }
+                        carteSelec = (CarteIngredient)carteSelectionne;
+                        carteSelec.getFarfadet().volerGraine(joueurDeListe,joueurs.get(numVole),saison);
+                        break;
+                    case 3 :
+                        carteSelec = (CarteIngredient)carteSelectionne;
+                        carteSelec.getEngrais().pousserGraine(joueurDeListe,saison);
+                        break;
+                    default:
+                        if(joueurDeListe.getCarteAllie() instanceof TaupeGeante){
+                            int numDetruit;
+                            if(joueurDeListe instanceof JoueurReel){
+                                for(int i = 0 ; i < joueurs.size() ; i++){
+                                    System.out.println(i + " : " + joueurs.get(i).getNom() + " Nb Menhir = " + joueurs.get(i).getNbMenhir()  );
+                                }
+                                System.out.println("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
+                                //Attention verifier si c'est un entier
+                                numDetruit = sc.nextInt();
+
+                            }else{
+                                numDetruit = this.joueurs.indexOf(joueurDeListe);
+                                while(numDetruit == this.joueurs.indexOf(joueurDeListe)){
+                                    numDetruit =(int) (Math.random() * joueurs.size());
+                                }
+
+                            }
+                            ((TaupeGeante) joueurDeListe.getCarteAllie()).detruireMenhir(joueurs.get(numDetruit),saison);
+                        }else{
+                            System.out.println("ICI IL FAUDRA FAIRE L'ACTION DU CHIEN DE GARDE");
+                        }
+                        break;
                 }
-                if(numChoixClasse == 3){
-                    carteSelectionne.getEngrais().pousserGraine(joueurDeListe,saison);
-                }
+
+
                 joueurDeListe.getMain().prendreCarteChoisi(carteSelectionne);
 
 
             }
             saison++;
         }
+        if(!estPartieRapide){
+            int maxMenhir = 0;
+            int numJoueurGagnant=0;
+            for(int i=0 ; i < joueurs.size() ; i++){
+                Joueur j = joueurs.get(i);
+                if(numPartie == 0){
+                    if(j.getNbrMenhirEnTout() > maxMenhir){
+                        maxMenhir = j.getNbrMenhirEnTout();
+                        numJoueurGagnant = i;
+                    }
+                }else{
+                    j.setNbrMenhirEnTout(j.getNbrMenhirEnTout() + j.getNbMenhir());
+                    j.setNbMenhir(0);
 
-        //joueurs.remove(joueurs.indexOf(joueurQuijoue));
-        //joueur.paquetDeCarte.afficherMAin()
+               }
+            }
+            if(numPartie == 0){
+                System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs");
+            }
+
+        }else{
+            int maxMenhir = 0;
+            int numJoueurGagnant=0;
+            for(int i=0 ; i < joueurs.size() ; i++){
+                Joueur j = joueurs.get(i);
+
+                    if(j.getNbMenhir() > maxMenhir){
+                        maxMenhir = j.getNbMenhir();
+                        numJoueurGagnant = i;
+                    }
+
+            }
+            System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs");
+        }
+
+
     }
 
     private Joueur trouverJoueurCommencant(){
