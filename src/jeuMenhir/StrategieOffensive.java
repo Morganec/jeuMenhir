@@ -12,20 +12,13 @@ public class StrategieOffensive implements Strategie {
 
     // On a 1 = geant , 2 = farfadet , 3 = Engrais 4 = allie
     @Override
-    public int getClasse(boolean possedeAllie) {
-        if(possedeAllie){
-            if(j.getNbGrain() > 6){
-                return  3;
-            }else {
-                if(j.getCarteAllie() instanceof TaupeGeante){
-                    return 4;
-                }else{
-                    return 2;
-                }
+    public int getClasse(Carte carteSelectionne) {
+        if(carteSelectionne instanceof CarteAllie){
 
-            }
+                    return 4;
+
         }else{
-            if(j.getNbGrain() > 4){
+            if(j.getNbGrain() > 2){
                 return  3;
             }else return 2;
         }

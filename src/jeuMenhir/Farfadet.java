@@ -53,6 +53,6 @@ public class Farfadet {
 	}
 
 	public String toString(){
-		return "FARFADET :" + tableauForce[0] + ";" + tableauForce[1] + "+;" + tableauForce[2] + ";" + tableauForce[3] + " . ";
+		return "FARFADET :" + tableauForce[0] + ";" + tableauForce[1] + ";" + tableauForce[2] + ";" + tableauForce[3] + " . ";
 	}
 }

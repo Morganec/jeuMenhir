@@ -72,10 +72,12 @@ if(estPartieRapide){
 
 
                 }else{
+                    joueurDeListe.getMain().afficherCartes();
 
                     carteSelectionne = joueurDeListe.getMain().getCarte(0); // je joueur ordinateur prends toujours la premiere carte de sa main
                    JoueurOrdinateur joueurOrdi = (JoueurOrdinateur)joueurDeListe;
-                    numChoix = joueurOrdi.getStrategie().getClasse(joueurDeListe.possedeCarteAllie());
+                    numChoix = joueurOrdi.getStrategie().getClasse(carteSelectionne);
+
 
                     //System.out.println("ici le joueur robot joue");
                 }
@@ -120,13 +122,19 @@ if(estPartieRapide){
                     default:
                         if(joueurDeListe.getCarteAllie() instanceof TaupeGeante){
                             int numDetruit;
+                            ArrayList<Integer> listeNumJoueur = new ArrayList<Integer>();
+                            int numEmplacementJoueurActu = this.joueurs.indexOf(joueurDeListe);
                             if(joueurDeListe instanceof JoueurReel){
                                 for(int i = 0 ; i < joueurs.size() ; i++){
-                                    System.out.println(i + " : " + joueurs.get(i).getNom() + " Nb Menhir = " + joueurs.get(i).getNbMenhir()  );
+                                    if(i != numEmplacementJoueurActu){
+                                        System.out.println(i + " : " + joueurs.get(i).getNom() + " Nb Menhir = " + joueurs.get(i).getNbMenhir()  );
+                                        listeNumJoueur.add(i);
+                                    }
                                 }
-                                System.out.println("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
-                                //Attention verifier si c'est un entier
-                                numDetruit = sc.nextInt();
+                                numDetruit = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
+                                while(!listeNumJoueur.contains(numDetruit)){
+                                    numDetruit = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
+                                }
 
                             }else{
                                 numDetruit = this.joueurs.indexOf(joueurDeListe);
@@ -137,7 +145,7 @@ if(estPartieRapide){
                             }
                             ((TaupeGeante) joueurDeListe.getCarteAllie()).detruireMenhir(joueurs.get(numDetruit),saison);
                         }else{
-                            System.out.println("ICI IL FAUDRA FAIRE L'ACTION DU CHIEN DE GARDE");
+                            ((ChienGarde)joueurDeListe.getCarteAllie()).contrerFarfadet(joueurDeListe,saison);
                         }
                         break;
                 }
@@ -166,7 +174,7 @@ if(estPartieRapide){
                }
             }
             if(numeroDeLaManche == 0){
-                System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs");
+                System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
 
             }
 
@@ -182,7 +190,7 @@ if(estPartieRapide){
                     }
 
             }
-            System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs");
+            System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
         }
         this.numeroDeLaManche--;
         return this.numeroDeLaManche;

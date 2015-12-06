@@ -67,7 +67,7 @@ public class Partie {
             if(i< joueurs.size() - 1){
                 i++;
             }else{
-                if(joueurs.get(i).getMain().size() < 4 ){
+                if(joueurs.get(i).getMain().size() <= 4 ){
                     i = 0;
                 }else{
                     break;
@@ -79,6 +79,30 @@ public class Partie {
     }
     public void creerPaquetJeu(){
      paquetJeu = new PaquetCarte();
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
@@ -147,7 +171,7 @@ public class Partie {
                     joueur.getMain().ajouterCarte(joueur.getCarteAllie());
                     joueur.setPossedeCarteAllie(true);
 
-                    System.out.println("joueur : " + joueur.getNom() + " a obtenu une carte allie " );
+                    System.out.println("joueur : " + joueur.getNom() + " a obtenu une carte allie et sa carte est :  " + joueur.getCarteAllie().toString() );
                 }
 
             }
