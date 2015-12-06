@@ -24,22 +24,28 @@ public class Partie {
         this.estPartieRapide = partieRapide;
         if(this.estPartieRapide){
             numeroDelaManche = 0;
-            Iterator<Joueur> iter = this.joueurs.iterator();
-            while (iter.hasNext()) {
-                Joueur joueur = iter.next();
-                joueur.setNbGrain(2);
-                joueur.setNbMenhir(0);
-            }
         }else{
             numeroDelaManche = joueurs.size()-1;
-            this.creerPaqueAllie();
-            this.demanderGraineOuAllier();
         }
 
 
 
 
         while(this.numeroDelaManche >= 0){
+            Iterator<Joueur> iter = this.joueurs.iterator();
+            while (iter.hasNext()) {
+                Joueur joueur = iter.next();
+                joueur.setNbGrain(2);
+                joueur.setNbMenhir(0);
+                joueur.setPossedeCarteAllie(false);
+                joueur.setNbProtege(0);
+            }
+
+            if(!this.estPartieRapide){
+                this.creerPaqueAllie();
+                this.demanderGraineOuAllier();
+            }
+
             this.creerPaquetJeu();
             this.distribuerCarte();
             this.lancerPartieRapide();

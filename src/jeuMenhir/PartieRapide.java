@@ -72,8 +72,6 @@ if(estPartieRapide){
 
 
                 }else{
-                    joueurDeListe.getMain().afficherCartes();
-
                     carteSelectionne = joueurDeListe.getMain().getCarte(0); // je joueur ordinateur prends toujours la premiere carte de sa main
                    JoueurOrdinateur joueurOrdi = (JoueurOrdinateur)joueurDeListe;
                     numChoix = joueurOrdi.getStrategie().getClasse(carteSelectionne);
@@ -173,9 +171,17 @@ if(estPartieRapide){
 
                }
             }
-            if(numeroDeLaManche == 0){
-                System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
+            for(int i = 0 ; i < joueurs.size() ; i++){
+                System.out.println(" Nous avons : " + joueurs.get(i).getNom() + " avec " + joueurs.get(i).getNbMenhir() + " menhirs , "   + joueurs.get(i).getNbGrain() + " Graines et " +joueurs.get(i).getNbrMenhirEnTout() + " Menhirs en tout ! ");
 
+            }
+
+            if(numeroDeLaManche == 0){
+                System.out.println("Fin de la derniere manche" );
+                System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + " menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
+
+            }else{
+                System.out.println("Fin de la manche numero " + numeroDeLaManche );
             }
 
         }else{
@@ -189,6 +195,9 @@ if(estPartieRapide){
                         numJoueurGagnant = i;
                     }
 
+            }
+            for(int i = 0 ; i < joueurs.size() ; i++){
+                System.out.println(" Nous avons : " + joueurs.get(i).getNom() + " avec " + joueurs.get(i).getNbMenhir() + " menhirs et " + joueurs.get(i).getNbGrain() + " Graines");
             }
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
         }
