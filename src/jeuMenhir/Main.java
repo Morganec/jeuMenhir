@@ -1,5 +1,6 @@
 package jeuMenhir;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -7,29 +8,26 @@ import java.util.Scanner;
  */
 public class Main{		//variables pour menhir et graine dans le main ou dans cartes????
         public static void main (String[] args){
-            Integer nbrJoueur, nbrJoueurOrdi, typePartie, nbrJoueurReel ;
-            boolean estPartieRapide ;
+            int nbrJoueur , nbrJoueurOrdi, typePartie, nbrJoueurReel ;
+            boolean estPartieRapide, isEntier = true ;
             Partie partie;
-            Scanner sc = new Scanner(System.in);
-
-            System.out.println("Nombre de joueur participant ? :");
-            //Attention verifier ici que le nbr de j est < 8
-            nbrJoueur = sc.nextInt();
+            Scanner sc;
+            nbrJoueur = FonctionScan.recuperEntierEntrerCla("Nombre de joueur participant ? :");
+            while (nbrJoueur <= 1 || nbrJoueur > 8){
+                nbrJoueur = FonctionScan.recuperEntierEntrerCla("Nombre de joueur participant ? :( doit être inferieur à 8 et supèrieur à 1)");
+            }
             System.out.println("Vous avez saisi : " + nbrJoueur);
-            // ici on utilise la classe Joueur pour creer le nombre de joueur demandé
-            System.out.println("Combien de joueur ordinateur? ");
-            //Attention verifier ici que le nbr de joueur ordi est < nbr5Joueur - 1 !
-            nbrJoueurOrdi = sc.nextInt();
+            nbrJoueurOrdi = FonctionScan.recuperEntierEntrerCla("Combien de joueur ordinateur? ( il est possible de faire une partie qu'avec des robots )");
+            while (nbrJoueurOrdi > nbrJoueur){
+                nbrJoueurOrdi = FonctionScan.recuperEntierEntrerCla("Combien de joueur ordinateur? ( il ne peux pas y avoir plus de joueurs ordinateurs que de joueur au total )");
+            }
             nbrJoueurReel = nbrJoueur-nbrJoueurOrdi;
             System.out.println("Cette parti aura donc : " + nbrJoueurOrdi + "joueur ordinateur et " + nbrJoueurReel + " joueur reel ");
-            //Ici on déclare avec les classe ordi et joueurReel quel joueur est quoi
-            System.out.println("Vous aller maintenant entrer les informations des joueurs Reel");
-
-            System.out.println("Partie Rapide ou complexe ? ");
-            System.out.println("taper 1 pour partie Rapide ");
-            System.out.println("taper 2 pour partie Complexe ");
-            typePartie = sc.nextInt();
-
+            System.out.println("Voulez vous faire une partie rapide ou une partie avancée ? ");
+            typePartie = FonctionScan.recuperEntierEntrerCla("taper 1 pour faire une partie rapide et 2 pour faire une partie avancée");
+            while (!(typePartie==1 || typePartie ==2)){
+                typePartie = FonctionScan.recuperEntierEntrerCla("taper 1 pour faire une partie rapide et 2 pour faire une partie avancée");
+            }
             if(typePartie == 1){
                estPartieRapide = true;
             }else{
@@ -38,5 +36,8 @@ public class Main{		//variables pour menhir et graine dans le main ou dans carte
             partie = new Partie(nbrJoueurReel,nbrJoueurOrdi, estPartieRapide);
 
 
+
         }
+
+
 }
