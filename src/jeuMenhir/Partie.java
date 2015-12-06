@@ -14,6 +14,9 @@ public class Partie {
     private PartieRapide partieRapEnCours;
     private PaquetCarte paquetJeu;
     private PaquetCarte paquetAllie;
+
+
+
     private int numeroDelaManche;
     private Scanner sc = new Scanner(System.in);
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
@@ -57,19 +60,41 @@ public class Partie {
 
     }
     public void distribuerCarte(){
+
         int i = 0;
         while(!paquetJeu.estVide()){
             joueurs.get(i).getMain().ajouterCarte(paquetJeu.prendreCarteDessus());
             if(i< joueurs.size() - 1){
                 i++;
             }else{
-                i = 0;
+                if(joueurs.get(i).getMain().size() < 4 ){
+                    i = 0;
+                }else{
+                    break;
+                }
+
             }
         }
 
     }
     public void creerPaquetJeu(){
      paquetJeu = new PaquetCarte();
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
+        paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
@@ -93,10 +118,8 @@ public class Partie {
         this.paquetAllie.melangerCarte();
     }
     public void lancerPartieRapide(){
-        if(this.numeroDelaManche > 0){
-            this.numeroDelaManche--;
-        }
             this.partieRapEnCours = new PartieRapide(this.joueurs,numeroDelaManche,estPartieRapide);
+        this.numeroDelaManche = this.partieRapEnCours.jouer();
 
     }
 
@@ -131,5 +154,13 @@ public class Partie {
 
 
         }
+    }
+
+    public int getNumeroDelaManche() {
+        return numeroDelaManche;
+    }
+
+    public void setNumeroDelaManche(int numeroDelaManche) {
+        this.numeroDelaManche = numeroDelaManche;
     }
 }

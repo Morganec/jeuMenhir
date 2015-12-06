@@ -1,8 +1,6 @@
 package jeuMenhir;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 
 /**
@@ -13,24 +11,24 @@ public class PartieRapide {
     private int saison;
     private String[] tablSaison = {"hiver", "printemps", "ete","automne"};
     private Joueur joueurQuijoue;
-    private int numPartie;
+    private int numeroDeLaManche;
     private boolean estPartieRapide;
 
 
     private Scanner sc = new Scanner(System.in);
     public PartieRapide(ArrayList<Joueur> joueurs, int numPartie, boolean estPartieRapide) {
-        this.numPartie = numPartie;
+        this.numeroDeLaManche = numPartie;
         this.estPartieRapide = estPartieRapide;
         this.joueurs = joueurs;
-        this.jouer();
+
     }
 
-    public void jouer(){
+    public int jouer(){
         saison = 0;
 if(estPartieRapide){
     joueurQuijoue = this.trouverJoueurCommencant();
 }else{
-    joueurQuijoue = joueurs.get(this.numPartie);
+    joueurQuijoue = joueurs.get(this.numeroDeLaManche);
 }
 
         this.joueurs.remove(joueurQuijoue);
@@ -45,23 +43,27 @@ if(estPartieRapide){
             while (iter2.hasNext()) {
 
                 Joueur joueurDeListe = iter2.next();
-                System.out.println("Le joueur " + joueurDeListe.nom + " joue dans la saison : " + saison);
+                System.out.println("Le joueur " + joueurDeListe.nom + " joue dans la saison : " + tablSaison[saison]);
 
 
                 if(joueurDeListe instanceof JoueurReel){
 
                     joueurDeListe.getMain().afficherCartes();
-                    System.out.println("Entrer le numero de votre choix : ");
-                    //Attention verifier si c'est un entier
-                    numChoixCarte = sc.nextInt();
+                    numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
+                    while (numChoixCarte < 1 || numChoixCarte > joueurDeListe.getMain().size()){
+                        joueurDeListe.getMain().afficherCartes();
+                        numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
+                    }
                     System.out.println("La carte selectionne est : " +  joueurDeListe.getMain().afficherUneCarte(numChoixCarte - 1));
                     carteSelectionne =  joueurDeListe.getMain().getCarte(numChoixCarte - 1);
 
                     if(carteSelectionne instanceof CarteIngredient) {
                         System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais ");
-                        System.out.println("Entrer le numero que vous avez choisi : ");
-                        //Attention verifier si c'est un entier
-                        numChoix = sc.nextInt();
+                        numChoix = FonctionScan.recuperEntierEntrerCla("Entre le numero de votre choix : ");
+                        while (!((numChoix == 1) ||numChoix == 2 ||numChoix == 3)){
+                            System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais ");
+                            numChoix = FonctionScan.recuperEntierEntrerCla("Entre le numero de votre choix : ");
+                        }
                     }else{
                         System.out.println("Plus rien est a choisir car vous avez choisi une carte allie ");
                         numChoix = 4;
@@ -86,12 +88,19 @@ if(estPartieRapide){
                     case 2 :
                         int numVole;
                         if(joueurDeListe instanceof JoueurReel){
+                            int numEmplacementJoueurActu = this.joueurs.indexOf(joueurDeListe);
+                            ArrayList<Integer> listeNumJoueur = new ArrayList<Integer>();
                             for(int i = 0 ; i < joueurs.size() ; i++){
-                                System.out.println(i + " : " + joueurs.get(i).getNom() + " Nb Graine = " + joueurs.get(i).getNbGrain()  );
+                                if(i != numEmplacementJoueurActu){
+                                    listeNumJoueur.add(i);
+                                    System.out.println(i + " : " + joueurs.get(i).getNom() + " Nb Graine = " + joueurs.get(i).getNbGrain()  );
+                                }
+
                             }
-                            System.out.println("Entrer le numero de la personne que vous voulez voler : ");
-                            //Attention verifier si c'est un entier
-                            numVole = sc.nextInt();
+                            numVole = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne que vous voulez voler : ");
+                            while(!listeNumJoueur.contains(numVole)){
+                                numVole = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne que vous voulez voler : ");
+                            }
 
                         }else{
                             numVole = this.joueurs.indexOf(joueurDeListe);
@@ -145,7 +154,7 @@ if(estPartieRapide){
             int numJoueurGagnant=0;
             for(int i=0 ; i < joueurs.size() ; i++){
                 Joueur j = joueurs.get(i);
-                if(numPartie == 0){
+                if(numeroDeLaManche == 0){
                     if(j.getNbrMenhirEnTout() > maxMenhir){
                         maxMenhir = j.getNbrMenhirEnTout();
                         numJoueurGagnant = i;
@@ -156,8 +165,9 @@ if(estPartieRapide){
 
                }
             }
-            if(numPartie == 0){
+            if(numeroDeLaManche == 0){
                 System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs");
+
             }
 
         }else{
@@ -174,7 +184,8 @@ if(estPartieRapide){
             }
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs");
         }
-
+        this.numeroDeLaManche--;
+        return this.numeroDeLaManche;
 
     }
 

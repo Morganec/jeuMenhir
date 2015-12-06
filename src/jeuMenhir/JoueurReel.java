@@ -19,15 +19,13 @@ public class JoueurReel extends Joueur{
     }
 
     private void creerNouveauJoueur() {
-        System.out.println("Entrer l'age d'un des joueurs réèls : ");
-        //Attention verifier si c'est un entier
-        this.age = sc.nextInt();
+        this.age = FonctionScan.recuperEntierEntrerCla("Entrer l'age d'un des joueurs réèls : ");
         System.out.println("Puis entrer son nom : ");
-        //Attention verifier si c'est un entier
         this.nom = sc.next();
-        System.out.println("Enfin taper 1 si c'est une femme et 0 si c'est un homme");
-        //Attention verifier si c'est un entier
-       int entierSexe = sc.nextInt();
+        int entierSexe = FonctionScan.recuperEntierEntrerCla("Enfin taper 1 si c'est une femme et 0 si c'est un homme");
+        while (!(entierSexe==1 || entierSexe ==0)){
+            entierSexe= FonctionScan.recuperEntierEntrerCla("taper 1 ou 0 ( 1 si c'est une femme et 0 si c'est un homme )");
+        }
         if(entierSexe == 1){
             this.estFemme = true;
         }else{

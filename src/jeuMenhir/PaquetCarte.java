@@ -63,4 +63,8 @@ public class PaquetCarte {
 	public String afficherUneCarte(int index){
 		return paquetCarte.get(index).toString();
 	}
+
+	public int size(){
+		return paquetCarte.size();
+	}
 }
