@@ -1,5 +1,6 @@
 package jeuMenhir;
 
+import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,6 +9,13 @@ import java.util.Scanner;
  */
 public class Main{		//variables pour menhir et graine dans le main ou dans cartes????
         public static void main (String[] args){
+            // TODO Auto-generated method stub
+            //Lampe l= new Lampe();
+            // Commutateur c= new Commutateur(l);
+            InterfaceGraphique vueFenetre=new InterfaceGraphique();
+            vueFenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            vueFenetre.pack();
+            vueFenetre.setVisible(true);
             int nbrJoueur , nbrJoueurOrdi, typePartie, nbrJoueurReel ;
             boolean estPartieRapide, isEntier = true ;
             Partie partie;
