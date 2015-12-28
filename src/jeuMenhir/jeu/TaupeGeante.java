@@ -1,4 +1,4 @@
-package jeuMenhir;
+package jeuMenhir.jeu;
 
 public class TaupeGeante extends CarteAllie {
 	private int[] tableauForce;

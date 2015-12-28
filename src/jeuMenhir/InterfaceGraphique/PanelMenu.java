@@ -3,6 +3,8 @@ package jeuMenhir.InterfaceGraphique;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,19 +14,30 @@ import java.io.IOException;
  */
 public class PanelMenu extends JPanel{
     private FenetreMenu fenetreMenu;
+    private JButton jouerPartiRap;
+    private JButton jouerPartiAvance;
+
+
 
     public PanelMenu(FenetreMenu f){
         this.fenetreMenu=  f;
         this.repaint();
+        jouerPartiRap = new JButton("Commencer une partie rapide ");
+        jouerPartiAvance = new JButton("Commencer une partie avancée");
+        jouerPartiRap.addActionListener(this.fenetreMenu);
+
+        this.add(jouerPartiRap);
+
+        jouerPartiAvance.addActionListener(this.fenetreMenu);
+
+        this.add(jouerPartiAvance);
 
     }
 
     public void paintComponent(Graphics g){
         BufferedImage menu = null;
-        JButton jouer = new JButton("Commencer une partie");
-        jouer.addActionListener(this.fenetreMenu);
-        jouer.setBounds(200, 240, 200, 50);
-        this.add(jouer);
+        jouerPartiRap.setBounds(200, 200, 250, 50);
+        jouerPartiAvance.setBounds(200, 240, 250, 50);
         try {
             menu = ImageIO.read(new File("Images/imageDebut.jpg"));
 
@@ -37,4 +50,18 @@ public class PanelMenu extends JPanel{
 
 
     }
+
+    public JButton getJouerPartiRap() {
+        return jouerPartiRap;
+    }
+
+    public JButton getJouerPartiAvance() {
+        return jouerPartiAvance;
+    }
 }
+
+
+
+
+
+

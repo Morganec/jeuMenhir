@@ -1,4 +1,4 @@
-package jeuMenhir;
+package jeuMenhir.jeu;
 
 import java.util.*;
 

@@ -1,6 +1,4 @@
-package jeuMenhir;
-
-import java.util.Objects;
+package jeuMenhir.jeu;
 
 public class CarteIngredient extends Carte{
 
