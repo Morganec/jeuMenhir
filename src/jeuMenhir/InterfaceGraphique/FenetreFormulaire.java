@@ -18,6 +18,7 @@ private JButton but1,but2;  //les boutons
         this.setTitle("Jeux des menhirs ");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(610, 630);
+
         this.setLayout(null);
 
         this.setContentPane(p);
