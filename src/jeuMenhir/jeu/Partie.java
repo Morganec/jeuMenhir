@@ -1,4 +1,4 @@
-package jeuMenhir;
+package jeuMenhir.jeu;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Created by morgane on 07/11/15.
  */
 public class Partie {
-    private ArrayList<Joueur> joueurs;		//liste de joueurs
+    private ArrayList<Joueur> joueurs;
     private boolean estPartieRapide;
     private int saison;
     private PartieRapide partieRapEnCours;
@@ -20,30 +20,30 @@ public class Partie {
     private int numeroDelaManche;
     private Scanner sc = new Scanner(System.in);
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
-        this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);	//remplissage d'un tableau de joueurs
+        this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
         this.estPartieRapide = partieRapide;
         if(this.estPartieRapide){
-            numeroDelaManche = 0;	//si c'est une partie rapide, il y a 4 manches
+            numeroDelaManche = 0;
         }else{
-            numeroDelaManche = joueurs.size()-1;	//sinon
+            numeroDelaManche = joueurs.size()-1;
         }
 
 
 
 
-        while(this.numeroDelaManche >= 0){	//initialisation de la manche
+        while(this.numeroDelaManche >= 0){
             Iterator<Joueur> iter = this.joueurs.iterator();
             while (iter.hasNext()) {
                 Joueur joueur = iter.next();
-                joueur.setNbGrain(2);				//chaque joueur reçoit 2 graines de menhir
-                joueur.setNbMenhir(0);				//0 menhir
-                joueur.setPossedeCarteAllie(false);	//pas de cartes alliés pour une partie rapide
-                joueur.setNbProtege(0);				//nombre de menhirs protégés == 0
+                joueur.setNbGrain(2);
+                joueur.setNbMenhir(0);
+                joueur.setPossedeCarteAllie(false);
+                joueur.setNbProtege(0);
             }
 
-            if(!this.estPartieRapide){				//si c'est une partie avancée
-                this.creerPaqueAllie();				//création d'un paquet de carte Allié
-                this.demanderGraineOuAllier();		
+            if(!this.estPartieRapide){
+                this.creerPaqueAllie();
+                this.demanderGraineOuAllier();
             }
 
             this.creerPaquetJeu();

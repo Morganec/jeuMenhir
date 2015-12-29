@@ -1,4 +1,4 @@
-package jeuMenhir;
+package jeuMenhir.jeu;
 
 public class Geant {
 	private int[] tableauForce;

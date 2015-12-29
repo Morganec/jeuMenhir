@@ -1,4 +1,4 @@
-package jeuMenhir;
+package jeuMenhir.jeu;
 
 public class Engrais {
 private int[] tableauForce;

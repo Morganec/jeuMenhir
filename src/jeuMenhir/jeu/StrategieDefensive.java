@@ -1,4 +1,4 @@
-package jeuMenhir;
+package jeuMenhir.jeu;
 
 /**
  * Created by morgane on 07/11/15.

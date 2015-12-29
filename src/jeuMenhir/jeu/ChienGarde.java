@@ -1,6 +1,6 @@
-package jeuMenhir;
+package jeuMenhir.jeu;
 
-public class ChienGarde extends CarteAllie{
+public class ChienGarde extends CarteAllie {
 	private int[] tableauForce;
 	public ChienGarde (int a0, int a1, int a2, int a3)
 	{
