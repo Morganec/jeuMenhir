@@ -27,6 +27,7 @@ public class PanelFormulaire extends JPanel {
     private int nombreJoueurTot;
     private JComboBox comboNbrJOrdi;
     private JLabel labelNbrJOrdi;
+    private JButton btnValider;
 
 
     public PanelFormulaire(FenetreFormulaire f){
@@ -47,12 +48,18 @@ public class PanelFormulaire extends JPanel {
         comboNbrJTot = new JComboBox(tab);
 
         comboNbrJTot.setSelectedIndex(7);
+
+        btnValider=new JButton("Valider");
+        btnValider.addActionListener(this.fenetreForm);
+
         this.add(labelNbrJTot);
         this.add(comboNbrJTot);
         this.add(labelNbrJOrdi);
        this.add(comboNbrJOrdi);
+        this.add(btnValider);
         comboNbrJOrdi.setVisible(false);
         labelNbrJOrdi.setVisible(false);
+        btnValider.setVisible(false);
         comboNbrJTot.addActionListener(new ItemNbrJoueurTot(this));
         comboNbrJOrdi.addActionListener(new ItemNbrJoueurRob(this));
 
@@ -135,6 +142,7 @@ public class PanelFormulaire extends JPanel {
            }
             labelNbrJOrdi.setVisible(true);
            comboNbrJOrdi.setVisible(true);
+           btnValider.setVisible(true);
            this.panActu.repaint();
 
 
