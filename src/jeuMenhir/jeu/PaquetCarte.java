@@ -1,6 +1,7 @@
 package jeuMenhir.jeu;
  
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class PaquetCarte {
@@ -28,7 +29,7 @@ public class PaquetCarte {
 	//melanger carte
 	public void melangerCarte ()
 	{
-
+		Collections.shuffle(this.paquetCarte);
 	}
 	//
 
@@ -52,7 +53,6 @@ public class PaquetCarte {
 		while (iter.hasNext()) {
 		System.out.println(" Choix " +i + " : " + iter.next().toString());
 			i++;
-
 		}
 	}
 	public Carte getCarte(int index){

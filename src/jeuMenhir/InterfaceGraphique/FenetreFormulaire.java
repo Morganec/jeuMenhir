@@ -15,7 +15,7 @@ private JButton but1,but2;  //les boutons
     private PanelFormulaire p;
     private boolean estPartieRapide;
     private Partie partie;
-    
+
     /** Constructeur de test */
     public FenetreFormulaire(boolean estPRapide) {
         this.estPartieRapide =estPRapide;
