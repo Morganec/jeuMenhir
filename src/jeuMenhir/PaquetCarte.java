@@ -22,14 +22,20 @@ public class PaquetCarte {
 		if (paquetCarte.add(c))
 		{
 			return true;
-		}
-		else return false;
+		}return false;
 	}
 	
 	//melanger carte
 	public void melangerCarte ()
-	{
-
+	{/*
+		int taille = paquetCarte.size();
+		while(taille != 0){
+			double aleatoire = Math.random() * (taille - 1);
+			int a = (int) Math.round(aleatoire);
+			PaquetCarte pc = new PaquetCarte();
+			pc.paquetCarte.add(this.getCarte(a));
+			taille--;
+		}*/
 	}
 	//
 
@@ -67,4 +73,5 @@ public class PaquetCarte {
 	public int size(){
 		return paquetCarte.size();
 	}
+	
 }
