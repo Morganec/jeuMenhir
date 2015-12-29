@@ -1,5 +1,7 @@
 package jeuMenhir.InterfaceGraphique;
 
+import jeuMenhir.jeu.Partie;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +19,10 @@ public class PanelFormulaire extends JPanel {
     private FenetreFormulaire fenetreForm;
     private JComboBox comboNbrJTot;
     private JLabel labelNbrJTot;
-private int nombreJoueurHumain;
+
+
+
+    private int nombreJoueurHumain;
     private int nombreJoueurRobot;
     private int nombreJoueurTot;
     private JComboBox comboNbrJOrdi;
@@ -100,6 +105,15 @@ private int nombreJoueurHumain;
 
     }
 
+
+    public int getNombreJoueurHumain() {
+        return nombreJoueurHumain;
+    }
+
+    public int getNombreJoueurRobot() {
+        return nombreJoueurRobot;
+    }
+
    class ItemNbrJoueurTot implements ActionListener {
        private JPanel panActu;
         public ItemNbrJoueurTot(JPanel p){
@@ -148,4 +162,5 @@ private int nombreJoueurHumain;
         }
 
     }
+
 }
