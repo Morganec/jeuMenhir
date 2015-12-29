@@ -27,15 +27,15 @@ public class FenetreMenu extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //Jeu monJeu = new Jeu();
         Object  source=e.getSource();
-
+    boolean estPartieRapide= true;
         if  (source==p.getJouerPartiAvance())
-            System.out.println("Avan !");
+            estPartieRapide = false;
         else if (source==p.getJouerPartiRap())
-            System.out.println("rap !");
+            estPartieRapide = true;
         else
             System.out.print("Erreur de selection");
 
-       FenetreFormulaire fenetreForm = new FenetreFormulaire(true);
+       FenetreFormulaire fenetreForm = new FenetreFormulaire(estPartieRapide);
       this.dispose();
     }
 
