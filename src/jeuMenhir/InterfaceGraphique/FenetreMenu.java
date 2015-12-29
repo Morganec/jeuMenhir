@@ -34,8 +34,9 @@ public class FenetreMenu extends JFrame implements ActionListener {
             System.out.println("rap !");
         else
             System.out.print("Erreur de selection");
-       // FenetreFormulaire fenetreForm = new FenetreFormulaire();
-      // this.dispose();
+
+       FenetreFormulaire fenetreForm = new FenetreFormulaire();
+      this.dispose();
     }
 
 

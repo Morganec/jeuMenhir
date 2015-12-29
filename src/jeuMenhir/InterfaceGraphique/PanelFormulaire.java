@@ -1,5 +1,6 @@
 package jeuMenhir.InterfaceGraphique;
 
+import javax.imageio.ImageIO;
 import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.*;
 import java.awt.*;
@@ -9,34 +10,32 @@ import java.awt.event.ActionListener;
 import  javax.swing.*;
 import  java.awt.*;
 import  java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by morgane on 28/12/15.
  */
-public class PanelFormulaire extends JPanel implements ActionListener{
-private JButton but1;
-    private JButton but2;
+public class PanelFormulaire extends JPanel {
     private FenetreFormulaire fenetreForm;
+    private JButton jouerPartiRap;
+    private JButton jouerPartiAvance;
+
+
     public PanelFormulaire(FenetreFormulaire f){
         this.fenetreForm=  f;
         this.repaint();
-        but1 =new JButton("Ici !");
-        but1.addActionListener(this);
-        this.add(but1, BorderLayout.CENTER);
-        but2=new JButton("2eme !");
-        but2.addActionListener(this);
-        this.add(but2, BorderLayout.SOUTH);
-        this.setVisible(true);
+        jouerPartiRap = new JButton("Commencer une partie rapide ");
+        jouerPartiAvance = new JButton("Commencer une partie avancée");
+        jouerPartiRap.addActionListener(this.fenetreForm);
+
+        this.add(jouerPartiRap);
+
+        jouerPartiAvance.addActionListener(this.fenetreForm);
+
+        this.add(jouerPartiAvance);
     }
 
-    public  void actionPerformed(ActionEvent e)
-    {
-        Object  source=e.getSource();
 
-        if  (source==but1)
-            System.out.println("Ici !");
-        else if (source==but2)
-            System.out.println("2eme !");
-        else
-            System.out.print("nope");
-    }
 }

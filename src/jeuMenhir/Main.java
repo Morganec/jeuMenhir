@@ -14,6 +14,7 @@ public class Main{		//variables pour menhir et graine dans le main ou dans carte
             // TODO Auto-generated method stub
             //Lampe l= new Lampe();
             // Commutateur c= new Commutateur(l);
+            boolean monBooleanDeFenetre = false;
             FenetreMenu fenetreMenu = new FenetreMenu();
 
             int nbrJoueur , nbrJoueurOrdi, typePartie, nbrJoueurReel ;

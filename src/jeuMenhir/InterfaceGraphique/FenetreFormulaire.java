@@ -5,22 +5,27 @@ import  java.awt.event.*;
 /**
  * Created by morgane on 28/12/15.
  */
-public class FenetreFormulaire extends JFrame  {
+public class FenetreFormulaire extends JFrame implements ActionListener  {
 
 
 
 private JButton but1,but2;  //les boutons
-    private JPanel  pan;
+    private PanelFormulaire p;
     /** Constructeur de test */
     public FenetreFormulaire() {
-        //titre de la fenetre
-        super("Formulaire");
-        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        super.setSize(610, 630);
-        super.setLayout(null);
-        pan = new PanelFormulaire(this);
+        this.getContentPane().setLayout(null);
+        p = new PanelFormulaire(this);
+        this.setTitle("Jeux des menhirs ");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(610, 630);
+        this.setLayout(null);
 
-        this.setContentPane(pan);
+        this.setContentPane(p);
+
         this.setVisible(true);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }
