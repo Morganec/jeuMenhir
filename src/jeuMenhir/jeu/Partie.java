@@ -1,5 +1,8 @@
 package jeuMenhir.jeu;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -31,6 +34,7 @@ public class Partie {
 
 
 
+
         while(this.numeroDelaManche >= 0){
             Iterator<Joueur> iter = this.joueurs.iterator();
             while (iter.hasNext()) {
@@ -50,7 +54,6 @@ public class Partie {
             this.distribuerCarte();
             this.lancerPartieRapide();
         }
-
 
 
     }
@@ -229,4 +232,5 @@ public class Partie {
     public void setNumeroDelaManche(int numeroDelaManche) {
         this.numeroDelaManche = numeroDelaManche;
     }
+
 }
