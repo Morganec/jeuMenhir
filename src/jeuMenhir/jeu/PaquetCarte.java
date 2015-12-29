@@ -22,16 +22,17 @@ public class PaquetCarte {
 		if (paquetCarte.add(c))
 		{
 			return true;
-		}
-		else return false;
+		}return false;
 	}
 	
 	//melanger carte
 	public void melangerCarte ()
+
 	{
 		Collections.shuffle(this.paquetCarte);
+
 	}
-	//
+
 
 	public boolean estVide(){
 		return this.paquetCarte.isEmpty();
@@ -66,4 +67,5 @@ public class PaquetCarte {
 	public int size(){
 		return paquetCarte.size();
 	}
+	
 }

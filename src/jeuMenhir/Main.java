@@ -12,7 +12,6 @@ import java.util.Scanner;
  */
 public class Main{		//variables pour menhir et graine dans le main ou dans cartes????
         public static void main (String[] args){
-            // TODO Auto-generated method stub
 
 
             FenetreMenu fenetreMenu = new FenetreMenu();

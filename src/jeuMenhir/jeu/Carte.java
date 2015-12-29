@@ -1,6 +1,6 @@
 package jeuMenhir.jeu;
 
-public class Carte {
+public class Carte {	//Classe carte est composée de CarteIngrédient et CarteAlliee
 	private CarteIngredient carteIngredient;
 	private CarteAllie carteAllie;
 
@@ -8,5 +8,5 @@ public class Carte {
 	public String toString(){
 		return "carte : ";
 	}
-
 }
+
