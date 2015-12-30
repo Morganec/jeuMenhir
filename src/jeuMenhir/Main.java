@@ -3,6 +3,7 @@ package jeuMenhir;
 import jeuMenhir.InterfaceGraphique.FenetreMenu;
 import jeuMenhir.jeu.FonctionScan;
 import jeuMenhir.jeu.Partie;
+import jeuMenhir.jeu.PartieVue;
 
 import java.util.Scanner;
 
@@ -11,13 +12,11 @@ import java.util.Scanner;
  */
 public class Main{		//variables pour menhir et graine dans le main ou dans cartes????
         public static void main (String[] args){
-            // TODO Auto-generated method stub
-            //Lampe l= new Lampe();
-            // Commutateur c= new Commutateur(l);
-            boolean monBooleanDeFenetre = false;
+
+
             FenetreMenu fenetreMenu = new FenetreMenu();
 
-            int nbrJoueur , nbrJoueurOrdi, typePartie, nbrJoueurReel ;
+          /*  int nbrJoueur , nbrJoueurOrdi, typePartie, nbrJoueurReel ;
             boolean estPartieRapide, isEntier = true ;
             Partie partie;
             Scanner sc;
@@ -48,7 +47,13 @@ public class Main{		//variables pour menhir et graine dans le main ou dans carte
                estPartieRapide = false;
             }
             partie = new Partie(nbrJoueurReel,nbrJoueurOrdi, estPartieRapide);
+            PartieVue p = new PartieVue(partie);
 
+<<<<<<< HEAD
+=======
+*/
+
+>>>>>>> da0895e5c91dd985b4acd78606dfe0ad85dc65be
         }
 
 }
