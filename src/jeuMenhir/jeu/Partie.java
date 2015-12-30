@@ -1,5 +1,10 @@
 package jeuMenhir.jeu;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import jeuMenhir.InterfaceGraphique.FenetreChoixJoueurs;
+import jeuMenhir.InterfaceGraphique.FenetreJeu;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -14,7 +19,8 @@ public class Partie {
     private PartieRapide partieRapEnCours;
     private PaquetCarte paquetJeu;
     private PaquetCarte paquetAllie;
-
+    private FenetreChoixJoueurs fenChoixJ;
+    private FenetreJeu fenJeu;
 
 
     private int numeroDelaManche;
@@ -27,6 +33,7 @@ public class Partie {
         }else{
             numeroDelaManche = joueurs.size()-1;
         }
+
 
 
 
@@ -50,7 +57,6 @@ public class Partie {
             this.distribuerCarte();
             this.lancerPartieRapide();
         }
-
 
 
     }
@@ -229,4 +235,5 @@ public class Partie {
     public void setNumeroDelaManche(int numeroDelaManche) {
         this.numeroDelaManche = numeroDelaManche;
     }
+
 }

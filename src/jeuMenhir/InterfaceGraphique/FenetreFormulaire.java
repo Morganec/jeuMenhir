@@ -15,6 +15,7 @@ private JButton but1,but2;  //les boutons
     private PanelFormulaire p;
     private boolean estPartieRapide;
     private Partie partie;
+
     /** Constructeur de test */
     public FenetreFormulaire(boolean estPRapide) {
         this.estPartieRapide =estPRapide;
@@ -35,6 +36,7 @@ private JButton but1,but2;  //les boutons
     @Override
     public void actionPerformed(ActionEvent e) {
         this.dispose();
+
         this.partie = new Partie(this.p.getNombreJoueurHumain(),this.p.getNombreJoueurRobot(),this.estPartieRapide);
 
     }

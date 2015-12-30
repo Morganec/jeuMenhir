@@ -1,14 +1,15 @@
 package jeuMenhir.jeu;
  
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class PaquetCarte {
 
 
-	private ArrayList <Carte> paquetCarte;	//Cr�ation Paquet de Cartes
+	private ArrayList <Carte> paquetCarte;	//Creation Paquet de Cartes
 
-	public PaquetCarte() {
+	public PaquetCarte() {					//Constructeur PaquetCarte
 		this.paquetCarte = new ArrayList<Carte>();
 	}
 	//Ajouter Carte dans PaquetCarte
@@ -26,15 +27,8 @@ public class PaquetCarte {
 	
 	//melanger carte
 	public void melangerCarte ()
-	{/*
-		int taille = paquetCarte.size();
-		while(taille != 0){
-			double aleatoire = Math.random() * (taille - 1);
-			int a = (int) Math.round(aleatoire);
-			PaquetCarte pc = new PaquetCarte();
-			pc.paquetCarte.add(this.getCarte(a));
-			taille--;
-		}*/
+	{
+		Collections.shuffle(this.paquetCarte);
 	}
 	//
 
@@ -58,7 +52,6 @@ public class PaquetCarte {
 		while (iter.hasNext()) {
 		System.out.println(" Choix " +i + " : " + iter.next().toString());
 			i++;
-
 		}
 	}
 	public Carte getCarte(int index){
