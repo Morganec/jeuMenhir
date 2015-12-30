@@ -27,15 +27,9 @@ public class PaquetCarte {
 	
 	//melanger carte
 	public void melangerCarte ()
-<<<<<<< HEAD
-	{
-		Collections.shuffle(this.paquetCarte);
-=======
 
 	{
 		Collections.shuffle(this.paquetCarte);
-
->>>>>>> da0895e5c91dd985b4acd78606dfe0ad85dc65be
 	}
 
 

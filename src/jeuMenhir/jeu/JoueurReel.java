@@ -1,5 +1,8 @@
 package jeuMenhir.jeu;
 
+import jeuMenhir.InterfaceGraphique.FenetreJeu;
+import jeuMenhir.InterfaceGraphique.PanelJoueurVu;
+
 import java.util.Scanner;
 
 /**
@@ -10,16 +13,19 @@ public class JoueurReel extends Joueur{
 
 
 
+private FenetreJeu fenJeu;
 
-
-
+private PanelJoueurVu panelJoueur;
     private Scanner sc = new Scanner(System.in);
-    public JoueurReel(){
+    public JoueurReel(FenetreJeu fj){
+        this.fenJeu = fj;
+        this.panelJoueur = new PanelJoueurVu(this);
+        this.fenJeu.setContentPane(this.panelJoueur);
         creerNouveauJoueur();
     }
 
     private void creerNouveauJoueur() {
-        this.age = FonctionScan.recuperEntierEntrerCla("Entrer l'age d'un des joueurs réèls : ");
+       /* this.age = FonctionScan.recuperEntierEntrerCla("Entrer l'age d'un des joueurs réèls : ");
         System.out.println("Puis entrer son nom : ");
         this.nom = sc.next();
         int entierSexe = FonctionScan.recuperEntierEntrerCla("Enfin taper 1 si c'est une femme et 0 si c'est un homme");
@@ -30,7 +36,9 @@ public class JoueurReel extends Joueur{
             this.estFemme = true;
         }else{
             this.estFemme = false;
-        }
+        }*/
+
+
     }
 
     public JoueurReel(int a, boolean estf, String nom){

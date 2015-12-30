@@ -1,8 +1,6 @@
 package jeuMenhir.jeu;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import jeuMenhir.InterfaceGraphique.FenetreChoixJoueurs;
+
 import jeuMenhir.InterfaceGraphique.FenetreJeu;
 
 import java.util.ArrayList;
@@ -19,13 +17,14 @@ public class Partie {
     private PartieRapide partieRapEnCours;
     private PaquetCarte paquetJeu;
     private PaquetCarte paquetAllie;
-    private FenetreChoixJoueurs fenChoixJ;
+
     private FenetreJeu fenJeu;
 
 
     private int numeroDelaManche;
     private Scanner sc = new Scanner(System.in);
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
+        this.fenJeu = new FenetreJeu();
         this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
         this.estPartieRapide = partieRapide;
         if(this.estPartieRapide){
@@ -64,7 +63,7 @@ public class Partie {
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
        joueurs = new ArrayList<Joueur>();
         for(int i = 0 ; i<nbrJoueurReel ; i++){
-            joueurs.add(new JoueurReel());
+            joueurs.add(new JoueurReel(this.fenJeu));
         }
         for(int i = 0 ; i<nbrJoueurOrdi; i++){
             joueurs.add(new JoueurOrdinateur(i));
