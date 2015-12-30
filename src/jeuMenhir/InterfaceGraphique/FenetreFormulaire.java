@@ -18,7 +18,7 @@ private JButton but1,but2;  //les boutons
 
     /** Constructeur de test */
     public FenetreFormulaire(boolean estPRapide) {
-        this.estPartieRapide =estPRapide;
+        this.estPartieRapide = estPRapide;
         this.getContentPane().setLayout(null);
         p = new PanelFormulaire(this);
         this.setTitle("Jeux des menhirs ");

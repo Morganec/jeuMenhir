@@ -1,6 +1,7 @@
 package jeuMenhir.jeu;
 
 import jeuMenhir.InterfaceGraphique.FenetreJeu;
+import jeuMenhir.InterfaceGraphique.FenetreJoueur;
 import jeuMenhir.InterfaceGraphique.PanelJoueurVu;
 
 import java.util.Scanner;
@@ -11,17 +12,14 @@ import java.util.Scanner;
 public class JoueurReel extends Joueur{
 
 
-
-
-private FenetreJeu fenJeu;
-
-private PanelJoueurVu panelJoueur;
     private Scanner sc = new Scanner(System.in);
-    public JoueurReel(FenetreJeu fj){
-        this.fenJeu = fj;
-        this.panelJoueur = new PanelJoueurVu(this);
-        this.fenJeu.setContentPane(this.panelJoueur);
+    public JoueurReel(){
+     //  this.fenetreJoueur = new FenetreJoueur();
+        //this.panelJoueur = new PanelJoueurVu(this,this.fenetreJoueur);
+
+      // this.fenetreJoueur.setContentPane(this.panelJoueur);
         creerNouveauJoueur();
+
     }
 
     private void creerNouveauJoueur() {
@@ -36,8 +34,12 @@ private PanelJoueurVu panelJoueur;
             this.estFemme = true;
         }else{
             this.estFemme = false;
-        }*/
+        }
+*/
 
+        this.nom="much";
+        this.age=12;
+        this.estFemme = true;
 
     }
 

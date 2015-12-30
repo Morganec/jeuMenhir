@@ -2,7 +2,9 @@ package jeuMenhir.jeu;
 
 
 import jeuMenhir.InterfaceGraphique.FenetreJeu;
+import jeuMenhir.InterfaceGraphique.PanelJeu;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -19,12 +21,15 @@ public class Partie {
     private PaquetCarte paquetAllie;
 
     private FenetreJeu fenJeu;
+    private PanelJeu panJeu;
 
 
     private int numeroDelaManche;
     private Scanner sc = new Scanner(System.in);
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
         this.fenJeu = new FenetreJeu();
+        this.panJeu = new PanelJeu(this.fenJeu);
+        this.fenJeu.setContentPane(this.panJeu);
         this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
         this.estPartieRapide = partieRapide;
         if(this.estPartieRapide){
@@ -32,7 +37,6 @@ public class Partie {
         }else{
             numeroDelaManche = joueurs.size()-1;
         }
-
 
 
 
@@ -62,8 +66,10 @@ public class Partie {
 
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
        joueurs = new ArrayList<Joueur>();
+
         for(int i = 0 ; i<nbrJoueurReel ; i++){
-            joueurs.add(new JoueurReel(this.fenJeu));
+          joueurs.add(new JoueurReel());
+
         }
         for(int i = 0 ; i<nbrJoueurOrdi; i++){
             joueurs.add(new JoueurOrdinateur(i));
