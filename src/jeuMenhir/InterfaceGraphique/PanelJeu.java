@@ -88,10 +88,9 @@ public class PanelJeu extends JPanel implements Observer {
             g.drawString("Nbr Menhirs : " + j.getNbMenhir(), u * 100, 220);
             g.drawString("Nbr Graines : " + j.getNbGrain(), u * 100, 240);
             for(int d = 0 ; d< j.getMain().size(); d++ ){
-                g.drawImage(dosCarte, (u * 100) + i , 300, 70, 100, null);
+                g.drawImage(dosCarte, u*100 + d * 10 , 300, 70, 100, null);
             }
             u++;
-
 
         }
 
@@ -101,7 +100,6 @@ public class PanelJeu extends JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         this.setBackground(Color.blue);
-        System.out.println("NOTIFIER");
         this.repaint();
     }
 }

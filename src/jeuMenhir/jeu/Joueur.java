@@ -101,7 +101,9 @@ public class Joueur extends Observable{
 	}
 
 	public PaquetCarte getMain() {
+		this.notifyObservers();
 		return main;
+
 	}
 
 	public CarteAllie getCarteAllie() {

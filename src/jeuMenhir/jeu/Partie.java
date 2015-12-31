@@ -53,7 +53,7 @@ private  Integer nbrJoueurReel;
 
     public void jouer(){
 
-      // while(this.numeroDelaManche >= 0){
+       while(this.numeroDelaManche >= 0){
 
             Iterator<Joueur> iter = this.joueurs.iterator();
             while (iter.hasNext()) {
@@ -71,8 +71,9 @@ private  Integer nbrJoueurReel;
 
             this.creerPaquetJeu();
             this.distribuerCarte();
+           this.numeroDelaManche = -1;
            // this.lancerPartieRapide();
-      //  }
+        }
     }
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
        joueurs = new ArrayList<Joueur>();
