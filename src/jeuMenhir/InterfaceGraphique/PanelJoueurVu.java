@@ -49,7 +49,7 @@ public class PanelJoueurVu extends JPanel {
         formatter.setCommitsOnValidEdit(true);
 
         tbAge = new JFormattedTextField(formatter);
-        tbAge.setText("12    ");
+        tbAge.setText("12");
 
 
         this.add(lblAge);

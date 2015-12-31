@@ -41,10 +41,9 @@ private JButton but1,but2;  //les boutons
     public void actionPerformed(ActionEvent e) {
         this.dispose();
         ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
-        FenetreJoueur fenetreJoueur = new FenetreJoueur(this.p.getNombreJoueurHumain(),joueurs);
+        FenetreJoueur fenetreJoueur = new FenetreJoueur(this.p.getNombreJoueurHumain(),this.p.getNombreJoueurRobot(),joueurs,this.estPartieRapide);
         PanelJoueurVu panelJoueurVu = new PanelJoueurVu(fenetreJoueur);
         fenetreJoueur.setContentPane(panelJoueurVu);
-        //this.partie = new Partie(this.p.getNombreJoueurHumain(),this.p.getNombreJoueurRobot(),this.estPartieRapide);
 
     }
 }

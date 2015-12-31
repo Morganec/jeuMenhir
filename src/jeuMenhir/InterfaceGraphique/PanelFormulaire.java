@@ -133,7 +133,6 @@ public class PanelFormulaire extends JPanel {
            nombreJoueurHumain = nombreJoueurTot - nombreJoueurRobot;
            System.out.println("événement déclenché sur : " + nombreJoueurHumain);
 
-              // comboNbrJOrdi.removeAllItems();
 
                 comboNbrJOrdi.setModel(new DefaultComboBoxModel());
            for(int i = 0 ; i < nombreJoueurTot; i++ ){

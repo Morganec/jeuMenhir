@@ -26,9 +26,10 @@ private  Integer nbrJoueurReel;
 
     private int numeroDelaManche;
     private Scanner sc = new Scanner(System.in);
-    public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
+    public Partie( boolean partieRapide, ArrayList<Joueur> j){
         this.nbrJoueurReel = nbrJoueurReel;
-        this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
+        //this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
+        this.joueurs = j;
         this.fenJeu = new FenetreJeu();
         this.panJeu = new PanelJeu(fenJeu);
         fenJeu.setContentPane(panJeu);
