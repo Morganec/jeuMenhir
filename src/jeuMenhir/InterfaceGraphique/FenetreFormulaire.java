@@ -1,5 +1,6 @@
 package jeuMenhir.InterfaceGraphique;
 import jeuMenhir.jeu.Joueur;
+import jeuMenhir.jeu.JoueurOrdinateur;
 import jeuMenhir.jeu.JoueurReel;
 import jeuMenhir.jeu.Partie;
 
@@ -41,9 +42,24 @@ private JButton but1,but2;  //les boutons
     public void actionPerformed(ActionEvent e) {
         this.dispose();
         ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
-        FenetreJoueur fenetreJoueur = new FenetreJoueur(this.p.getNombreJoueurHumain(),this.p.getNombreJoueurRobot(),joueurs,this.estPartieRapide);
-        PanelJoueurVu panelJoueurVu = new PanelJoueurVu(fenetreJoueur);
-        fenetreJoueur.setContentPane(panelJoueurVu);
+        if(this.p.getNombreJoueurHumain() == 0){
+            for(int i = 0 ; i<this.p.getNombreJoueurRobot(); i++){
+                joueurs.add(new JoueurOrdinateur(i));
+            }
+            Partie partie = new Partie(this.estPartieRapide,joueurs);
+            FenetreJeu fenJeu = new FenetreJeu();
+            PanelJeu panJeu = new PanelJeu(fenJeu,partie);
+            fenJeu.setContentPane(panJeu);
+            partie.jouer();
+
+        }else{
+
+            FenetreJoueur fenetreJoueur = new FenetreJoueur(this.p.getNombreJoueurHumain(),this.p.getNombreJoueurRobot(),joueurs,this.estPartieRapide);
+            PanelJoueurVu panelJoueurVu = new PanelJoueurVu(fenetreJoueur);
+            fenetreJoueur.setContentPane(panelJoueurVu);
+
+        }
+
 
     }
 }

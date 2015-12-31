@@ -1,11 +1,13 @@
 package jeuMenhir.jeu;
 
+import javafx.beans.InvalidationListener;
+import java.util.Observable;
 import java.util.Scanner;
 
 /**
  * Created by morgane on 07/11/15.
  */
-public class Joueur {
+public class Joueur extends Observable{
 
 	protected int age;
 	protected boolean estFemme;
@@ -44,6 +46,8 @@ public class Joueur {
 		{
 			nbgrain =  nb;
 		}
+		this.setChanged();
+		this.notifyObservers();
 	}
 	//m�thodes nombre de menhir
 	public int getNbMenhir()
@@ -60,6 +64,7 @@ public class Joueur {
 		{
 			nbmenhir =  nb;
 		}
+		notifyObservers();
 	}
 	//m�thodes nombre de menhirs � prot�ger
 	public int getNbProtege()
@@ -69,6 +74,7 @@ public class Joueur {
 	public void setNbProtege(int p)
 	{
 		nbprotege = p;
+		this.notifyObservers();
 	}
 
 
@@ -91,6 +97,7 @@ public class Joueur {
 
 	public void setPossedeCarteAllie(boolean possedeCarteAllie) {
 		this.possedeCarteAllie = possedeCarteAllie;
+		this.notifyObservers();
 	}
 
 	public PaquetCarte getMain() {
@@ -103,6 +110,7 @@ public class Joueur {
 
 	public void setCarteAllie(CarteAllie carteAllie) {
 		this.carteAllie = carteAllie;
+		this.notifyObservers();
 	}
 
 
@@ -112,6 +120,8 @@ public class Joueur {
 
 	public void setNbrMenhirEnTout(int nbrMenhirEnTout) {
 		this.nbrMenhirEnTout = nbrMenhirEnTout;
+		this.notifyObservers();
 	}
+
 
 }

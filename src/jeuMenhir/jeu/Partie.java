@@ -13,6 +13,10 @@ import java.util.Scanner;
  * Created by morgane on 07/11/15.
  */
 public class Partie {
+    public ArrayList<Joueur> getJoueurs() {
+        return joueurs;
+    }
+
     private ArrayList<Joueur> joueurs;
     private boolean estPartieRapide;
     private int saison;
@@ -30,9 +34,7 @@ private  Integer nbrJoueurReel;
         this.nbrJoueurReel = nbrJoueurReel;
         //this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
         this.joueurs = j;
-        this.fenJeu = new FenetreJeu();
-        this.panJeu = new PanelJeu(fenJeu);
-        fenJeu.setContentPane(panJeu);
+
         this.estPartieRapide = partieRapide;
         if(this.estPartieRapide){
             numeroDelaManche = 0;
@@ -40,10 +42,19 @@ private  Integer nbrJoueurReel;
             numeroDelaManche = joueurs.size()-1;
         }
 
+        //this.joueurs.get(1).setNbGrain(4);
 
 
 
-       /* while(this.numeroDelaManche >= 0){
+
+
+
+    }
+
+    public void jouer(){
+
+      // while(this.numeroDelaManche >= 0){
+
             Iterator<Joueur> iter = this.joueurs.iterator();
             while (iter.hasNext()) {
                 Joueur joueur = iter.next();
@@ -60,12 +71,9 @@ private  Integer nbrJoueurReel;
 
             this.creerPaquetJeu();
             this.distribuerCarte();
-            this.lancerPartieRapide();
-        }*/
-
-
+           // this.lancerPartieRapide();
+      //  }
     }
-
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
        joueurs = new ArrayList<Joueur>();
 

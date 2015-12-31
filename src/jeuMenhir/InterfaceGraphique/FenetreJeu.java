@@ -11,12 +11,14 @@ import java.awt.event.ActionListener;
  */
 public class FenetreJeu extends JFrame implements ActionListener{
     private PanelJeu p;
+
     public FenetreJeu(){
+
         this.getContentPane().setLayout(null);
         //p = new PanelJeu(this,null);
         this.setTitle("Jeux des menhirs ");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(610, 630);
+        this.setSize(810, 830);
         this.setLayout(null);
         this.setVisible(true);
         System.out.println("je passe dans fenetre jeu");
@@ -25,8 +27,6 @@ public class FenetreJeu extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         this.dispose();
-
-
 
     }
 }
