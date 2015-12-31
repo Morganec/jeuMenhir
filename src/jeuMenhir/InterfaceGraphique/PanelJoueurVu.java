@@ -1,6 +1,7 @@
 package jeuMenhir.InterfaceGraphique;
 
-import jeuMenhir.jeu.Joueur;
+
+import jeuMenhir.jeu.JoueurReel;
 
 import javax.swing.*;
 
@@ -8,7 +9,7 @@ import javax.swing.*;
  * Created by morgane on 30/12/15.
  */
 public class PanelJoueurVu extends JPanel {
-    private Joueur monJoueur;
+    private JoueurReel monJoueur;
 
     private JLabel lblSexe;
     private JLabel lblPrenom;
@@ -16,13 +17,15 @@ public class PanelJoueurVu extends JPanel {
 
     private FenetreJoueur fenJoueur;
 
+
+
     private JTextField tbPrenom;
     private JRadioButton jrFemme;
     private JRadioButton jrHomme;
     private JTextField tbAge;
 
     private JButton valider;
-    public PanelJoueurVu(Joueur j,FenetreJoueur f){
+    public PanelJoueurVu(JoueurReel j,FenetreJoueur f){
         this.monJoueur = j;
         this.repaint();
         lblPrenom = new JLabel("Prenom d'un joueur : ");
@@ -30,10 +33,12 @@ public class PanelJoueurVu extends JPanel {
         this.add(lblPrenom);
         this.add(tbPrenom);
         valider = new JButton("Valider");
-        valider.addActionListener(this.fenJoueur);
+        valider.addActionListener(j);
         this.add(valider);
         this.setVisible(true);
     }
-
+    public String getTbPrenom() {
+        return tbPrenom.getText();
+    }
 
 }

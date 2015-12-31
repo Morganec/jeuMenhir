@@ -22,15 +22,16 @@ public class Partie {
 
     private FenetreJeu fenJeu;
     private PanelJeu panJeu;
-
+private  Integer nbrJoueurReel;
 
     private int numeroDelaManche;
     private Scanner sc = new Scanner(System.in);
     public Partie(int nbrJoueurReel, int nbrJoueurOrdi, boolean partieRapide){
-        this.fenJeu = new FenetreJeu();
-        this.panJeu = new PanelJeu(this.fenJeu);
-        this.fenJeu.setContentPane(this.panJeu);
+        this.nbrJoueurReel = nbrJoueurReel;
         this.remplirTableau(nbrJoueurReel,nbrJoueurOrdi);
+        this.fenJeu = new FenetreJeu();
+        this.panJeu = new PanelJeu(fenJeu);
+        fenJeu.setContentPane(panJeu);
         this.estPartieRapide = partieRapide;
         if(this.estPartieRapide){
             numeroDelaManche = 0;
@@ -41,7 +42,7 @@ public class Partie {
 
 
 
-        while(this.numeroDelaManche >= 0){
+       /* while(this.numeroDelaManche >= 0){
             Iterator<Joueur> iter = this.joueurs.iterator();
             while (iter.hasNext()) {
                 Joueur joueur = iter.next();
@@ -59,7 +60,7 @@ public class Partie {
             this.creerPaquetJeu();
             this.distribuerCarte();
             this.lancerPartieRapide();
-        }
+        }*/
 
 
     }
@@ -68,8 +69,7 @@ public class Partie {
        joueurs = new ArrayList<Joueur>();
 
         for(int i = 0 ; i<nbrJoueurReel ; i++){
-          joueurs.add(new JoueurReel());
-
+          joueurs.add(new JoueurReel(nbrJoueurReel));
         }
         for(int i = 0 ; i<nbrJoueurOrdi; i++){
             joueurs.add(new JoueurOrdinateur(i));

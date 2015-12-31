@@ -17,16 +17,21 @@ import java.util.Iterator;
  */
 public class PanelJeu extends JPanel {
     private FenetreJeu fenJeu;
+    private JButton btnValider;
 
     public PanelJeu(FenetreJeu f){
         this.fenJeu = f;
         this.repaint();
+        btnValider=new JButton("Valider");
+        btnValider.addActionListener(this.fenJeu);
+        this.add(btnValider);
     }
 
 
 
 
     public void paintComponent(Graphics g){
+        System.out.println("je passe dans paint compo");
         BufferedImage menu = null;
 
         try {

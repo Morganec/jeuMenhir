@@ -4,20 +4,27 @@ import jeuMenhir.InterfaceGraphique.FenetreJeu;
 import jeuMenhir.InterfaceGraphique.FenetreJoueur;
 import jeuMenhir.InterfaceGraphique.PanelJoueurVu;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 /**
  * Created by morgane on 07/11/15.
  */
-public class JoueurReel extends Joueur{
+public class JoueurReel extends Joueur implements ActionListener{
 
-
+private FenetreJoueur fenetreJoueur;
+    private PanelJoueurVu panelJoueurVu;
     private Scanner sc = new Scanner(System.in);
-    public JoueurReel(){
-     //  this.fenetreJoueur = new FenetreJoueur();
-        //this.panelJoueur = new PanelJoueurVu(this,this.fenetreJoueur);
+    private boolean monBooleen;
+    private Integer nbrJoueurReel;
+    public JoueurReel(Integer nbrJReel){
+        this.nbrJoueurReel = nbrJReel;
+        this.monBooleen = true;
+     this.fenetreJoueur = new FenetreJoueur();
+        this.panelJoueurVu = new PanelJoueurVu(this,this.fenetreJoueur);
 
-      // this.fenetreJoueur.setContentPane(this.panelJoueur);
+      this.fenetreJoueur.setContentPane(this.panelJoueurVu);
         creerNouveauJoueur();
 
     }
@@ -37,6 +44,9 @@ public class JoueurReel extends Joueur{
         }
 */
 
+
+
+
         this.nom="much";
         this.age=12;
         this.estFemme = true;
@@ -47,6 +57,14 @@ public class JoueurReel extends Joueur{
         this.age = a;
         this.estFemme = estf;
         this.nom= nom;
+
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       // this.nbrJoueurReel.notify();
+        //this.age = this.panelJoueurVu.getTbPrenom();
 
     }
 

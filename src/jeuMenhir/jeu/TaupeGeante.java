@@ -16,7 +16,12 @@ public class TaupeGeante extends CarteAllie {
 		int p = this.getValeurForce(saison);	//p: nb de menhirs du joueur
 		int m = jdetruit.getNbMenhir();			//m: nombre de menhirs � d�truire
 		int nb = m - p;							//nb: nouveau nombre de menhir
-		jdetruit.setNbMenhir(nb);				// set nouveau nombre de menhir
+		if(nb < 0){
+			jdetruit.setNbMenhir(0);				// set nouveau nombre de menhir
+		}else{
+			jdetruit.setNbMenhir(nb);				// set nouveau nombre de menhir
+		}
+
 		System.out.println("le joueur " + jdetruit.getNom() + "avait " + m + " menhirs et il en a maintenant : " + nb);
 	}
 	
