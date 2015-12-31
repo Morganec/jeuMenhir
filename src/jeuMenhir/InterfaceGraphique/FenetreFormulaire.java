@@ -50,6 +50,7 @@ private JButton but1,but2;  //les boutons
             FenetreJeu fenJeu = new FenetreJeu();
             PanelJeu panJeu = new PanelJeu(fenJeu,partie);
             fenJeu.setContentPane(panJeu);
+            partie.setFenJeu(fenJeu);
             partie.jouer();
 
         }else{

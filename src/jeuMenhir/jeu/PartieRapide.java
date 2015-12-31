@@ -1,5 +1,8 @@
 package jeuMenhir.jeu;
 
+import jeuMenhir.InterfaceGraphique.FenetreFin;
+import jeuMenhir.InterfaceGraphique.FenetreJeu;
+
 import java.util.*;
 
 
@@ -13,13 +16,15 @@ public class PartieRapide {
     private Joueur joueurQuijoue;
     private int numeroDeLaManche;
     private boolean estPartieRapide;
+    private FenetreJeu fenJeu ;
 
 
     private Scanner sc = new Scanner(System.in);
-    public PartieRapide(ArrayList<Joueur> joueurs, int numPartie, boolean estPartieRapide) {
+    public PartieRapide(ArrayList<Joueur> joueurs, int numPartie, boolean estPartieRapide, FenetreJeu fenetreJeu) {
         this.numeroDeLaManche = numPartie;
         this.estPartieRapide = estPartieRapide;
         this.joueurs = joueurs;
+        this.fenJeu = fenetreJeu;
 
     }
 
@@ -179,7 +184,8 @@ if(estPartieRapide){
             if(numeroDeLaManche == 0){
                 System.out.println("Fin de la derniere manche" );
                 System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + " menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
-
+                //this.fenJeu.dispose();
+                FenetreFin ff = new FenetreFin();
             }else{
                 System.out.println("Fin de la manche numero " + numeroDeLaManche );
             }
@@ -200,6 +206,8 @@ if(estPartieRapide){
                 System.out.println(" Nous avons : " + joueurs.get(i).getNom() + " avec " + joueurs.get(i).getNbMenhir() + " menhirs et " + joueurs.get(i).getNbGrain() + " Graines");
             }
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
+            //this.fenJeu.dispose();
+            FenetreFin ff = new FenetreFin();
         }
         this.numeroDeLaManche--;
         return this.numeroDeLaManche;

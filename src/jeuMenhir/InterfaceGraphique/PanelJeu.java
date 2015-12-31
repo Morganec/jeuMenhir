@@ -94,7 +94,6 @@ public class PanelJeu extends JPanel implements Observer {
 
         }
 
-
     }
 
     @Override

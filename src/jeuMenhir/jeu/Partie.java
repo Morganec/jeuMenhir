@@ -24,7 +24,11 @@ public class Partie {
     private PaquetCarte paquetJeu;
     private PaquetCarte paquetAllie;
 
-    private FenetreJeu fenJeu;
+    public void setFenJeu(FenetreJeu fenJeu) {
+        this.fenJeu = fenJeu;
+    }
+
+    private FenetreJeu fenJeu = null;
     private PanelJeu panJeu;
 private  Integer nbrJoueurReel;
 
@@ -42,7 +46,6 @@ private  Integer nbrJoueurReel;
             numeroDelaManche = joueurs.size()-1;
         }
 
-        //this.joueurs.get(1).setNbGrain(4);
 
 
 
@@ -72,7 +75,7 @@ private  Integer nbrJoueurReel;
             this.creerPaquetJeu();
             this.distribuerCarte();
            this.numeroDelaManche = -1;
-           // this.lancerPartieRapide();
+            this.lancerPartieRapide();
         }
     }
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
@@ -205,7 +208,7 @@ private  Integer nbrJoueurReel;
         this.paquetAllie.melangerCarte();
     }
     public void lancerPartieRapide(){
-            this.partieRapEnCours = new PartieRapide(this.joueurs,numeroDelaManche,estPartieRapide);
+            this.partieRapEnCours = new PartieRapide(this.joueurs,numeroDelaManche,estPartieRapide, this.fenJeu);
         this.numeroDelaManche = this.partieRapEnCours.jouer();
 
     }
