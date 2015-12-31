@@ -25,15 +25,17 @@ public class PanelJoueurVu extends JPanel {
     private JTextField tbAge;
 
     private JButton valider;
-    public PanelJoueurVu(JoueurReel j,FenetreJoueur f){
-        this.monJoueur = j;
+    public PanelJoueurVu(FenetreJoueur f){
+        //this.monJoueur = j;
+        this.fenJoueur=f;
         this.repaint();
         lblPrenom = new JLabel("Prenom d'un joueur : ");
         tbPrenom = new JTextField("prenom");
         this.add(lblPrenom);
         this.add(tbPrenom);
         valider = new JButton("Valider");
-        valider.addActionListener(j);
+        valider.addActionListener(this.fenJoueur);
+        //valider.addActionListener(j);
         this.add(valider);
         this.setVisible(true);
     }

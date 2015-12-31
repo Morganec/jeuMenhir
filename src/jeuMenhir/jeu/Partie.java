@@ -69,7 +69,7 @@ private  Integer nbrJoueurReel;
        joueurs = new ArrayList<Joueur>();
 
         for(int i = 0 ; i<nbrJoueurReel ; i++){
-          joueurs.add(new JoueurReel(nbrJoueurReel));
+          joueurs.add(new JoueurReel());
         }
         for(int i = 0 ; i<nbrJoueurOrdi; i++){
             joueurs.add(new JoueurOrdinateur(i));

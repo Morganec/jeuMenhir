@@ -11,20 +11,16 @@ import java.util.Scanner;
 /**
  * Created by morgane on 07/11/15.
  */
-public class JoueurReel extends Joueur implements ActionListener{
+public class JoueurReel extends Joueur {
 
 private FenetreJoueur fenetreJoueur;
     private PanelJoueurVu panelJoueurVu;
     private Scanner sc = new Scanner(System.in);
-    private boolean monBooleen;
     private Integer nbrJoueurReel;
-    public JoueurReel(Integer nbrJReel){
-        this.nbrJoueurReel = nbrJReel;
-        this.monBooleen = true;
-     this.fenetreJoueur = new FenetreJoueur();
-        this.panelJoueurVu = new PanelJoueurVu(this,this.fenetreJoueur);
+    public JoueurReel(){
 
-      this.fenetreJoueur.setContentPane(this.panelJoueurVu);
+
+
         creerNouveauJoueur();
 
     }
@@ -61,12 +57,6 @@ private FenetreJoueur fenetreJoueur;
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-       // this.nbrJoueurReel.notify();
-        //this.age = this.panelJoueurVu.getTbPrenom();
-
-    }
 
 
 }

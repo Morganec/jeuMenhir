@@ -1,9 +1,13 @@
 package jeuMenhir.InterfaceGraphique;
+import jeuMenhir.jeu.Joueur;
+import jeuMenhir.jeu.JoueurReel;
 import jeuMenhir.jeu.Partie;
 
 import  javax.swing.*;
 import  java.awt.*;
 import  java.awt.event.*;
+import java.util.ArrayList;
+
 /**
  * Created by morgane on 28/12/15.
  */
@@ -36,8 +40,11 @@ private JButton but1,but2;  //les boutons
     @Override
     public void actionPerformed(ActionEvent e) {
         this.dispose();
-
-        this.partie = new Partie(this.p.getNombreJoueurHumain(),this.p.getNombreJoueurRobot(),this.estPartieRapide);
+        ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+        FenetreJoueur fenetreJoueur = new FenetreJoueur(this.p.getNombreJoueurHumain(),joueurs);
+        PanelJoueurVu panelJoueurVu = new PanelJoueurVu(fenetreJoueur);
+        fenetreJoueur.setContentPane(panelJoueurVu);
+        //this.partie = new Partie(this.p.getNombreJoueurHumain(),this.p.getNombreJoueurRobot(),this.estPartieRapide);
 
     }
 }
