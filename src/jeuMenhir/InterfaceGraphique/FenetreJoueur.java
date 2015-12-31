@@ -34,10 +34,13 @@ public class FenetreJoueur extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         this.panelJoueurVu = (PanelJoueurVu)this.getContentPane();
-        System.out.println("le prenom " + this.panelJoueurVu.getTbPrenom());
+
         String nom = this.panelJoueurVu.getTbPrenom();
-        int age = 12;
-        Boolean estF= true;
+        int age = this.panelJoueurVu.getAge();
+        Boolean estF= this.panelJoueurVu.estFemme();
+
+        System.out.println("le prenom " + nom + " age : " +age + " estFemme : " + estF);
+
         JoueurReel jr = new JoueurReel(age,estF,nom);
         joueurs.add(jr);
         if(joueurs.size() < this.nbjoueur){
