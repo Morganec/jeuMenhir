@@ -29,22 +29,14 @@ public class PanelFin extends JPanel {
     public void paintComponent(Graphics g){
         BufferedImage imageJoueur = null;
 
-    if(this.joueurGagnant instanceof JoueurOrdinateur){
         try {
-            imageJoueur = ImageIO.read(new File("Images/robot.png"));
+            imageJoueur = ImageIO.read((this.joueurGagnant).getImageJoueur());
 
         } catch (IOException ex) {
             System.out.print("non chargé");
         }
 
-    }else{
-        try {
-            imageJoueur = ImageIO.read(new File("Images/humain.png"));
 
-        } catch (IOException ex) {
-            System.out.print("non chargé");
-        }
-    }
 
 
         g.setColor(Color.red);
@@ -53,11 +45,6 @@ public class PanelFin extends JPanel {
         g.drawString(this.joueurGagnant.getNbGrain() + " Graines est :  "  , 300, 240);
         g.drawString( this.joueurGagnant.getNom(),300,260);
         g.drawImage(imageJoueur,  300, 280, 200, 200, null);
-
-        
-
-
-
 
 
     }

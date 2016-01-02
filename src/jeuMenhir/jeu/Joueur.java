@@ -1,6 +1,8 @@
 package jeuMenhir.jeu;
 
 import javafx.beans.InvalidationListener;
+
+import java.io.File;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -23,6 +25,9 @@ public class Joueur extends Observable{
 	private int nbgrain=0;
 	private int nbmenhir=0;
 
+
+
+	private File imageJoueur;
 
 	private int nbrMenhirEnTout = 0;
 	public Joueur() {
@@ -123,6 +128,13 @@ public class Joueur extends Observable{
 	public void setNbrMenhirEnTout(int nbrMenhirEnTout) {
 		this.nbrMenhirEnTout = nbrMenhirEnTout;
 		this.notifyObservers();
+	}
+
+	public File getImageJoueur() {
+		return imageJoueur;
+	}
+	public void setImageJoueur(File imageJ){
+		this.imageJoueur = imageJ;
 	}
 
 

@@ -6,6 +6,7 @@ import jeuMenhir.InterfaceGraphique.PanelJoueurVu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -17,8 +18,12 @@ private FenetreJoueur fenetreJoueur;
     private PanelJoueurVu panelJoueurVu;
     private Scanner sc = new Scanner(System.in);
     private Integer nbrJoueurReel;
-    public JoueurReel(){
 
+
+
+
+    public JoueurReel(){
+        super.setImageJoueur(new File("Images/humain.png"));
 
 
         creerNouveauJoueur();
@@ -50,12 +55,13 @@ private FenetreJoueur fenetreJoueur;
     }
 
     public JoueurReel(int a, boolean estf, String nom){
+        super.setImageJoueur(new File("Images/humain.png"));
+
         this.age = a;
         this.estFemme = estf;
         this.nom= nom;
 
     }
-
 
 
 

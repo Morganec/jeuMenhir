@@ -48,8 +48,8 @@ public class PanelJeu extends JPanel implements Observer {
         System.out.println("je passe dans paint compo");
 
 
-        BufferedImage robot = null;
-        BufferedImage humain = null;
+        BufferedImage imageJoueur = null;
+
         BufferedImage dosCarte = null;
 
         try {
@@ -59,30 +59,21 @@ public class PanelJeu extends JPanel implements Observer {
             System.out.print("non chargé");
         }
 
-        try {
-            robot = ImageIO.read(new File("Images/robot.png"));
 
-        } catch (IOException ex) {
-            System.out.print("non chargé");
-        }
 
-        try {
-            humain = ImageIO.read(new File("Images/humain.png"));
-
-        } catch (IOException ex) {
-            System.out.print("non chargé");
-        }
 
         int u=0;
         JLabel prenom;
         for(int i=0;i<partie.getJoueurs().size();i++){
             Joueur j = partie.getJoueurs().get(i);
+            try {
+                imageJoueur = ImageIO.read(j.getImageJoueur());
 
-                if(j instanceof JoueurOrdinateur) {
-                    g.drawImage(robot,u*100,100,100,100,null);
-                }else {
-                    g.drawImage(humain, u * 100, 100, 100, 100, null);
-                }
+            } catch (IOException ex) {
+                System.out.print("non chargé");
+            }
+            g.drawImage(imageJoueur,u*100,100,100,100,null);
+
             g.setColor(Color.red);
             g.drawString( j.getNom(),u*100,100);
             g.drawString("Nbr Menhirs : " + j.getNbMenhir(), u * 100, 220);
