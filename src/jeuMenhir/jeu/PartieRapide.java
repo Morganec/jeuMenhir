@@ -1,7 +1,8 @@
 package jeuMenhir.jeu;
 
-import jeuMenhir.InterfaceGraphique.FenetreFin;
+
 import jeuMenhir.InterfaceGraphique.FenetreJeu;
+import jeuMenhir.InterfaceGraphique.PanelFin;
 
 import java.util.*;
 
@@ -184,8 +185,7 @@ if(estPartieRapide){
             if(numeroDeLaManche == 0){
                 System.out.println("Fin de la derniere manche" );
                 System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + " menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
-                //this.fenJeu.dispose();
-                FenetreFin ff = new FenetreFin();
+                this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
             }else{
                 System.out.println("Fin de la manche numero " + numeroDeLaManche );
             }
@@ -206,8 +206,8 @@ if(estPartieRapide){
                 System.out.println(" Nous avons : " + joueurs.get(i).getNom() + " avec " + joueurs.get(i).getNbMenhir() + " menhirs et " + joueurs.get(i).getNbGrain() + " Graines");
             }
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
-            //this.fenJeu.dispose();
-            FenetreFin ff = new FenetreFin();
+
+            this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
         }
         this.numeroDeLaManche--;
         return this.numeroDeLaManche;
