@@ -5,6 +5,7 @@ import javafx.scene.layout.Pane;
 import jeuMenhir.InterfaceGraphique.FenetreJeu;
 import jeuMenhir.InterfaceGraphique.PanelFin;
 import jeuMenhir.InterfaceGraphique.PanelJeu;
+import jeuMenhir.InterfaceGraphique.PanelJoueurJoue;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -58,8 +59,18 @@ private  Integer nbrJoueurReel;
 
     public void jouer(FenetreJeu f){
         this.fenJeu = f;
+        joueurs.get(0).setNbGrain(2);
+
+      /*  for(int i=0;i<10;i++){
+            joueurs.get(0).setNbGrain(i);
+            this.fenJeu.getContentPane().repaint();
+            fenJeu.repaint();
 
 
+            System.out.println("je suis ici sans faire repaint");
+
+        }*/
+/*
      while(this.numeroDelaManche >= 0){
 
         Iterator<Joueur> iter = this.joueurs.iterator();
@@ -76,15 +87,27 @@ private  Integer nbrJoueurReel;
            this.demanderGraineOuAllier();
            // this.demanderGraineOuAllierGraph();
             this.fenJeu.getContentPane().repaint();
-          }
+            this.fenJeu.repaint();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
 
             this.creerPaquetJeu();
             this.distribuerCarte();
-           this.numeroDelaManche = -1;
+           //this.numeroDelaManche = -1;
            this.fenJeu.getContentPane().repaint();
-           // this.lancerPartieRapide(this.fenJeu);
-        }
+         this.fenJeu.repaint();
+         try {
+             Thread.sleep(10);
+         } catch (InterruptedException e) {
+             e.printStackTrace();
+         }
+           this.lancerPartieRapide(this.fenJeu);
+        }*/
     }
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
        joueurs = new ArrayList<Joueur>();

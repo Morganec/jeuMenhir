@@ -9,7 +9,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,7 +18,7 @@ import java.util.Observer;
 public class PanelJeu extends JPanel implements Observer {
     private FenetreJeu fenJeu;
     private JButton btnValider;
-    private Partie partie;
+
     private boolean interFaceJeuDessine = false;
     private boolean dessinerJoueur = false;
     private Joueur joueurQuiJoue;
@@ -27,10 +26,10 @@ public class PanelJeu extends JPanel implements Observer {
 
     private Graphics graphic ;
 
+private ArrayList<Joueur> joueurs;
 
+    public PanelJeu(FenetreJeu f,ArrayList<Joueur> j){
 
-    public PanelJeu(FenetreJeu f,Partie p){
-        this.partie = p;
         this.fenJeu = f;
         this.repaint();
        // this.setLayout(null);
@@ -38,11 +37,13 @@ public class PanelJeu extends JPanel implements Observer {
         btnValider.addActionListener(this.fenJeu);
         this.add(btnValider);
 
-        for(int i=0;i<partie.getJoueurs().size();i++){
-            Joueur j = partie.getJoueurs().get(i);
-            j.addObserver(this);
-            partie.getJoueurs().set(i,j);
+        for(int i=0;i<j.size();i++){
+            Joueur ji = j.get(i);
+            ji.addObserver(this);
+            j.set(i, ji);
         }
+        joueurs =j;
+        this.repaint();
 
 
     }
@@ -52,7 +53,12 @@ public class PanelJeu extends JPanel implements Observer {
 
     public void paintComponent(Graphics g){
         this.graphic = g;
-
+        System.out.println("JE ME REPAINT");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         if(!interFaceJeuDessine){
             this.dessinerInterfaceJeu();
@@ -73,8 +79,8 @@ public class PanelJeu extends JPanel implements Observer {
 
         int u=0;
         JLabel prenom;
-        for(int i=0;i<partie.getJoueurs().size();i++){
-            Joueur j = partie.getJoueurs().get(i);
+        for(int i=0;i< joueurs.size();i++){
+            Joueur j = joueurs.get(i);
             try {
                 imageJoueur = ImageIO.read(j.getImageJoueur());
 

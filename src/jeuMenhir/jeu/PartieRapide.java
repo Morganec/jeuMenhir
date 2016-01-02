@@ -31,6 +31,7 @@ public class PartieRapide extends Observable implements ActionListener{
     private int numChoixCarte;
     private int numChoix;
     private Carte carteSelectionne;
+    private  boolean monBoleenJeu;
     private Scanner sc = new Scanner(System.in);
     public PartieRapide(ArrayList<Joueur> joueurs, int numPartie, boolean estPartieRapide, FenetreJeu fenetreJeu) {
         this.numeroDeLaManche = numPartie;
@@ -44,17 +45,24 @@ public class PartieRapide extends Observable implements ActionListener{
     }
 
     public int jouer(){
+        this.fenJeu.getContentPane().repaint();
+        this.fenJeu.repaint();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         saison = 0;
-if(estPartieRapide){
-    joueurQuijoue = this.trouverJoueurCommencant();
-}else{
-    joueurQuijoue = joueurs.get(this.numeroDeLaManche);
-}
+        if(estPartieRapide){
+            joueurQuijoue = this.trouverJoueurCommencant();
+        }else{
+            joueurQuijoue = joueurs.get(this.numeroDeLaManche);
+        }
 
         this.joueurs.remove(joueurQuijoue);
         this.joueurs.add(0,joueurQuijoue);
 
-            while (saison<4){
+        while (saison<4){
             System.out.println("La saison actuelle est : " + tablSaison[saison]);
             Iterator<Joueur> iter2 = this.joueurs.iterator();
             while (iter2.hasNext()) {
@@ -66,50 +74,45 @@ if(estPartieRapide){
 
 
                 if(joueurDeListe instanceof JoueurReel){
+                    joueurDeListe.getMain().afficherCartes();
+                    this.fenJeu.getContentPane().repaint();
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
-
-
-
-
-
-
-
-               joueurDeListe.getMain().afficherCartes();
-                    
-                    numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
+                    /*numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
                     while (numChoixCarte < 1 || numChoixCarte > joueurDeListe.getMain().size()){
                         joueurDeListe.getMain().afficherCartes();
                         numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
-                    }
+                    }*/
+                    numChoixCarte = 1;
                     System.out.println("La carte selectionne est : " +  joueurDeListe.getMain().afficherUneCarte(numChoixCarte - 1));
                     carteSelectionne =  joueurDeListe.getMain().getCarte(numChoixCarte - 1);
 
                     if(carteSelectionne instanceof CarteIngredient) {
                         System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais ");
-                        numChoix = FonctionScan.recuperEntierEntrerCla("Entre le numero de votre choix : ");
+                        /*numChoix = FonctionScan.recuperEntierEntrerCla("Entre le numero de votre choix : ");
                         while (!((numChoix == 1) ||numChoix == 2 ||numChoix == 3)){
                             System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais ");
                             numChoix = FonctionScan.recuperEntierEntrerCla("Entre le numero de votre choix : ");
-                        }
+                        }*/
+                        numChoix = 1;
                     }else{
                         System.out.println("Plus rien est a choisir car vous avez choisi une carte allie ");
                         numChoix = 4;
                     }
-
-
-
                 }else{
                     carteSelectionne = joueurDeListe.getMain().getCarte(0); // je joueur ordinateur prends toujours la premiere carte de sa main
-                   JoueurOrdinateur joueurOrdi = (JoueurOrdinateur)joueurDeListe;
+                    JoueurOrdinateur joueurOrdi = (JoueurOrdinateur)joueurDeListe;
                     numChoix = joueurOrdi.getStrategie().getClasse(carteSelectionne);
 
-
-                    //System.out.println("ici le joueur robot joue");
                 }
                 CarteIngredient carteSelec;
                 switch (numChoix){
                     case 1 :
-                         carteSelec = (CarteIngredient)carteSelectionne;
+                        carteSelec = (CarteIngredient)carteSelectionne;
                         carteSelec.getGeant().donnerGraine(joueurDeListe,saison);
                         break;
                     case 2 :
@@ -124,10 +127,11 @@ if(estPartieRapide){
                                 }
 
                             }
-                            numVole = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne que vous voulez voler : ");
+                           /* numVole = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne que vous voulez voler : ");
                             while(!listeNumJoueur.contains(numVole)){
                                 numVole = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne que vous voulez voler : ");
-                            }
+                            }*/
+                            numVole = 0;
 
                         }else{
                             numVole = this.joueurs.indexOf(joueurDeListe);
@@ -156,10 +160,11 @@ if(estPartieRapide){
                                         listeNumJoueur.add(i);
                                     }
                                 }
-                                numDetruit = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
+                               /* numDetruit = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
                                 while(!listeNumJoueur.contains(numDetruit)){
                                     numDetruit = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
-                                }
+                                }*/
+                                numDetruit=0;
 
                             }else{
                                 numDetruit = this.joueurs.indexOf(joueurDeListe);
@@ -174,15 +179,20 @@ if(estPartieRapide){
                         }
                         break;
                 }
-
-
+                this.fenJeu.getContentPane().repaint();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 joueurDeListe.getMain().prendreCarteChoisi(carteSelectionne);
 
 
             }
             saison++;
         }
-        if(!estPartieRapide){
+
+  /*      if(!estPartieRapide){
             int maxMenhir = 0;
             int numJoueurGagnant=0;
             for(int i=0 ; i < joueurs.size() ; i++){
@@ -196,7 +206,7 @@ if(estPartieRapide){
                     j.setNbrMenhirEnTout(j.getNbrMenhirEnTout() + j.getNbMenhir());
                     j.setNbMenhir(0);
 
-               }
+                }
             }
             for(int i = 0 ; i < joueurs.size() ; i++){
                 System.out.println(" Nous avons : " + joueurs.get(i).getNom() + " avec " + joueurs.get(i).getNbMenhir() + " menhirs , "   + joueurs.get(i).getNbGrain() + " Graines et " +joueurs.get(i).getNbrMenhirEnTout() + " Menhirs en tout ! ");
@@ -217,10 +227,10 @@ if(estPartieRapide){
             for(int i=0 ; i < joueurs.size() ; i++){
                 Joueur j = joueurs.get(i);
 
-                    if(j.getNbMenhir() > maxMenhir){
-                        maxMenhir = j.getNbMenhir();
-                        numJoueurGagnant = i;
-                    }
+                if(j.getNbMenhir() > maxMenhir){
+                    maxMenhir = j.getNbMenhir();
+                    numJoueurGagnant = i;
+                }
 
             }
             for(int i = 0 ; i < joueurs.size() ; i++){
@@ -229,7 +239,7 @@ if(estPartieRapide){
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
 
             this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
-        }
+        }*/
         this.numeroDeLaManche--;
         return this.numeroDeLaManche;
 
@@ -265,9 +275,10 @@ if(estPartieRapide){
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         numChoixCarte = this.panJoueur.getNumChoixCarte();
+  /*      numChoixCarte = this.panJoueur.getNumChoixCarte();
         numChoix = this.panJoueur.getNumChoix();
-        this.fenJeu.setContentPane(this.panJeu);
+        this.fenJeu.setContentPane(this.panJeu);*/
         //carteSelectionne =  this.panJoueur.getCarteSelectionne();
+
     }
 }

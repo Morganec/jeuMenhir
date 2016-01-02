@@ -45,11 +45,13 @@ private JButton but1,but2;  //les boutons
         if(this.p.getNombreJoueurHumain() == 0){
             for(int i = 0 ; i<this.p.getNombreJoueurRobot(); i++){
                 joueurs.add(new JoueurOrdinateur(i));
-            }
-            Partie partie = new Partie(this.estPartieRapide,joueurs);
-            FenetreJeu fenJeu = new FenetreJeu();
-            PanelJeu panJeu = new PanelJeu(fenJeu,partie);
+            } FenetreJeu fenJeu = new FenetreJeu();
+            PanelJeu panJeu = new PanelJeu(fenJeu,joueurs);
             fenJeu.setContentPane(panJeu);
+            panJeu.repaint();
+            fenJeu.repaint();
+            Partie partie = new Partie(this.estPartieRapide,joueurs);
+
             partie.jouer(fenJeu);
 
         }else{
