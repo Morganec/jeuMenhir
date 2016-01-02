@@ -61,16 +61,8 @@ private  Integer nbrJoueurReel;
         this.fenJeu = f;
         joueurs.get(0).setNbGrain(2);
 
-      /*  for(int i=0;i<10;i++){
-            joueurs.get(0).setNbGrain(i);
-            this.fenJeu.getContentPane().repaint();
-            fenJeu.repaint();
 
 
-            System.out.println("je suis ici sans faire repaint");
-
-        }*/
-/*
      while(this.numeroDelaManche >= 0){
 
         Iterator<Joueur> iter = this.joueurs.iterator();
@@ -107,7 +99,7 @@ private  Integer nbrJoueurReel;
              e.printStackTrace();
          }
            this.lancerPartieRapide(this.fenJeu);
-        }*/
+        }
     }
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
        joueurs = new ArrayList<Joueur>();

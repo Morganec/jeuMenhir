@@ -82,23 +82,23 @@ public class PartieRapide extends Observable implements ActionListener{
                         e.printStackTrace();
                     }
 
-                    /*numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
+                    numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
                     while (numChoixCarte < 1 || numChoixCarte > joueurDeListe.getMain().size()){
                         joueurDeListe.getMain().afficherCartes();
                         numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
-                    }*/
-                    numChoixCarte = 1;
+                    }
+
                     System.out.println("La carte selectionne est : " +  joueurDeListe.getMain().afficherUneCarte(numChoixCarte - 1));
                     carteSelectionne =  joueurDeListe.getMain().getCarte(numChoixCarte - 1);
 
                     if(carteSelectionne instanceof CarteIngredient) {
                         System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais ");
-                        /*numChoix = FonctionScan.recuperEntierEntrerCla("Entre le numero de votre choix : ");
+                        numChoix = FonctionScan.recuperEntierEntrerCla("Entre le numero de votre choix : ");
                         while (!((numChoix == 1) ||numChoix == 2 ||numChoix == 3)){
                             System.out.println("Les choix proposés sont : 1- Geant 2-Farfadet 3-Engrais ");
                             numChoix = FonctionScan.recuperEntierEntrerCla("Entre le numero de votre choix : ");
-                        }*/
-                        numChoix = 1;
+                        }
+
                     }else{
                         System.out.println("Plus rien est a choisir car vous avez choisi une carte allie ");
                         numChoix = 4;
@@ -127,11 +127,11 @@ public class PartieRapide extends Observable implements ActionListener{
                                 }
 
                             }
-                           /* numVole = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne que vous voulez voler : ");
+                           numVole = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne que vous voulez voler : ");
                             while(!listeNumJoueur.contains(numVole)){
                                 numVole = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne que vous voulez voler : ");
-                            }*/
-                            numVole = 0;
+                            }
+
 
                         }else{
                             numVole = this.joueurs.indexOf(joueurDeListe);
@@ -160,11 +160,11 @@ public class PartieRapide extends Observable implements ActionListener{
                                         listeNumJoueur.add(i);
                                     }
                                 }
-                               /* numDetruit = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
+                                numDetruit = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
                                 while(!listeNumJoueur.contains(numDetruit)){
                                     numDetruit = FonctionScan.recuperEntierEntrerCla("Entrer le numero de la personne dont vous voulez detruire les menhir : ");
-                                }*/
-                                numDetruit=0;
+                                }
+
 
                             }else{
                                 numDetruit = this.joueurs.indexOf(joueurDeListe);
@@ -192,7 +192,7 @@ public class PartieRapide extends Observable implements ActionListener{
             saison++;
         }
 
-  /*      if(!estPartieRapide){
+       if(!estPartieRapide){
             int maxMenhir = 0;
             int numJoueurGagnant=0;
             for(int i=0 ; i < joueurs.size() ; i++){
@@ -239,7 +239,7 @@ public class PartieRapide extends Observable implements ActionListener{
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
 
             this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
-        }*/
+        }
         this.numeroDeLaManche--;
         return this.numeroDeLaManche;
 
