@@ -1,9 +1,6 @@
 package jeuMenhir.InterfaceGraphique;
 
-import jeuMenhir.jeu.Joueur;
-import jeuMenhir.jeu.JoueurOrdinateur;
-import jeuMenhir.jeu.JoueurReel;
-import jeuMenhir.jeu.Partie;
+import jeuMenhir.jeu.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,7 +19,16 @@ import java.util.Observer;
 public class PanelJeu extends JPanel implements Observer {
     private FenetreJeu fenJeu;
     private JButton btnValider;
-    Partie partie;
+    private Partie partie;
+    private boolean interFaceJeuDessine = false;
+    private boolean dessinerJoueur = false;
+    private Joueur joueurQuiJoue;
+    private PartieRapide partieEnCours;
+
+    private Graphics graphic ;
+
+
+
     public PanelJeu(FenetreJeu f,Partie p){
         this.partie = p;
         this.fenJeu = f;
@@ -31,13 +37,13 @@ public class PanelJeu extends JPanel implements Observer {
         btnValider=new JButton("Valider");
         btnValider.addActionListener(this.fenJeu);
         this.add(btnValider);
-        this.setBackground(Color.red);
+
         for(int i=0;i<partie.getJoueurs().size();i++){
             Joueur j = partie.getJoueurs().get(i);
             j.addObserver(this);
-            System.out.print("ajout observer");
             partie.getJoueurs().set(i,j);
         }
+
 
     }
 
@@ -45,9 +51,12 @@ public class PanelJeu extends JPanel implements Observer {
 
 
     public void paintComponent(Graphics g){
-        System.out.println("je passe dans paint compo");
+        this.graphic = g;
 
 
+        if(!interFaceJeuDessine){
+            this.dessinerInterfaceJeu();
+        }
         BufferedImage imageJoueur = null;
 
         BufferedImage dosCarte = null;
@@ -85,11 +94,23 @@ public class PanelJeu extends JPanel implements Observer {
 
         }
 
+
+
+
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        this.setBackground(Color.blue);
         this.repaint();
+
     }
+
+    public void dessinerInterfaceJeu(){
+        this.graphic.setColor(Color.blue);
+        this.graphic.drawRect(850, 10, 350, 700);
+        interFaceJeuDessine = true;
+    }
+
+
+
 }

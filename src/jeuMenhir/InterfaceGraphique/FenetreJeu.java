@@ -18,7 +18,7 @@ public class FenetreJeu extends JFrame implements ActionListener{
         //p = new PanelJeu(this,null);
         this.setTitle("Jeux des menhirs ");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(810, 830);
+        this.setSize(1500, 830);
         this.setLayout(null);
         this.setVisible(true);
         System.out.println("je passe dans fenetre jeu");

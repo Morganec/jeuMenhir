@@ -30,8 +30,17 @@ private FenetreJoueur fenetreJoueur;
 
     }
 
+    public JoueurReel(int a, boolean estf, String nom){
+        super.setImageJoueur(new File("Images/humain.png"));
+
+        this.age = a;
+        this.estFemme = estf;
+        this.nom= nom;
+
+    }
+
     private void creerNouveauJoueur() {
-       /* this.age = FonctionScan.recuperEntierEntrerCla("Entrer l'age d'un des joueurs réèls : ");
+        this.age = FonctionScan.recuperEntierEntrerCla("Entrer l'age d'un des joueurs réèls : ");
         System.out.println("Puis entrer son nom : ");
         this.nom = sc.next();
         int entierSexe = FonctionScan.recuperEntierEntrerCla("Enfin taper 1 si c'est une femme et 0 si c'est un homme");
@@ -43,25 +52,13 @@ private FenetreJoueur fenetreJoueur;
         }else{
             this.estFemme = false;
         }
-*/
 
 
 
-
-        this.nom="much";
-        this.age=12;
-        this.estFemme = true;
 
     }
 
-    public JoueurReel(int a, boolean estf, String nom){
-        super.setImageJoueur(new File("Images/humain.png"));
 
-        this.age = a;
-        this.estFemme = estf;
-        this.nom= nom;
-
-    }
 
 
 

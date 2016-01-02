@@ -1,31 +1,45 @@
 package jeuMenhir.jeu;
 
 
+
 import jeuMenhir.InterfaceGraphique.FenetreJeu;
 import jeuMenhir.InterfaceGraphique.PanelFin;
+import jeuMenhir.InterfaceGraphique.PanelJeu;
+import jeuMenhir.InterfaceGraphique.PanelJoueurJoue;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 
 
 /**
  * Created by morgane on 07/11/15.
  */
-public class PartieRapide {
+public class PartieRapide extends Observable implements ActionListener{
     private ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
     private int saison;
     private String[] tablSaison = {"hiver", "printemps", "ete","automne"};
+
+
     private Joueur joueurQuijoue;
     private int numeroDeLaManche;
     private boolean estPartieRapide;
     private FenetreJeu fenJeu ;
+    private PanelJeu panJeu;
+    private PanelJoueurJoue panJoueur;
 
-
+    private int numChoixCarte;
+    private int numChoix;
+    private Carte carteSelectionne;
     private Scanner sc = new Scanner(System.in);
     public PartieRapide(ArrayList<Joueur> joueurs, int numPartie, boolean estPartieRapide, FenetreJeu fenetreJeu) {
         this.numeroDeLaManche = numPartie;
         this.estPartieRapide = estPartieRapide;
         this.joueurs = joueurs;
         this.fenJeu = fenetreJeu;
+        PanelJeu p = (PanelJeu) this.fenJeu.getContentPane();
+        this.panJeu = p;
+        this.addObserver(panJeu);
 
     }
 
@@ -39,9 +53,6 @@ if(estPartieRapide){
 
         this.joueurs.remove(joueurQuijoue);
         this.joueurs.add(0,joueurQuijoue);
-        int numChoixCarte;
-        int numChoix;
-        Carte carteSelectionne;
 
             while (saison<4){
             System.out.println("La saison actuelle est : " + tablSaison[saison]);
@@ -49,12 +60,22 @@ if(estPartieRapide){
             while (iter2.hasNext()) {
 
                 Joueur joueurDeListe = iter2.next();
+
+
                 System.out.println("Le joueur " + joueurDeListe.nom + " joue dans la saison : " + tablSaison[saison]);
 
 
                 if(joueurDeListe instanceof JoueurReel){
 
-                    joueurDeListe.getMain().afficherCartes();
+
+
+
+
+
+
+
+               joueurDeListe.getMain().afficherCartes();
+                    
                     numChoixCarte = FonctionScan.recuperEntierEntrerCla("Entrer le numero de votre choix : ");
                     while (numChoixCarte < 1 || numChoixCarte > joueurDeListe.getMain().size()){
                         joueurDeListe.getMain().afficherCartes();
@@ -240,5 +261,13 @@ if(estPartieRapide){
         }
         System.out.println("Le joueur qui commence est : " + jQuiCommence.getNom() );
         return jQuiCommence;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+         numChoixCarte = this.panJoueur.getNumChoixCarte();
+        numChoix = this.panJoueur.getNumChoix();
+        this.fenJeu.setContentPane(this.panJeu);
+        //carteSelectionne =  this.panJoueur.getCarteSelectionne();
     }
 }

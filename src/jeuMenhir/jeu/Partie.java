@@ -5,6 +5,8 @@ import jeuMenhir.InterfaceGraphique.FenetreJeu;
 import jeuMenhir.InterfaceGraphique.PanelJeu;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -75,7 +77,7 @@ private  Integer nbrJoueurReel;
             this.creerPaquetJeu();
             this.distribuerCarte();
            this.numeroDelaManche = -1;
-           // this.lancerPartieRapide();
+            this.lancerPartieRapide();
        // }
     }
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
@@ -253,5 +255,6 @@ private  Integer nbrJoueurReel;
     public void setNumeroDelaManche(int numeroDelaManche) {
         this.numeroDelaManche = numeroDelaManche;
     }
+
 
 }
