@@ -1,7 +1,9 @@
 package jeuMenhir.jeu;
 
 
+import javafx.scene.layout.Pane;
 import jeuMenhir.InterfaceGraphique.FenetreJeu;
+import jeuMenhir.InterfaceGraphique.PanelFin;
 import jeuMenhir.InterfaceGraphique.PanelJeu;
 
 import javax.swing.*;
@@ -26,12 +28,10 @@ public class Partie {
     private PaquetCarte paquetJeu;
     private PaquetCarte paquetAllie;
 
-    public void setFenJeu(FenetreJeu fenJeu) {
-        this.fenJeu = fenJeu;
-    }
 
-    private FenetreJeu fenJeu = null;
-    private PanelJeu panJeu;
+
+    private FenetreJeu fenJeu ;
+
 private  Integer nbrJoueurReel;
 
     private int numeroDelaManche;
@@ -56,29 +56,35 @@ private  Integer nbrJoueurReel;
 
     }
 
-    public void jouer(){
+    public void jouer(FenetreJeu f){
+        this.fenJeu = f;
 
-       //while(this.numeroDelaManche >= 0){
 
-            Iterator<Joueur> iter = this.joueurs.iterator();
-            while (iter.hasNext()) {
-                Joueur joueur = iter.next();
-                joueur.setNbGrain(2);
-                joueur.setNbMenhir(0);
-                joueur.setPossedeCarteAllie(false);
-                joueur.setNbProtege(0);
-            }
+     while(this.numeroDelaManche >= 0){
 
-            if(!this.estPartieRapide){
-                this.creerPaqueAllie();
-                this.demanderGraineOuAllier();
-            }
+        Iterator<Joueur> iter = this.joueurs.iterator();
+        while (iter.hasNext()) {
+            Joueur joueur = iter.next();
+            joueur.setNbGrain(2);
+            joueur.setNbMenhir(0);
+            joueur.setPossedeCarteAllie(false);
+            joueur.setNbProtege(0);
+        }
+
+        if(!this.estPartieRapide){
+            this.creerPaqueAllie();
+           this.demanderGraineOuAllier();
+           // this.demanderGraineOuAllierGraph();
+            this.fenJeu.getContentPane().repaint();
+          }
+
 
             this.creerPaquetJeu();
             this.distribuerCarte();
            this.numeroDelaManche = -1;
-            this.lancerPartieRapide();
-       // }
+           this.fenJeu.getContentPane().repaint();
+           // this.lancerPartieRapide(this.fenJeu);
+        }
     }
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
        joueurs = new ArrayList<Joueur>();
@@ -209,8 +215,8 @@ private  Integer nbrJoueurReel;
         paquetAllie.ajouterCarte((Carte)(new TaupeGeante(1,1,3,4)));
         this.paquetAllie.melangerCarte();
     }
-    public void lancerPartieRapide(){
-            this.partieRapEnCours = new PartieRapide(this.joueurs,numeroDelaManche,estPartieRapide, this.fenJeu);
+    public void lancerPartieRapide(FenetreJeu f){
+            this.partieRapEnCours = new PartieRapide(this.joueurs,numeroDelaManche,estPartieRapide, f);
         this.numeroDelaManche = this.partieRapEnCours.jouer();
 
     }
@@ -238,6 +244,7 @@ private  Integer nbrJoueurReel;
                     joueur.setCarteAllie((CarteAllie)paquetAllie.prendreCarteDessus());
                     joueur.getMain().ajouterCarte(joueur.getCarteAllie());
                     joueur.setPossedeCarteAllie(true);
+                    joueur.setNbGrain(0);
 
                     System.out.println("joueur : " + joueur.getNom() + " a obtenu une carte allie et sa carte est :  " + joueur.getCarteAllie().toString() );
                 }
@@ -247,6 +254,9 @@ private  Integer nbrJoueurReel;
 
         }
     }
+
+
+
 
     public int getNumeroDelaManche() {
         return numeroDelaManche;
