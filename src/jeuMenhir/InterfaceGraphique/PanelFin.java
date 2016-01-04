@@ -16,8 +16,10 @@ import java.io.IOException;
 public class PanelFin extends JPanel {
     private FenetreJeu fenetreJeu;
     private JButton fin;
+    private Boolean estPartieRapide;
     private Joueur joueurGagnant;
-    public PanelFin(FenetreJeu f,Joueur j){
+    public PanelFin(FenetreJeu f,Joueur j, boolean estPR){
+        this.estPartieRapide = estPR;
         this.fenetreJeu = f;
         this.joueurGagnant = j;
         fin = new JButton("FIN");
@@ -41,8 +43,13 @@ public class PanelFin extends JPanel {
 
         g.setColor(Color.red);
         g.drawString( "LE JOUEUR GAGNANT, avec  : ",300,200);
-        g.drawString(this.joueurGagnant.getNbMenhir()+ "  Menhirs et avec  " , 300, 220);
-        g.drawString(this.joueurGagnant.getNbGrain() + " Graines est :  "  , 300, 240);
+        if(this.estPartieRapide){
+            g.drawString(this.joueurGagnant.getNbMenhir()+ "  Menhirs  " , 300, 220);
+        }else{
+            g.drawString(this.joueurGagnant.getNbrMenhirEnTout()+ "  Menhirs au total " , 300, 220);
+        }
+
+        g.drawString("et avec  " + this.joueurGagnant.getNbGrain() + " Graines est :  "  , 300, 240);
         g.drawString( this.joueurGagnant.getNom(),300,260);
         g.drawImage(imageJoueur,  300, 280, 200, 200, null);
 

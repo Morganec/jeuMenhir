@@ -69,7 +69,8 @@ public class Joueur extends Observable{
 		{
 			nbmenhir =  nb;
 		}
-		notifyObservers();
+		this.setChanged();
+		this.notifyObservers();
 	}
 	//m�thodes nombre de menhirs � prot�ger
 	public int getNbProtege()
@@ -79,6 +80,7 @@ public class Joueur extends Observable{
 	public void setNbProtege(int p)
 	{
 		nbprotege = p;
+		this.setChanged();
 		this.notifyObservers();
 	}
 
@@ -102,11 +104,12 @@ public class Joueur extends Observable{
 
 	public void setPossedeCarteAllie(boolean possedeCarteAllie) {
 		this.possedeCarteAllie = possedeCarteAllie;
+		this.setChanged();
 		this.notifyObservers();
 	}
 
 	public PaquetCarte getMain() {
-		this.notifyObservers();
+
 		return main;
 
 	}
@@ -117,6 +120,7 @@ public class Joueur extends Observable{
 
 	public void setCarteAllie(CarteAllie carteAllie) {
 		this.carteAllie = carteAllie;
+		this.setChanged();
 		this.notifyObservers();
 	}
 
@@ -127,6 +131,7 @@ public class Joueur extends Observable{
 
 	public void setNbrMenhirEnTout(int nbrMenhirEnTout) {
 		this.nbrMenhirEnTout = nbrMenhirEnTout;
+		this.setChanged();
 		this.notifyObservers();
 	}
 

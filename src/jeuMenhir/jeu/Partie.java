@@ -60,15 +60,11 @@ private  Integer nbrJoueurReel;
     }
 
     public void jouer(FenetreJeu f){
-        this.fenJeu = f;
+        PanelJeu p =(PanelJeu) f.getContentPane();
+    this.fenJeu = f;
 
 
-        this.fenJeu.getContentPane().setVisible(false);
-        this.fenJeu.getContentPane().repaint();
-        this.fenJeu.getContentPane().setVisible(true);
-
-
-     while(this.numeroDelaManche >= 0){
+    while(this.numeroDelaManche >= 0){
 
         Iterator<Joueur> iter = this.joueurs.iterator();
         while (iter.hasNext()) {
@@ -95,14 +91,6 @@ private  Integer nbrJoueurReel;
 
             this.creerPaquetJeu();
             this.distribuerCarte();
-           //this.numeroDelaManche = -1;
-           this.fenJeu.getContentPane().repaint();
-         this.fenJeu.repaint();
-         try {
-             Thread.sleep(10);
-         } catch (InterruptedException e) {
-             e.printStackTrace();
-         }
            this.lancerPartieRapide(this.fenJeu);
         }
     }

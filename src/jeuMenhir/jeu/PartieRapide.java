@@ -2,10 +2,7 @@ package jeuMenhir.jeu;
 
 
 
-import jeuMenhir.InterfaceGraphique.FenetreJeu;
-import jeuMenhir.InterfaceGraphique.PanelFin;
-import jeuMenhir.InterfaceGraphique.PanelJeu;
-import jeuMenhir.InterfaceGraphique.PanelJoueurJoue;
+import jeuMenhir.InterfaceGraphique.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,7 +35,7 @@ public class PartieRapide extends Observable implements ActionListener{
         this.estPartieRapide = estPartieRapide;
         this.joueurs = joueurs;
         this.fenJeu = fenetreJeu;
-        PanelJeu p = (PanelJeu) this.fenJeu.getContentPane();
+       PanelJeu p = (PanelJeu) this.fenJeu.getContentPane();
         this.panJeu = p;
         this.addObserver(panJeu);
 
@@ -216,7 +213,9 @@ public class PartieRapide extends Observable implements ActionListener{
             if(numeroDeLaManche == 0){
                 System.out.println("Fin de la derniere manche" );
                 System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + " menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
-                this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
+                FenetreFin ff = new FenetreFin();
+                ff.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant),this.estPartieRapide));
+                //this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
             }else{
                 System.out.println("Fin de la manche numero " + numeroDeLaManche );
             }
@@ -237,8 +236,9 @@ public class PartieRapide extends Observable implements ActionListener{
                 System.out.println(" Nous avons : " + joueurs.get(i).getNom() + " avec " + joueurs.get(i).getNbMenhir() + " menhirs et " + joueurs.get(i).getNbGrain() + " Graines");
             }
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
-
-            this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
+           FenetreFin ff = new FenetreFin();
+           ff.setContentPane(new PanelFin(this.fenJeu, joueurs.get(numJoueurGagnant),this.estPartieRapide));
+            //this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
         }
         this.numeroDeLaManche--;
         return this.numeroDeLaManche;

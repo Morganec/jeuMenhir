@@ -20,18 +20,17 @@ public class PanelJeu extends JPanel implements Observer {
     private JButton btnValider;
 
     private boolean interFaceJeuDessine = false;
-    private boolean dessinerJoueur = false;
-    private Joueur joueurQuiJoue;
-    private PartieRapide partieEnCours;
-    private boolean premierRepaint=true;
+
     private Graphics graphic ;
+
+    boolean estPartieRapide;
 
 private ArrayList<Joueur> joueurs;
 
-    public PanelJeu(FenetreJeu f,ArrayList<Joueur> j){
+    public PanelJeu(FenetreJeu f,ArrayList<Joueur> j,Boolean estPR){
 
         this.fenJeu = f;
-
+        this.estPartieRapide = estPR;
        // this.setLayout(null);
         btnValider=new JButton("Fermer");
         btnValider.addActionListener(this.fenJeu);
@@ -43,6 +42,7 @@ private ArrayList<Joueur> joueurs;
             j.set(i, ji);
         }
         joueurs =j;
+
         this.repaint();
 
 
@@ -54,17 +54,17 @@ private ArrayList<Joueur> joueurs;
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         this.graphic = g;
-        System.out.println("JE ME REPAINT");
+
 
        /* if(premierRepaint){
             premierRepaint = false;
-        }else{*/
+        }else{
              try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //}
+        }*/
 
 
         if(!interFaceJeuDessine){
@@ -100,6 +100,9 @@ private ArrayList<Joueur> joueurs;
             g.drawString( j.getNom(),u*100,100);
             g.drawString("Nbr Menhirs : " + j.getNbMenhir(), u * 100, 220);
             g.drawString("Nbr Graines : " + j.getNbGrain(), u * 100, 240);
+            if(!this.estPartieRapide){
+                g.drawString("Menhir total: " + j.getNbrMenhirEnTout(), u * 100, 260);
+            }
             for(int d = 0 ; d< j.getMain().size(); d++ ){
                 g.drawImage(dosCarte, u*100 + d * 10 , 300, 70, 100, null);
             }
@@ -114,6 +117,7 @@ private ArrayList<Joueur> joueurs;
 
     @Override
     public void update(Observable o, Object arg) {
+        this.removeAll();
         this.repaint();
 
     }
