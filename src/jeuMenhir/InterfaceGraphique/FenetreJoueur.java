@@ -66,8 +66,9 @@ public class FenetreJoueur extends JFrame implements ActionListener{
             fenJeu.repaint();
             Partie partie = new Partie(this.estPartieRapide,joueurs);
 
-            partie.jouer(fenJeu);
+
             this.dispose();
+            partie.jouer(fenJeu);
         }
 
 

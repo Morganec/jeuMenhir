@@ -23,7 +23,7 @@ public class PanelJeu extends JPanel implements Observer {
     private boolean dessinerJoueur = false;
     private Joueur joueurQuiJoue;
     private PartieRapide partieEnCours;
-
+    private boolean premierRepaint=true;
     private Graphics graphic ;
 
 private ArrayList<Joueur> joueurs;
@@ -31,9 +31,9 @@ private ArrayList<Joueur> joueurs;
     public PanelJeu(FenetreJeu f,ArrayList<Joueur> j){
 
         this.fenJeu = f;
-        this.repaint();
+
        // this.setLayout(null);
-        btnValider=new JButton("Valider");
+        btnValider=new JButton("Fermer");
         btnValider.addActionListener(this.fenJeu);
         this.add(btnValider);
 
@@ -52,13 +52,20 @@ private ArrayList<Joueur> joueurs;
 
 
     public void paintComponent(Graphics g){
+        super.paintComponent(g);
         this.graphic = g;
         System.out.println("JE ME REPAINT");
-        try {
+
+       /* if(premierRepaint){
+            premierRepaint = false;
+        }else{*/
+             try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        //}
+
 
         if(!interFaceJeuDessine){
             this.dessinerInterfaceJeu();

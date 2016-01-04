@@ -45,13 +45,16 @@ private JButton but1,but2;  //les boutons
         if(this.p.getNombreJoueurHumain() == 0){
             for(int i = 0 ; i<this.p.getNombreJoueurRobot(); i++){
                 joueurs.add(new JoueurOrdinateur(i));
-            } FenetreJeu fenJeu = new FenetreJeu();
+            }
+            FenetreJeu fenJeu = new FenetreJeu();
             PanelJeu panJeu = new PanelJeu(fenJeu,joueurs);
             fenJeu.setContentPane(panJeu);
             panJeu.repaint();
             fenJeu.repaint();
             Partie partie = new Partie(this.estPartieRapide,joueurs);
 
+
+            this.dispose();
             partie.jouer(fenJeu);
 
         }else{
@@ -59,6 +62,7 @@ private JButton but1,but2;  //les boutons
             FenetreJoueur fenetreJoueur = new FenetreJoueur(this.p.getNombreJoueurHumain(),this.p.getNombreJoueurRobot(),joueurs,this.estPartieRapide);
             PanelJoueurVu panelJoueurVu = new PanelJoueurVu(fenetreJoueur);
             fenetreJoueur.setContentPane(panelJoueurVu);
+            this.dispose();
 
         }
 

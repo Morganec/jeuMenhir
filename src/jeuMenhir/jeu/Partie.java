@@ -49,6 +49,8 @@ private  Integer nbrJoueurReel;
             numeroDelaManche = joueurs.size()-1;
         }
 
+        //joueurs.get(0).setNbGrain(2);
+
 
 
 
@@ -59,8 +61,11 @@ private  Integer nbrJoueurReel;
 
     public void jouer(FenetreJeu f){
         this.fenJeu = f;
-        joueurs.get(0).setNbGrain(2);
 
+
+        this.fenJeu.getContentPane().setVisible(false);
+        this.fenJeu.getContentPane().repaint();
+        this.fenJeu.getContentPane().setVisible(true);
 
 
      while(this.numeroDelaManche >= 0){
