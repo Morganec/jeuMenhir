@@ -1,10 +1,9 @@
 package jeuMenhir;
 
 import jeuMenhir.InterfaceGraphique.FenetreMenu;
-import jeuMenhir.jeu.FonctionScan;
-import jeuMenhir.jeu.Partie;
-import jeuMenhir.jeu.PartieVue;
 
+
+import javax.swing.*;
 import java.util.Scanner;
 
 /**
@@ -14,7 +13,9 @@ public class Main{		//variables pour menhir et graine dans le main ou dans carte
         public static void main (String[] args){
 
 
-            FenetreMenu fenetreMenu = new FenetreMenu();
+                    FenetreMenu fenetreMenu = new FenetreMenu();
+
+
 
           /*  int nbrJoueur , nbrJoueurOrdi, typePartie, nbrJoueurReel ;
             boolean estPartieRapide, isEntier = true ;

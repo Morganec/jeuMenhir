@@ -15,8 +15,8 @@ import java.util.Observer;
 /**
  * Created by morgane on 30/12/15.
  */
-public class PanelJeu extends JPanel implements Observer {
-    private FenetreJeu fenJeu;
+public class PanelJeu extends JPanel {
+
     private JButton btnValider;
 
     private boolean interFaceJeuDessine = false;
@@ -27,22 +27,14 @@ public class PanelJeu extends JPanel implements Observer {
 
 private ArrayList<Joueur> joueurs;
 
-    public PanelJeu(FenetreJeu f,ArrayList<Joueur> j,Boolean estPR){
+    public PanelJeu(ArrayList<Joueur> j,Boolean estPR){
 
-        this.fenJeu = f;
+
         this.estPartieRapide = estPR;
-       // this.setLayout(null);
-        btnValider=new JButton("Fermer");
-        btnValider.addActionListener(this.fenJeu);
-        this.add(btnValider);
 
-        for(int i=0;i<j.size();i++){
-            Joueur ji = j.get(i);
-            ji.addObserver(this);
-            j.set(i, ji);
-        }
         joueurs =j;
-
+        System.out.print("new panel jeu");
+        this.setVisible(true);
         this.repaint();
 
 
@@ -115,12 +107,6 @@ private ArrayList<Joueur> joueurs;
 
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        this.removeAll();
-        this.repaint();
-
-    }
 
     public void dessinerInterfaceJeu(){
         this.graphic.setColor(Color.blue);

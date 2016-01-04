@@ -14,16 +14,16 @@ import java.io.IOException;
  * Created by morgane on 31/12/15.
  */
 public class PanelFin extends JPanel {
-    private FenetreJeu fenetreJeu;
+
     private JButton fin;
     private Boolean estPartieRapide;
     private Joueur joueurGagnant;
-    public PanelFin(FenetreJeu f,Joueur j, boolean estPR){
+    public PanelFin(FenetreFin f,Joueur j, boolean estPR){
         this.estPartieRapide = estPR;
-        this.fenetreJeu = f;
+
         this.joueurGagnant = j;
         fin = new JButton("FIN");
-        fin.addActionListener(this.fenetreJeu);
+        fin.addActionListener(f);
         this.add(fin);
         this.setVisible(true);
         this.repaint();

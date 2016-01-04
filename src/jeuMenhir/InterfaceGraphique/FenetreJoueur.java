@@ -59,8 +59,8 @@ public class FenetreJoueur extends JFrame implements ActionListener{
                 joueurs.add(new JoueurOrdinateur(i));
             }
 
-            FenetreJeu fenJeu = new FenetreJeu();
-            PanelJeu panJeu = new PanelJeu(fenJeu,joueurs,this.estPartieRapide);
+            FenetreJeu fenJeu = new FenetreJeu(joueurs,this.estPartieRapide);
+            PanelJeu panJeu = new PanelJeu(joueurs,this.estPartieRapide);
             fenJeu.setContentPane(panJeu);
             Partie partie = new Partie(this.estPartieRapide,joueurs);
 

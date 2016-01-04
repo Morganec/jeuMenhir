@@ -1,11 +1,9 @@
 package jeuMenhir.jeu;
 
 
-import javafx.scene.layout.Pane;
-import jeuMenhir.InterfaceGraphique.FenetreJeu;
-import jeuMenhir.InterfaceGraphique.PanelFin;
-import jeuMenhir.InterfaceGraphique.PanelJeu;
-import jeuMenhir.InterfaceGraphique.PanelJoueurJoue;
+
+import jeuMenhir.InterfaceGraphique.*;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -49,8 +47,6 @@ private  Integer nbrJoueurReel;
             numeroDelaManche = joueurs.size()-1;
         }
 
-        //joueurs.get(0).setNbGrain(2);
-
 
 
 
@@ -60,8 +56,12 @@ private  Integer nbrJoueurReel;
     }
 
     public void jouer(FenetreJeu f){
-        PanelJeu p =(PanelJeu) f.getContentPane();
+
     this.fenJeu = f;
+
+
+
+
 
 
     while(this.numeroDelaManche >= 0){
@@ -225,6 +225,7 @@ private  Integer nbrJoueurReel;
     }
     public void lancerPartieRapide(FenetreJeu f){
             this.partieRapEnCours = new PartieRapide(this.joueurs,numeroDelaManche,estPartieRapide, f);
+        f.getContentPane().repaint();
         this.numeroDelaManche = this.partieRapEnCours.jouer();
 
     }

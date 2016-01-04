@@ -1,14 +1,12 @@
 package jeuMenhir.InterfaceGraphique;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by morgane on 04/01/16.
  */
-public class FenetreFin extends JFrame implements ActionListener {
-    public FenetreFin() {
+public class FenetreJoueurJoue extends JFrame{
+    public FenetreJoueurJoue() {
         this.getContentPane().setLayout(null);
 
 
@@ -20,10 +18,5 @@ public class FenetreFin extends JFrame implements ActionListener {
 
 
         this.setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        this.dispose();
     }
 }

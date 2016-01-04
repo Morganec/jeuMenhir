@@ -35,9 +35,9 @@ public class PartieRapide extends Observable implements ActionListener{
         this.estPartieRapide = estPartieRapide;
         this.joueurs = joueurs;
         this.fenJeu = fenetreJeu;
-       PanelJeu p = (PanelJeu) this.fenJeu.getContentPane();
-        this.panJeu = p;
-        this.addObserver(panJeu);
+      // PanelJeu p = (PanelJeu) this.fenJeu.getContentPane();
+       // this.panJeu = p;
+        this.addObserver(this.fenJeu);
 
     }
 
@@ -72,7 +72,9 @@ public class PartieRapide extends Observable implements ActionListener{
 
                 if(joueurDeListe instanceof JoueurReel){
                     joueurDeListe.getMain().afficherCartes();
-                    this.fenJeu.getContentPane().repaint();
+                    FenetreJoueurJoue fjj = new FenetreJoueurJoue();
+                    fjj.setContentPane(new PanelJoueurJoue(joueurDeListe,this));
+
                     try {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
@@ -111,6 +113,7 @@ public class PartieRapide extends Observable implements ActionListener{
                     case 1 :
                         carteSelec = (CarteIngredient)carteSelectionne;
                         carteSelec.getGeant().donnerGraine(joueurDeListe,saison);
+
                         break;
                     case 2 :
                         int numVole;
@@ -214,7 +217,7 @@ public class PartieRapide extends Observable implements ActionListener{
                 System.out.println("Fin de la derniere manche" );
                 System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + " menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
                 FenetreFin ff = new FenetreFin();
-                ff.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant),this.estPartieRapide));
+                ff.setContentPane(new PanelFin(ff,joueurs.get(numJoueurGagnant),this.estPartieRapide));
                 //this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
             }else{
                 System.out.println("Fin de la manche numero " + numeroDeLaManche );
@@ -237,7 +240,7 @@ public class PartieRapide extends Observable implements ActionListener{
             }
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
            FenetreFin ff = new FenetreFin();
-           ff.setContentPane(new PanelFin(this.fenJeu, joueurs.get(numJoueurGagnant),this.estPartieRapide));
+           ff.setContentPane(new PanelFin(ff, joueurs.get(numJoueurGagnant),this.estPartieRapide));
             //this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
         }
         this.numeroDeLaManche--;
