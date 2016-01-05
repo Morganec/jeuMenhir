@@ -25,37 +25,20 @@ public class FenetreJeu extends JFrame implements Observer {
 
         }
         this.getContentPane().setLayout(null);
-        //p = new PanelJeu(this,null);
+
         this.setTitle("Jeux des menhirs ");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1500, 830);
+        this.setSize(810, 830);
         this.setLayout(null);
         this.setVisible(true);
         System.out.println("je passe dans fenetre jeu");
     }
 
- /*   @Override
-    public void actionPerformed(ActionEvent e) {
-        this.dispose();
-
-    }*/
 
 
     @Override
     public void update(Observable o, Object arg) {
 
-
-     /*   this.getContentPane().setLayout(null);
-        PanelJeu p = new PanelJeu(this.joueurs,this.estPartieRapide);
-        this.setTitle("Jeux des menhirs ");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1500, 830);
-        this.setLayout(null);
-
-        this.setContentPane(p);
-
-        this.setVisible(true);
-        p.setVisible(true);*/
 
         this.getContentPane().repaint();
 

@@ -14,11 +14,11 @@ import java.io.IOException;
 /**
  * Created by morgane on 02/01/16.
  */
-public class PanelJoueurJoue extends JPanel  {
+public class PanelJoueurJoue extends JPanel implements Runnable {
    private Joueur joueurQuiJoue;
 
 
-
+    private Thread monThread;
     private int numChoixCarte;
     private int numChoix;
     private Carte carteSelectionne;
@@ -28,16 +28,21 @@ public class PanelJoueurJoue extends JPanel  {
            this.joueurQuiJoue = j;
 
 
-            JButton valider = new JButton("valider");
+            JButton valider = new JButton("FERMER");
             valider.addActionListener(p);
-            this.add(valider, BorderLayout.SOUTH);
 
+        this.add(new JLabel("le joueur : " + j.getNom() + " doit jouer dans la console ! "), BorderLayout.CENTER);
 
+        this.add(valider, BorderLayout.SOUTH);
+
+       //monThread = new Thread(this);
+       // monThread.start();
 
         this.repaint();
 
     }
     public void paintComponent(Graphics g){
+
         BufferedImage imageJoueur = null;
         try {
             imageJoueur = ImageIO.read(joueurQuiJoue.getImageJoueur());
@@ -67,5 +72,23 @@ public class PanelJoueurJoue extends JPanel  {
 
     public Carte getCarteSelectionne() {
         return carteSelectionne;
+    }
+
+    @Override
+    public void run() {
+        while (true){
+            this.pause();
+        }
+
+    }
+
+    public void pause(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //System.out.println("DEUXIEME BOUCLE");
+        this.repaint();
     }
 }

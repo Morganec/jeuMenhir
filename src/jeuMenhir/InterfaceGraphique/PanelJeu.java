@@ -9,17 +9,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+
 
 /**
  * Created by morgane on 30/12/15.
  */
-public class PanelJeu extends JPanel {
+public class PanelJeu extends JPanel implements Runnable {
 
-    private JButton btnValider;
 
-    private boolean interFaceJeuDessine = false;
+    private Thread monThread;
+
 
     private Graphics graphic ;
 
@@ -36,7 +35,8 @@ private ArrayList<Joueur> joueurs;
         System.out.print("new panel jeu");
         this.setVisible(true);
         this.repaint();
-
+       monThread = new Thread(this);
+        monThread.start();
 
     }
 
@@ -48,20 +48,9 @@ private ArrayList<Joueur> joueurs;
         this.graphic = g;
 
 
-       /* if(premierRepaint){
-            premierRepaint = false;
-        }else{
-             try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        }*/
 
 
-        if(!interFaceJeuDessine){
-            this.dessinerInterfaceJeu();
-        }
+
         BufferedImage imageJoueur = null;
 
         BufferedImage dosCarte = null;
@@ -108,10 +97,38 @@ private ArrayList<Joueur> joueurs;
     }
 
 
-    public void dessinerInterfaceJeu(){
-        this.graphic.setColor(Color.blue);
-        this.graphic.drawRect(850, 10, 350, 700);
-        interFaceJeuDessine = true;
+
+    public void imageSaison(String img){
+        BufferedImage image = null;
+
+        try {
+            image = ImageIO.read(new File("Images/"+img+".jpg"));
+
+        } catch (IOException ex) {
+            System.out.print("non chargé");
+        }
+        this.graphic.drawImage(image,0,0,this.getWidth(),this.getHeight(),null);
+
+    }
+
+
+    @Override
+    public void run() {
+        while (true){
+            this.pause();
+        }
+
+
+    }
+
+    public void pause(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //System.out.println("DEUXIEME BOUCLE");
+        this.repaint();
     }
 
 

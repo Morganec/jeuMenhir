@@ -51,7 +51,6 @@ private JButton but1,but2;  //les boutons
             FenetreJeu fenJeu = new FenetreJeu(joueurs,this.estPartieRapide);
             PanelJeu panJeu = new PanelJeu(joueurs,this.estPartieRapide);
             fenJeu.setContentPane(panJeu);
-            //panJeu.repaint();
             Partie partie = new Partie(this.estPartieRapide,joueurs);
 
 

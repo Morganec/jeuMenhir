@@ -15,7 +15,7 @@ import java.util.Scanner;
 /**
  * Created by morgane on 07/11/15.
  */
-public class Partie {
+public class Partie implements Runnable{
     public ArrayList<Joueur> getJoueurs() {
         return joueurs;
     }
@@ -30,7 +30,7 @@ public class Partie {
 
 
     private FenetreJeu fenJeu ;
-
+private Thread monThread;
 private  Integer nbrJoueurReel;
 
     private int numeroDelaManche;
@@ -47,7 +47,7 @@ private  Integer nbrJoueurReel;
             numeroDelaManche = joueurs.size()-1;
         }
 
-
+        monThread = new Thread(this);
 
 
 
@@ -59,40 +59,12 @@ private  Integer nbrJoueurReel;
 
     this.fenJeu = f;
 
+    monThread.start();
 
 
 
 
 
-    while(this.numeroDelaManche >= 0){
-
-        Iterator<Joueur> iter = this.joueurs.iterator();
-        while (iter.hasNext()) {
-            Joueur joueur = iter.next();
-            joueur.setNbGrain(2);
-            joueur.setNbMenhir(0);
-            joueur.setPossedeCarteAllie(false);
-            joueur.setNbProtege(0);
-        }
-
-        if(!this.estPartieRapide){
-            this.creerPaqueAllie();
-           this.demanderGraineOuAllier();
-           // this.demanderGraineOuAllierGraph();
-            this.fenJeu.getContentPane().repaint();
-            this.fenJeu.repaint();
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-            this.creerPaquetJeu();
-            this.distribuerCarte();
-           this.lancerPartieRapide(this.fenJeu);
-        }
     }
     public void remplirTableau(int nbrJoueurReel, int nbrJoueurOrdi){
        joueurs = new ArrayList<Joueur>();
@@ -276,4 +248,43 @@ private  Integer nbrJoueurReel;
     }
 
 
+    @Override
+    public void run() {
+        while(this.numeroDelaManche >= 0){
+
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Iterator<Joueur> iter = this.joueurs.iterator();
+            while (iter.hasNext()) {
+                Joueur joueur = iter.next();
+                joueur.setNbGrain(2);
+                joueur.setNbMenhir(0);
+                joueur.setPossedeCarteAllie(false);
+                joueur.setNbProtege(0);
+            }
+
+            if(!this.estPartieRapide){
+                this.creerPaqueAllie();
+                this.demanderGraineOuAllier();
+                // this.demanderGraineOuAllierGraph();
+                this.fenJeu.getContentPane().repaint();
+                this.fenJeu.repaint();
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            this.creerPaquetJeu();
+            this.distribuerCarte();
+            this.lancerPartieRapide(this.fenJeu);
+            //this.numeroDelaManche--;
+        }
+    }
 }

@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Created by morgane on 07/11/15.
  */
-public class PartieRapide extends Observable implements ActionListener{
+public class PartieRapide extends Observable implements ActionListener, Runnable{
     private ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
     private int saison;
     private String[] tablSaison = {"hiver", "printemps", "ete","automne"};
@@ -29,26 +29,21 @@ public class PartieRapide extends Observable implements ActionListener{
     private int numChoix;
     private Carte carteSelectionne;
     private  boolean monBoleenJeu;
+    private FenetreFin fenetreFin;
+    private FenetreJoueurJoue fenetreJoueurJoue;
     private Scanner sc = new Scanner(System.in);
     public PartieRapide(ArrayList<Joueur> joueurs, int numPartie, boolean estPartieRapide, FenetreJeu fenetreJeu) {
         this.numeroDeLaManche = numPartie;
         this.estPartieRapide = estPartieRapide;
         this.joueurs = joueurs;
         this.fenJeu = fenetreJeu;
-      // PanelJeu p = (PanelJeu) this.fenJeu.getContentPane();
-       // this.panJeu = p;
+
         this.addObserver(this.fenJeu);
 
     }
 
     public int jouer(){
-        this.fenJeu.getContentPane().repaint();
-        this.fenJeu.repaint();
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        this.fenetreJoueurJoue = new FenetreJoueurJoue();
         saison = 0;
         if(estPartieRapide){
             joueurQuijoue = this.trouverJoueurCommencant();
@@ -59,7 +54,14 @@ public class PartieRapide extends Observable implements ActionListener{
         this.joueurs.remove(joueurQuijoue);
         this.joueurs.add(0,joueurQuijoue);
 
+
+
         while (saison<4){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("La saison actuelle est : " + tablSaison[saison]);
             Iterator<Joueur> iter2 = this.joueurs.iterator();
             while (iter2.hasNext()) {
@@ -72,8 +74,9 @@ public class PartieRapide extends Observable implements ActionListener{
 
                 if(joueurDeListe instanceof JoueurReel){
                     joueurDeListe.getMain().afficherCartes();
-                    FenetreJoueurJoue fjj = new FenetreJoueurJoue();
-                    fjj.setContentPane(new PanelJoueurJoue(joueurDeListe,this));
+
+                    this.fenetreJoueurJoue.setContentPane(new PanelJoueurJoue(joueurDeListe,this));
+                this.fenetreJoueurJoue.setVisible(true);
 
                     try {
                         Thread.sleep(10);
@@ -179,13 +182,9 @@ public class PartieRapide extends Observable implements ActionListener{
                         }
                         break;
                 }
-                this.fenJeu.getContentPane().repaint();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
                 joueurDeListe.getMain().prendreCarteChoisi(carteSelectionne);
+                this.fenetreJoueurJoue.setVisible(false);
 
 
             }
@@ -216,8 +215,8 @@ public class PartieRapide extends Observable implements ActionListener{
             if(numeroDeLaManche == 0){
                 System.out.println("Fin de la derniere manche" );
                 System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + " menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
-                FenetreFin ff = new FenetreFin();
-                ff.setContentPane(new PanelFin(ff,joueurs.get(numJoueurGagnant),this.estPartieRapide));
+                this.fenetreFin = new FenetreFin();
+                this.fenetreFin.setContentPane(new PanelFin(this.fenetreFin,joueurs.get(numJoueurGagnant),this.estPartieRapide));
                 //this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
             }else{
                 System.out.println("Fin de la manche numero " + numeroDeLaManche );
@@ -239,8 +238,8 @@ public class PartieRapide extends Observable implements ActionListener{
                 System.out.println(" Nous avons : " + joueurs.get(i).getNom() + " avec " + joueurs.get(i).getNbMenhir() + " menhirs et " + joueurs.get(i).getNbGrain() + " Graines");
             }
             System.out.println("Le joueur gagnant est : " + joueurs.get(numJoueurGagnant).getNom() + " avec " + maxMenhir + "menhirs  ¸♬·¯·♩¸¸♪·¯·♫¸¸༼ つ ◕_◕ ༽つ ¸¸♬·¯·♩¸¸♪·¯·♫¸¸ ");
-           FenetreFin ff = new FenetreFin();
-           ff.setContentPane(new PanelFin(ff, joueurs.get(numJoueurGagnant),this.estPartieRapide));
+           this.fenetreFin = new FenetreFin();
+           this.fenetreFin.setContentPane(new PanelFin(this.fenetreFin, joueurs.get(numJoueurGagnant),this.estPartieRapide));
             //this.fenJeu.setContentPane(new PanelFin(this.fenJeu,joueurs.get(numJoueurGagnant)));
         }
         this.numeroDeLaManche--;
@@ -282,6 +281,11 @@ public class PartieRapide extends Observable implements ActionListener{
         numChoix = this.panJoueur.getNumChoix();
         this.fenJeu.setContentPane(this.panJeu);*/
         //carteSelectionne =  this.panJoueur.getCarteSelectionne();
+        this.fenetreJoueurJoue.dispose();
+    }
+
+    @Override
+    public void run() {
 
     }
 }

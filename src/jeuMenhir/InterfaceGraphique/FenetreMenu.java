@@ -25,7 +25,7 @@ public class FenetreMenu extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Jeu monJeu = new Jeu();
+
         Object  source=e.getSource();
     boolean estPartieRapide= true;
         if  (source==p.getJouerPartiAvance())
