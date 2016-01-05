@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Created by morgane on 07/11/15.
  */
-public class PartieRapide extends Observable implements ActionListener, Runnable{
+public class PartieRapide extends Observable implements ActionListener{
     private ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
     private int saison;
     private String[] tablSaison = {"hiver", "printemps", "ete","automne"};
@@ -287,8 +287,5 @@ public class PartieRapide extends Observable implements ActionListener, Runnable
         this.fenetreJoueurJoue.dispose();
     }
 
-    @Override
-    public void run() {
 
-    }
 }

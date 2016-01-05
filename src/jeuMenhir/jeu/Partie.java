@@ -97,6 +97,7 @@ private  Integer nbrJoueurReel;
 
     }
     public void creerPaquetJeu(){
+        //PENSER A CREER UNE BOUCLE !!!
      paquetJeu = new PaquetCarte();
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,3,3,1),new Engrais(1,0,2,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
@@ -212,6 +213,8 @@ private  Integer nbrJoueurReel;
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,3,3,1),new Farfadet(1,1,0,1),new Engrais(1,0,2,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,1,0,1),new Farfadet(1,0,2,1),new Engrais(1,3,3,1))));
         paquetJeu.ajouterCarte((Carte)(new CarteIngredient(new Geant(1,0,2,1),new Farfadet(1,3,3,1),new Engrais(1,1,0,1))));
+
+        this.paquetJeu.melangerCarte();
     }
 
     public void creerPaqueAllie(){

@@ -32,6 +32,7 @@ public class PanelFormulaire extends JPanel {
 
     public PanelFormulaire(FenetreFormulaire f){
         this.fenetreForm=  f;
+        //this.setBackground(Color.orange);
         this.repaint();
         nombreJoueurRobot = 0;
         nombreJoueurHumain = 8;
