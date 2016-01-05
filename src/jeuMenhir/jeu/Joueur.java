@@ -20,6 +20,8 @@ public class Joueur extends Observable{
 	private boolean possedeCarteAllie =false;
 	private Scanner sc = new Scanner(System.in);
 
+
+
 	private PaquetCarte main;
 	private int nbprotege=0;
 	private int nbgrain=0;
@@ -142,5 +144,7 @@ public class Joueur extends Observable{
 		this.imageJoueur = imageJ;
 	}
 
-
+	public void setMain(PaquetCarte main) {
+		this.main = main;
+	}
 }

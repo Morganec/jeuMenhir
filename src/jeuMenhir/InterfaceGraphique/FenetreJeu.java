@@ -43,7 +43,5 @@ public class FenetreJeu extends JFrame implements Observer {
         this.getContentPane().repaint();
 
 
-
-
     }
 }
