@@ -38,6 +38,7 @@ private ArrayList<Joueur> joueurs;
 
         this.imgSaison = null;
         this.setVisible(true);
+        this.setBackground(Color.orange);
         this.repaint();
        monThread = new Thread(this);
         monThread.start();

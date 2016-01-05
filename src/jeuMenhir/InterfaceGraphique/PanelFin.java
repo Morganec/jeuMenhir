@@ -26,6 +26,7 @@ public class PanelFin extends JPanel {
         fin.addActionListener(f);
         this.add(fin);
         this.setVisible(true);
+        this.setBackground(Color.orange);
         this.repaint();
     }
     public void paintComponent(Graphics g){
@@ -38,7 +39,14 @@ public class PanelFin extends JPanel {
             System.out.print("non chargé");
         }
 
+        BufferedImage coupe = null;
 
+        try {
+            coupe = ImageIO.read(new File("Images/coupe.png"));
+
+        } catch (IOException ex) {
+            System.out.print("non chargé");
+        }
 
 
         g.setColor(Color.red);
@@ -52,6 +60,7 @@ public class PanelFin extends JPanel {
         g.drawString("et avec  " + this.joueurGagnant.getNbGrain() + " Graines est :  "  , 300, 240);
         g.drawString( this.joueurGagnant.getNom(),300,260);
         g.drawImage(imageJoueur,  300, 280, 200, 200, null);
+        g.drawImage(coupe,  260, 280, 80, 80, null);
 
 
     }
