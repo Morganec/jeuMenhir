@@ -31,7 +31,11 @@ public class PanelJoueurJoue extends JPanel implements Runnable {
             JButton valider = new JButton("FERMER");
             valider.addActionListener(p);
 
-        this.add(new JLabel("le joueur : " + j.getNom() + " doit jouer dans la console ! "), BorderLayout.CENTER);
+        this.add(new JLabel("le joueur : " + j.getNom() + " doit jouer dans la console ! "), BorderLayout.NORTH);
+
+        for(int i =0 ; i < j.getMain().size() ; i++){
+            this.add(new JLabel(j.getMain().getCarte(i).toString()), BorderLayout.CENTER);
+        }
 
         this.add(valider, BorderLayout.SOUTH);
 

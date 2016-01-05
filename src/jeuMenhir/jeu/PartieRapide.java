@@ -22,8 +22,7 @@ public class PartieRapide extends Observable implements ActionListener, Runnable
     private int numeroDeLaManche;
     private boolean estPartieRapide;
     private FenetreJeu fenJeu ;
-    private PanelJeu panJeu;
-    private PanelJoueurJoue panJoueur;
+
 
     private int numChoixCarte;
     private int numChoix;
@@ -63,6 +62,8 @@ public class PartieRapide extends Observable implements ActionListener, Runnable
                 e.printStackTrace();
             }
             System.out.println("La saison actuelle est : " + tablSaison[saison]);
+            PanelJeu p =(PanelJeu) this.fenJeu.getContentPane();
+            p.setImgSaison(tablSaison[saison]);
             Iterator<Joueur> iter2 = this.joueurs.iterator();
             while (iter2.hasNext()) {
 

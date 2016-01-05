@@ -12,7 +12,7 @@ public class FenetreJoueurJoue extends JFrame{
 
         this.setTitle("Jeux des menhirs ");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(410, 230);
+        this.setSize(710, 430);
 
         this.setLayout(null);
 

@@ -25,7 +25,7 @@ public class CarteIngredient extends Carte{
 		this.engrais = engrais;
 	}
 	public String toString(){
-		return " on a geant = " + geant.toString() + " farfadet = " + farfadet.toString() + "engrais = " + engrais.toString() + " . ";
+		return " on a geant = " + geant.toString() + " farfadet = " + farfadet.toString() + "engrais = " + engrais.toString() + " ";
 	}
 
 

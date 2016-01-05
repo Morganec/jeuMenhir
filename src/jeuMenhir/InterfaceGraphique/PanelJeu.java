@@ -24,6 +24,9 @@ public class PanelJeu extends JPanel implements Runnable {
 
     boolean estPartieRapide;
 
+
+    private String imgSaison;
+
 private ArrayList<Joueur> joueurs;
 
     public PanelJeu(ArrayList<Joueur> j,Boolean estPR){
@@ -32,11 +35,13 @@ private ArrayList<Joueur> joueurs;
         this.estPartieRapide = estPR;
 
         joueurs =j;
-        System.out.print("new panel jeu");
+
+        this.imgSaison = null;
         this.setVisible(true);
         this.repaint();
        monThread = new Thread(this);
         monThread.start();
+
 
     }
 
@@ -91,23 +96,25 @@ private ArrayList<Joueur> joueurs;
 
         }
 
-
+        if(this.imgSaison != null){
+            this.dessinerImageSaison(this.imgSaison);
+        }
 
 
     }
 
 
 
-    public void imageSaison(String img){
+    public void dessinerImageSaison(String img){
         BufferedImage image = null;
 
         try {
-            image = ImageIO.read(new File("Images/"+img+".jpg"));
+            image = ImageIO.read(new File("Images/"+img+".png"));
 
         } catch (IOException ex) {
             System.out.print("non chargé");
         }
-        this.graphic.drawImage(image,0,0,this.getWidth(),this.getHeight(),null);
+        this.graphic.drawImage(image,410,420,400,400,null);
 
     }
 
@@ -129,6 +136,9 @@ private ArrayList<Joueur> joueurs;
         }
         //System.out.println("DEUXIEME BOUCLE");
         this.repaint();
+    }
+    public void setImgSaison(String imgSaison) {
+        this.imgSaison = imgSaison;
     }
 
 
