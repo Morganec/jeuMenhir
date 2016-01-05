@@ -271,20 +271,13 @@ private  Integer nbrJoueurReel;
                 this.creerPaqueAllie();
                 this.demanderGraineOuAllier();
                 // this.demanderGraineOuAllierGraph();
-                this.fenJeu.getContentPane().repaint();
-                this.fenJeu.repaint();
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
             }
 
 
             this.creerPaquetJeu();
             this.distribuerCarte();
             this.lancerPartieRapide(this.fenJeu);
-            //this.numeroDelaManche--;
         }
     }
 }

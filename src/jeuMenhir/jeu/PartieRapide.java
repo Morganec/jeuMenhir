@@ -198,6 +198,8 @@ public class PartieRapide extends Observable implements ActionListener, Runnable
             for(int i=0 ; i < joueurs.size() ; i++){
                 Joueur j = joueurs.get(i);
                 if(numeroDeLaManche == 0){
+                    j.setNbrMenhirEnTout(j.getNbrMenhirEnTout() + j.getNbMenhir());
+                    j.setNbMenhir(0);
                     if(j.getNbrMenhirEnTout() > maxMenhir){
                         maxMenhir = j.getNbrMenhirEnTout();
                         numJoueurGagnant = i;
